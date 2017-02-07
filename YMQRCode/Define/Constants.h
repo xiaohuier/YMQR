@@ -49,6 +49,10 @@
 
 #define HEIGHT self.view.bounds.size.height
 
+#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
+
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
 #define BUNDLE_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 #define BACK_TITLE UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];\

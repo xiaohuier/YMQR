@@ -10,30 +10,17 @@
 #import "HomePageHeaderView.h"
 
 
-#define CURRENRTWIDTH self.bounds.size.width
-
-#define CURRENRTHEIGHT self.bounds.size.height
 
 @interface HomePageBodyView ()<UITextViewDelegate>
 
 //二维码填写区域
-@property (nonatomic, strong)UITextView *codeTextView;
-
 @property (nonatomic, strong)UILabel *textlabel;
 
 @property (nonatomic, strong)UILabel *fillLabel;
 
-@property (nonatomic, strong)UIButton *telButton;
-
-@property (nonatomic, strong)NSString *viewType;
-
-@property (nonatomic, strong)UITextField *textFile;
-
 @property (nonatomic, strong)UIView *textFileView;
 
 @property (nonatomic, strong)UIScrollView *vCardScrollView;
-
-@property (nonatomic, strong)UIButton *scanningButton;
 
 //名片信息
 @property (nonatomic, strong)UITextField *nameTextfiled;
@@ -55,6 +42,16 @@
 @property (nonatomic, strong)UILabel *fillAddress;
 
 @property (nonatomic, strong)UILabel *fillRemarks;
+
+@property (assign ,nonatomic)BOOL isSelectHttp;
+
+@property (assign ,nonatomic)BOOL isSelectText;
+
+@property (assign ,nonatomic)BOOL isSelectVcard;
+
+@property (assign ,nonatomic)BOOL isSelectTel;
+
+@property (assign ,nonatomic)BOOL isSelectMessage;
 
 @end
 
@@ -81,21 +78,105 @@
 {
     switch (_type) {
         case HomePageBodyHTTPType:
+            if(!_isSelectHttp){
+                
+                [self codeFillContext];
+                
+                _textlabel.text = @"注意：填写网址的时候请输入http://或者https://完整的网址信息;如果你的网址过长，生成的二维码将不易被扫描";
+                
+                _textlabel.textColor = WORDSCOLOR;
+                
+                _fillLabel.text = @"http://或者https://";
+                
+                _viewType = @"http";
+                
+            }
+            
+            _isSelectHttp = YES;
+            _isSelectText = NO;
+            _isSelectTel = NO;
+            _isSelectVcard = NO;
+            _isSelectMessage = NO;
             
             break;
             
         case HomePageBodyTextType:
+            if(!_isSelectText){
+                
+                [self codeFillContext];
+                
+                _viewType = @"文本";
+                
+                _fillLabel.text = @"支持输入基本的文本数据和网站";
+                
+                _textlabel.text = [NSString stringWithFormat:@"已输入字符：0个"];
+                _textlabel.textColor = WORDSCOLOR;
+            }
             
+            _isSelectHttp = NO;
+            _isSelectText = YES;
+            _isSelectTel = NO;
+            _isSelectVcard = NO;
+            _isSelectMessage = NO;
             break;
             
         case HomePageBodyVCardType:
+            if(!_isSelectVcard){
+                
+                [self vCardInterfaceSetup];
+                
+                _viewType = @"vCard";
+                
+            }
             
+            
+            _isSelectHttp = NO;
+            _isSelectText = NO;
+            _isSelectTel = NO;
+            _isSelectVcard = YES;
+            _isSelectMessage = NO;
+
             break;
         case HomePageBodyMessageType:
+            if(!_isSelectTel){
+                
+                [self codeFillContext];
+                
+                _textlabel.text = @"☎️生成的电话号码二维码，扫描之后，手机可直接拨打扫描的电话号";
+                _textlabel.textColor = WORDSCOLOR;
+                _fillLabel.text = @"请输入家庭号码或手机号";
+                
+                _viewType = @"tel";
+                
+            }
             
+            _codeTextView.keyboardType = UIKeyboardTypeNumberPad;
+            
+            
+            _isSelectHttp = NO;
+            _isSelectText = NO;
+            _isSelectTel = YES;
+            _isSelectVcard = NO;
+            _isSelectMessage = NO;
+
             break;
         case HomePageBodyTelPhoneType:
+            if(!_isSelectMessage){
+                
+                [self messageFillContext];
+                
+                _fillLabel.text = @"短信内容";
+                
+                _textlabel.text = @"💻生成短信二维码，扫描二维码后将自动输入短信内容";
+                
+                _textlabel.textColor = WORDSCOLOR;
+            }
             
+            _isSelectHttp = NO;
+            _isSelectText = NO;
+            _isSelectTel = NO;
+            _isSelectVcard = NO;
+            _isSelectMessage = YES;
             break;
         default:
             break;
@@ -139,18 +220,20 @@
     _textlabel.numberOfLines = 0;
     [self addSubview:_textlabel];
     
+    NSLog(@" ------SCREENWIDTH    %f ",SCREENWIDTH);
+    
     [_codeTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.mas_left).offset((CURRENRTWIDTH - 240)/4);
+        make.left.offset((SCREENWIDTH - 240)/4);
         
-        make.top.equalTo(_telButton.mas_bottom).offset(34.5);
+        make.top.mas_equalTo(0);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 120));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 120));
     }];
     
     [_textlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.size.mas_offset(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 30));
+        make.size.mas_offset(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 30));
         
         make.top.equalTo(_codeTextView.mas_bottom).offset(1);
         
@@ -188,11 +271,11 @@
     
     [_textFileView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(_telButton.mas_bottom).offset(34.5);
+        make.top.mas_equalTo(0);
         
-        make.left.equalTo(self.mas_left).offset((CURRENRTWIDTH - 240)/4);
+        make.left.equalTo(self.mas_left).offset((SCREENWIDTH - 240)/4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 35));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 35));
         
     }];
     
@@ -213,7 +296,7 @@
         
         make.left.equalTo(_textFileView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -237,16 +320,16 @@
     
     [_codeTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.mas_left).offset((CURRENRTWIDTH - 240)/4);
+        make.left.equalTo(self.mas_left).offset((SCREENWIDTH - 240)/4);
         
         make.top.equalTo(_textFileView.mas_bottom).offset(5);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 90));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 90));
     }];
     
     [_textlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.size.mas_offset(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 30));
+        make.size.mas_offset(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 30));
         
         make.top.equalTo(_codeTextView.mas_bottom).offset(1);
         
@@ -283,13 +366,13 @@
     
     [_vCardScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(_telButton.mas_bottom).offset(34.5);
+        make.top.mas_equalTo(0);
         
-        make.left.equalTo(self.mas_left).offset((CURRENRTWIDTH - 240)/4);
+        make.left.offset((SCREENWIDTH - 240)/4);
         
-        make.width.mas_offset(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2);
+        make.width.mas_offset(SCREENWIDTH-(SCREENWIDTH - 240)/2);
         
-        make.bottom.equalTo(_scanningButton.mas_top).offset(-20);
+        make.bottom.mas_equalTo(0);
         
     }];
     
@@ -331,7 +414,7 @@
         
         make.left.equalTo(_vCardScrollView.mas_left).offset(0);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 31));
         
         make.top.equalTo(_vCardScrollView.mas_top).offset(0);
     }];
@@ -454,7 +537,7 @@
         
         make.left.equalTo(nameView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -464,7 +547,7 @@
         
         make.left.equalTo(mailView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -474,7 +557,7 @@
         
         make.left.equalTo(telView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -484,7 +567,7 @@
         
         make.left.equalTo(positionView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -494,7 +577,7 @@
         
         make.left.equalTo(companyView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -504,7 +587,7 @@
         
         make.left.equalTo(urlView.mas_left).offset(4);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2 - 4, 31));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2 - 4, 31));
         
     }];
     
@@ -516,7 +599,7 @@
         
         make.top.equalTo(urlView.mas_bottom).offset(10);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 90));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 90));
     }];
     
     
@@ -535,7 +618,7 @@
         
         make.top.equalTo(_addressTextView.mas_bottom).offset(10);
         
-        make.size.mas_equalTo(CGSizeMake(CURRENRTWIDTH-(CURRENRTWIDTH - 240)/2, 90));
+        make.size.mas_equalTo(CGSizeMake(SCREENWIDTH-(SCREENWIDTH - 240)/2, 90));
     }];
     
     
@@ -551,7 +634,80 @@
 }
 
 
+#pragma UItextViewDelegate的方法
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    if([_viewType isEqualToString:@"文本"]){
+        
+        if (text.length !=0&&range.location == 0) {
+            
+            _textlabel.text = [NSString stringWithFormat:@"已输入字符: 1个"];
+            
+        }else if(range.location != 0&&text.length !=0){
+            
+            _textlabel.text = [NSString stringWithFormat:@"已输入字符: %lu个",(unsigned long)range.location+1];
+            
+        }else if (text.length ==0){
+            
+            _textlabel.text = [NSString stringWithFormat:@"已输入字符: %lu个",(unsigned long)range.location];
+            
+        }
+        
+    }
+    
+    if (textView == _addressTextView) {
+        
+        if (range.location == 0) {
+            
+            [_fillAddress setHidden:NO];
+            
+        }
+        
+        if (text.length != 0) {
+            
+            [_fillAddress setHidden:YES];
+            
+        }
+        
+    }else if ( textView == _remarksTextView){
+        
+        if (range.location == 0) {
+            
+            [_fillRemarks setHidden:NO];
+            
+        }
+        
+        if (text.length != 0) {
+            
+            [_fillRemarks setHidden:YES];
+            
+        }
+        
+    }else{
+        
+        if (range.location == 0) {
+            
+            [_fillLabel setHidden:NO];
+            
+        }
+        
+        if (text.length != 0) {
+            
+            [_fillLabel setHidden:YES];
+            
+        }
+    }
+    
+    return YES;
+}
 
 
 

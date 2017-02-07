@@ -19,6 +19,15 @@ typedef NS_ENUM(NSInteger,HomePageBodyType)
 
 @interface HomePageBodyView : UIView 
 
+@property (nonatomic ,assign)int bodyWidth;
+@property (nonatomic ,assign)int bodyHeight;
+
+@property (nonatomic, strong)NSString *viewType;
+
+@property (nonatomic, strong)UITextView *codeTextView;
+
+@property (nonatomic, strong)UITextField *textFile;
+
 - (instancetype)initWithType:(HomePageBodyType)type;
 
 @end

@@ -9,6 +9,9 @@
 #import "HomePageViewController.h"
 #import "HomePageBodyView.h"
 #import "HomePageHeaderView.h"
+#import "AppDelegate.h"
+#import "UIViewController+MMDrawerController.h"
+#import "BarCodeScanningViewController.h"
 
 @interface HomePageViewController ()<UITextViewDelegate,HomePageHeaderDelegate>
 /**头部5个按钮*/
@@ -21,9 +24,26 @@
 @property (nonatomic,strong)UIButton *createQRCodeButton;
 
 @property (nonatomic,strong)UIView *myBodyVeiw;
+
+@property (nonatomic,strong)AppDelegate *appDele;
+
 @end
 
 @implementation HomePageViewController
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    _appDele = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    _appDele.drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+    _appDele.drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +88,6 @@
     }];
 
     _myBodyVeiw = [[UIView alloc]init];
-    _myBodyVeiw.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:_myBodyVeiw];
     
     
@@ -76,6 +95,18 @@
         make.top.mas_equalTo(self.headerView.mas_bottom);
         make.left.right.mas_equalTo(0);
     }];
+    
+    
+    self.bodyView = [[HomePageBodyView alloc]initWithType:self.headerView.homePageBodyType];
+    [self.myBodyVeiw addSubview:self.bodyView];
+    
+    [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.right.top.bottom.mas_equalTo(0);
+        
+    }];
+
+    
     
     self.scanQRCodeButton = [[UIButton alloc]init];
     
@@ -134,17 +165,37 @@
 
 -(void)sideSlipOnClick:(id)sender
 {
+    if (!_appDele.isBool) {
+        
+        [self.mm_drawerController openDrawerSide:1 animated:YES completion:nil];
+        
+        _appDele.isBool = YES;
+        
+    }else{
+        
+        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+        
+        _appDele.isBool = NO;
+        
+    }
+
     
 }
 
 -(void)scanOnClick:(id)sender
 {
+    BarCodeScanningViewController *barCode = [[BarCodeScanningViewController alloc]init];
     
+    [self.navigationController pushViewController:barCode animated:YES];
+    
+    BACK_TITLE
+
 }
 
 -(void)creatCodeOnClick:(id)sender
 {
     
+
 }
 
 
@@ -155,7 +206,6 @@
     
     self.bodyView = [[HomePageBodyView alloc]initWithType:self.headerView.homePageBodyType];
     [self.myBodyVeiw addSubview:self.bodyView];
-    self.bodyView.backgroundColor = [UIColor blueColor];
     
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make) {
        
@@ -165,7 +215,6 @@
     
     
 }
-
 
 
 - (void)didReceiveMemoryWarning {

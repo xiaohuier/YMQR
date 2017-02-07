@@ -19,6 +19,8 @@
 		36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C8605D1E388DDD00AA76C3 /* AppDelegate.m */; };
 		36C860601E388E2C00AA76C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8605F1E388E2C00AA76C3 /* Assets.xcassets */; };
 		36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860621E39861D00AA76C3 /* HomePageBodyView.m */; };
+		396ABBEC1E496E810034D8DE /* BarCodeReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 396ABBE91E496E810034D8DE /* BarCodeReadingView.m */; };
+		396ABBED1E496E810034D8DE /* BarCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396ABBEB1E496E810034D8DE /* BarCodeScanningViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,10 @@
 		36C8605F1E388E2C00AA76C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36C860611E39861D00AA76C3 /* HomePageBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBodyView.h; sourceTree = "<group>"; };
 		36C860621E39861D00AA76C3 /* HomePageBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageBodyView.m; sourceTree = "<group>"; };
+		396ABBE81E496E810034D8DE /* BarCodeReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeReadingView.h; sourceTree = "<group>"; };
+		396ABBE91E496E810034D8DE /* BarCodeReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeReadingView.m; sourceTree = "<group>"; };
+		396ABBEA1E496E810034D8DE /* BarCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScanningViewController.h; sourceTree = "<group>"; };
+		396ABBEB1E496E810034D8DE /* BarCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScanningViewController.m; sourceTree = "<group>"; };
 		478A4EB0A02E4D03A93F0211 /* Pods-YMQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.release.xcconfig"; sourceTree = "<group>"; };
 		6DBFA0E601D70516FE7FC9EC /* libPods-YMQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YMQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA03E0E5273666E1C999009 /* Pods-YMQRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 		36C85FE81E388C5800AA76C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				396ABBE71E496E550034D8DE /* Scanning */,
 				36C85FE91E388C5800AA76C3 /* General */,
 				36C85FF01E388C5800AA76C3 /* Guide */,
 				36C85FF61E388C5800AA76C3 /* HomePage */,
@@ -245,6 +252,17 @@
 			children = (
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		396ABBE71E496E550034D8DE /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				396ABBE81E496E810034D8DE /* BarCodeReadingView.h */,
+				396ABBE91E496E810034D8DE /* BarCodeReadingView.m */,
+				396ABBEA1E496E810034D8DE /* BarCodeScanningViewController.h */,
+				396ABBEB1E496E810034D8DE /* BarCodeScanningViewController.m */,
+			);
+			name = Scanning;
 			sourceTree = "<group>";
 		};
 		3ACA8989EFA0A25A66FF8921 /* Pods */ = {
@@ -386,10 +404,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */,
+				396ABBEC1E496E810034D8DE /* BarCodeReadingView.m in Sources */,
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,
+				396ABBED1E496E810034D8DE /* BarCodeScanningViewController.m in Sources */,
 				36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
 				36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */,
