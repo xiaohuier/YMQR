@@ -1,0 +1,29 @@
+PODS:
+  - IQKeyboardManager (4.0.5)
+  - Masonry (1.0.1)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - Masonry
+  - MMDrawerController
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 50b62c0603308968256f8208886e206c1dcce607
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+
+PODFILE CHECKSUM: dce7eeb12f3e359b643f1edf35b1796be2148088
+
+COCOAPODS: 1.1.1
