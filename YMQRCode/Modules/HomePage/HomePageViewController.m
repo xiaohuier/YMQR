@@ -10,8 +10,9 @@
 #import "HomePageBodyView.h"
 #import "HomePageHeaderView.h"
 #import "AppDelegate.h"
-#import "UIViewController+MMDrawerController.h"
+
 #import "BarCodeScanningViewController.h"
+
 
 #import "UIViewController+MMDrawerController.h"
 
@@ -29,6 +30,7 @@
 @property (nonatomic,strong)UIButton *createQRCodeButton;
 
 @property (nonatomic,strong)UIView *myBodyVeiw;
+
 
 @end
 
@@ -169,6 +171,7 @@
 -(void)sideSlipOnClick:(id)sender
 {
 
+
     if (self.mm_drawerController.openSide == MMDrawerSideNone) {
         [self.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     }else{
@@ -184,7 +187,6 @@
 
     
     [self.navigationController pushViewController:barCode animated:YES];
-    
 
 }
 
