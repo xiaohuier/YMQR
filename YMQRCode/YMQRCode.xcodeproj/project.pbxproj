@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A2C28AA28742DA82AAA375A /* libPods-YMQRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBFA0E601D70516FE7FC9EC /* libPods-YMQRCode.a */; };
+		360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 360B502F1E49B54200C2BD9F /* UIImage+QRCode.m */; };
+		360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */; };
 		3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */; };
 		36C85FD01E388BE700AA76C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FCF1E388BE700AA76C3 /* main.m */; };
 		36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FEC1E388C5800AA76C3 /* BaseNavigationController.m */; };
@@ -22,13 +24,16 @@
 		36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860621E39861D00AA76C3 /* HomePageBodyView.m */; };
 		3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */; };
 		3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B61E49B2EC00909D91 /* BarCodeScanningViewController.m */; };
-		3919B9BB1E49B4D300909D91 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9BA1E49B4D300909D91 /* CardViewController.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
 		3919B9BF1E49B5BB00909D91 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */; };
 		3919B9C11E49B5C500909D91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9C01E49B5C500909D91 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		360B502E1E49B54200C2BD9F /* UIImage+QRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+QRCode.h"; path = "Modules/QRCode/QRcodeImage/UIImage+QRCode.h"; sourceTree = SOURCE_ROOT; };
+		360B502F1E49B54200C2BD9F /* UIImage+QRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+QRCode.m"; path = "Modules/QRCode/QRcodeImage/UIImage+QRCode.m"; sourceTree = SOURCE_ROOT; };
+		360B50321E49BE2600C2BD9F /* QRCodeImageStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeImageStyleViewController.h; path = QRCodeImageStyle/QRCodeImageStyleViewController.h; sourceTree = "<group>"; };
+		360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeImageStyleViewController.m; path = QRCodeImageStyle/QRCodeImageStyleViewController.m; sourceTree = "<group>"; };
 		3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeProduceViewController.h; path = QRCode/QRCodeProduceViewController.h; sourceTree = "<group>"; };
 		3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeProduceViewController.m; path = QRCode/QRCodeProduceViewController.m; sourceTree = "<group>"; };
 		36C85FCB1E388BE700AA76C3 /* YMQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,8 +64,6 @@
 		3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeReadingView.m; sourceTree = "<group>"; };
 		3919B9B51E49B2EC00909D91 /* BarCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScanningViewController.h; sourceTree = "<group>"; };
 		3919B9B61E49B2EC00909D91 /* BarCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScanningViewController.m; sourceTree = "<group>"; };
-		3919B9B91E49B4D300909D91 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
-		3919B9BA1E49B4D300909D91 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		3919B9BC1E49B5AE00909D91 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3919B9C01E49B5C500909D91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */ = {
+			isa = PBXGroup;
+			children = (
+				360B50321E49BE2600C2BD9F /* QRCodeImageStyleViewController.h */,
+				360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */,
+			);
+			name = QRCodeImageStyle;
+			sourceTree = "<group>";
+		};
 		3671F5C21E496F1400A68381 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +168,7 @@
 		36C85FE81E388C5800AA76C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				3919B9B91E49B4D300909D91 /* CardViewController.h */,
-				3919B9BA1E49B4D300909D91 /* CardViewController.m */,
+				360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */,
 				3919B9B21E49B2EC00909D91 /* Scanning */,
 				3671F5C21E496F1400A68381 /* QRCode */,
 				36C85FE91E388C5800AA76C3 /* General */,
@@ -270,6 +281,8 @@
 		36C860071E388C5800AA76C3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				360B502E1E49B54200C2BD9F /* UIImage+QRCode.h */,
+				360B502F1E49B54200C2BD9F /* UIImage+QRCode.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -435,16 +448,17 @@
 			files = (
 				36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */,
 				3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */,
-				3919B9BB1E49B4D300909D91 /* CardViewController.m in Sources */,
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
 				3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,
+				360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */,
 				36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
 				36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */,
 				3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */,
+				360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */,
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
 				36C85FD01E388BE700AA76C3 /* main.m in Sources */,
 			);
@@ -553,6 +567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Resource/PrefixHeader.pch";
 				INFOPLIST_FILE = YMQRCode/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -574,6 +589,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Resource/PrefixHeader.pch";
 				INFOPLIST_FILE = YMQRCode/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

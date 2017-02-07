@@ -57,9 +57,8 @@
         [self.window setRootViewController:drawer];
     }
     
-    
        [self.window makeKeyAndVisible];
-  
+
     return YES;
 }
 
