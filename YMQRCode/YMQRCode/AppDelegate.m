@@ -60,7 +60,6 @@
     
        [self.window makeKeyAndVisible];
     
-    NSLog(@"111");
     
     return YES;
 }

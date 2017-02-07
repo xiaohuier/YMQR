@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A2C28AA28742DA82AAA375A /* libPods-YMQRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBFA0E601D70516FE7FC9EC /* libPods-YMQRCode.a */; };
+		3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */; };
 		36C85FD01E388BE700AA76C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FCF1E388BE700AA76C3 /* main.m */; };
 		36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FEC1E388C5800AA76C3 /* BaseNavigationController.m */; };
 		36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FEF1E388C5800AA76C3 /* BaseViewController.m */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeProduceViewController.h; path = QRCode/QRCodeProduceViewController.h; sourceTree = "<group>"; };
+		3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeProduceViewController.m; path = QRCode/QRCodeProduceViewController.m; sourceTree = "<group>"; };
 		36C85FCB1E388BE700AA76C3 /* YMQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C85FCF1E388BE700AA76C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36C85FDF1E388BE700AA76C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3671F5C21E496F1400A68381 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */,
+				3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */,
+			);
+			name = QRCode;
+			sourceTree = "<group>";
+		};
 		36C85FC21E388BE700AA76C3 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +138,7 @@
 		36C85FE81E388C5800AA76C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3671F5C21E496F1400A68381 /* QRCode */,
 				36C85FE91E388C5800AA76C3 /* General */,
 				36C85FF01E388C5800AA76C3 /* Guide */,
 				36C85FF61E388C5800AA76C3 /* HomePage */,
@@ -386,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */,
+				3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */,
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,

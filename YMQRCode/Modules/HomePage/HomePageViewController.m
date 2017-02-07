@@ -10,6 +10,11 @@
 #import "HomePageBodyView.h"
 #import "HomePageHeaderView.h"
 
+#import "UIViewController+MMDrawerController.h"
+
+#import "QRProduceViewController.h"
+
+
 @interface HomePageViewController ()<UITextViewDelegate,HomePageHeaderDelegate>
 /**头部5个按钮*/
 @property (nonatomic,strong)HomePageHeaderView *headerView;
@@ -21,6 +26,7 @@
 @property (nonatomic,strong)UIButton *createQRCodeButton;
 
 @property (nonatomic,strong)UIView *myBodyVeiw;
+
 @end
 
 @implementation HomePageViewController
@@ -134,6 +140,12 @@
 
 -(void)sideSlipOnClick:(id)sender
 {
+    if (self.mm_drawerController.openSide == MMDrawerSideNone) {
+        [self.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }else{
+        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+
+    }
     
 }
 
@@ -144,7 +156,64 @@
 
 -(void)creatCodeOnClick:(id)sender
 {
+    BACK_TITLE
     
+    QRProduceViewController *qrcode = [[QRProduceViewController alloc]init];
+    
+    qrcode.selectType = _viewType;
+    
+    
+    if ([_viewType isEqualToString:@"http"]||[_viewType isEqualToString:@"文本"]) {
+        
+        qrcode.textString = _codeTextView.text;
+        
+    }else if ([_viewType isEqualToString:@"tel"]){
+        
+        if ([self isNullString:_codeTextView.text]) {
+            qrcode.textString = @"";
+        }else{
+            
+            qrcode.textString = [NSString stringWithFormat:@"tel:%@",_codeTextView.text];
+            
+        }
+        
+    }else if ([_viewType isEqualToString:@"message"]){
+        
+        if ([self isNullString:_textFile.text]&&[self isNullString:_codeTextView.text]) {
+            
+            qrcode.textString = @"";
+            
+        }else{
+            
+            if (IOS9_1) {
+                
+                qrcode.textString = [NSString stringWithFormat:@"sms:%@&body=%@",_textFile.text,_codeTextView.text];
+                
+            }else{
+                
+                qrcode.textString = [NSString stringWithFormat:@"sms:%@?body=%@",_textFile.text,_codeTextView.text];
+                
+            }
+            
+        }
+        
+        
+        
+    }else if ([_viewType isEqualToString:@"vCard"]){
+        
+        if ([self isBool]) {
+            
+            qrcode.textString = @"";
+            
+        }else{
+            
+            qrcode.textString = [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
+        }
+        
+        
+    }
+    
+    [self.navigationController pushViewController:qrcode animated:NO];
 }
 
 
