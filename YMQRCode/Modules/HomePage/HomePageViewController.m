@@ -195,7 +195,7 @@
     
     qrcode.textString = self.bodyView.codeTextView.text;
 
-    
+    BACK_TITLE
 //    if ([_viewType isEqualToString:@"http"]||[_viewType isEqualToString:@"文本"]) {
 //        
 //        qrcode.textString = _codeTextView.text;
