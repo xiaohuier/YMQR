@@ -64,6 +64,8 @@ self.navigationItem.backBarButtonItem = barItem;
 
 #define DEEPCOLOR [UIColor colorWithRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1];
 
+#define BLUECOLOR [UIColor colorWithRed:51/255.0 green:135/255.0 blue:236/255.0 alpha:1];
+
 #define COLOR0 [UIColor colorWithRed:251.0/255 green:20.0/255 blue:37.0/255 alpha:1]
 #define COLOR1 [UIColor colorWithRed:252.0/255 green:147.0/255 blue:37.0/255 alpha:1]
 #define COLOR2 [UIColor colorWithRed:41.0/255 green:145.0/255 blue:255.0/255 alpha:1]
