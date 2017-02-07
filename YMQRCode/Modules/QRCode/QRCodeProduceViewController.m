@@ -13,7 +13,7 @@
 #import "QRCodeImageStyleViewController.h"
 #import <Photos/PHPhotoLibrary.h>
 #import <Photos/PHAssetChangeRequest.h>
-
+#import "ShareView.h"
 
 @interface QRCodeProduceViewController ()
 @property (nonatomic,strong)UIImage *qrCodeImage;
@@ -83,7 +83,7 @@
     
     [self.view addSubview:styleButton];
     
-    [styleButton addTarget:self action:@selector(styleOnClick) forControlEvents:UIControlEventTouchUpInside];
+    [styleButton addTarget:self action:@selector(styleOnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [styleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -182,6 +182,19 @@
 
 -(void)shareImageOnClick:(id)sender
 {
+    
+    
+    ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+    
+    shareView.shareImage = [UIImage imageNamed:@"Close_fx"];
+    
+    shareView.titleString = @"二维码的邀请";
+    
+    shareView.contentString = @"我正在用二维码生成与扫描！";
+    
+    shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描"];
+    
+    [shareView shareViewController:self];
     
     
     

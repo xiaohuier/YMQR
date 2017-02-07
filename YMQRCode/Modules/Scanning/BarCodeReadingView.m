@@ -8,8 +8,8 @@
 
 #import "BarCodeReadingView.h"
 
-#define WIDTH self.bounds.size.width
-#define HEIGHT self.bounds.size.height
+#define bWIDTH self.bounds.size.width
+#define bHEIGHT self.bounds.size.height
 #define X self.frame.origin.x
 #define Y self.frame.origin.y
 
@@ -20,13 +20,13 @@
 - (void)drawRect:(CGRect)rect
 {
     
-    CGFloat leftRectHeight = WIDTH - self.leftRectWidth * 2;
+    CGFloat leftRectHeight = bWIDTH - self.leftRectWidth * 2;
     
     // 1.获得上下文
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     // .画上矩形
-    CGContextAddRect(ctx, CGRectMake(0, 0, WIDTH, self.topRectHeight));
+    CGContextAddRect(ctx, CGRectMake(0, 0, bWIDTH, self.topRectHeight));
     
     // set : 同时设置为实心和空心颜色
     // setStroke : 设置空心颜色
@@ -57,7 +57,7 @@
     // 4.下矩形
     CGContextFillPath(ctx);
     
-    CGContextAddRect(ctx, CGRectMake(0, self.topRectHeight + leftRectHeight, WIDTH, HEIGHT - self.topRectHeight - leftRectHeight));
+    CGContextAddRect(ctx, CGRectMake(0, self.topRectHeight + leftRectHeight, bWIDTH, bHEIGHT - self.topRectHeight - leftRectHeight));
     
     CGContextSetRGBFillColor(ctx, 0, 0, 0,0.6);
     
