@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger,HomePageBodyType)
-{
-    HomePageBodyHTTPType = 0,
-    HomePageBodyTextType,
-    HomePageBodyVCardType,
-    HomePageBodyTelPhoneType,
-    HomePageBodyMessageType
-};
 
 @interface HomePageBodyView : UIView 
 

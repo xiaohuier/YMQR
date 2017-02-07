@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface QRCodeImageStyleViewController : BaseViewController
-@property (nonatomic,strong)UIImage *qrCodeImage;
+@property (nonatomic,readonly)UIImage *qrCodeImage;
+-(instancetype)initWithQRCodeImage:(UIImage *)qrCodeImage;
 @end

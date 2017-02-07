@@ -55,6 +55,7 @@
 		360B502F1E49B54200C2BD9F /* UIImage+QRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+QRCode.m"; path = "Modules/QRCode/QRcodeImage/UIImage+QRCode.m"; sourceTree = SOURCE_ROOT; };
 		360B50321E49BE2600C2BD9F /* QRCodeImageStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeImageStyleViewController.h; path = QRCodeImageStyle/QRCodeImageStyleViewController.h; sourceTree = "<group>"; };
 		360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeImageStyleViewController.m; path = QRCodeImageStyle/QRCodeImageStyleViewController.m; sourceTree = "<group>"; };
+		360B50351E49DA1000C2BD9F /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
 		3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeProduceViewController.h; path = QRCode/QRCodeProduceViewController.h; sourceTree = "<group>"; };
 		3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeProduceViewController.m; path = QRCode/QRCodeProduceViewController.m; sourceTree = "<group>"; };
 		36C85FCB1E388BE700AA76C3 /* YMQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +79,7 @@
 		36C860031E388C5800AA76C3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		36C8605C1E388DDD00AA76C3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		36C8605D1E388DDD00AA76C3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		36C8605F1E388E2C00AA76C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36C8605F1E388E2C00AA76C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../YMQRCode/Assets.xcassets; sourceTree = "<group>"; };
 		36C860611E39861D00AA76C3 /* HomePageBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBodyView.h; sourceTree = "<group>"; };
 		36C860621E39861D00AA76C3 /* HomePageBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageBodyView.m; sourceTree = "<group>"; };
 		3919B9B31E49B2EC00909D91 /* BarCodeReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeReadingView.h; sourceTree = "<group>"; };
@@ -151,9 +152,17 @@
 			name = QRCodeImageStyle;
 			sourceTree = "<group>";
 		};
+		360B50361E49EBB800C2BD9F /* ColorsBtnView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ColorsBtnView;
+			sourceTree = "<group>";
+		};
 		3671F5C21E496F1400A68381 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				360B50361E49EBB800C2BD9F /* ColorsBtnView */,
 				3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */,
 				3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */,
 			);
@@ -190,7 +199,6 @@
 			children = (
 				36C8605C1E388DDD00AA76C3 /* AppDelegate.h */,
 				36C8605D1E388DDD00AA76C3 /* AppDelegate.m */,
-				36C8605F1E388E2C00AA76C3 /* Assets.xcassets */,
 				36C85FDF1E388BE700AA76C3 /* Info.plist */,
 				36C85FCE1E388BE700AA76C3 /* Supporting Files */,
 			);
@@ -209,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				36C85FE61E388C5800AA76C3 /* Constants.h */,
+				360B50351E49DA1000C2BD9F /* Enums.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 		36C860011E388C5800AA76C3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				36C8605F1E388E2C00AA76C3 /* Assets.xcassets */,
 				36C860031E388C5800AA76C3 /* PrefixHeader.pch */,
 			);
 			path = Resource;
