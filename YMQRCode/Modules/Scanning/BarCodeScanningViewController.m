@@ -8,17 +8,20 @@
 
 #import "BarCodeScanningViewController.h"
 #import "BarCodeReadingView.h"
+#import "CardViewController.h"
 
-@interface BarCodeScanningViewController ()<CAAnimationDelegate>
+@interface BarCodeScanningViewController ()<CAAnimationDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,strong)UIButton *flashLightButton;
 @property(nonatomic,strong)UILabel  *flashLightLable;
-@property(nonatomic,strong)UIButton *backbutton;
+
+@property(nonatomic,strong)UIButton *pictureButton;
+@property(nonatomic,strong)UILabel  *pictureLable;
+
+@property(nonatomic,assign)BOOL isStop;
 
 @end
 
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define readerBackViewTopHeight (HEIGHT)/6
 #define readerBackViewleftRectWidth (WIDTH)/7
 
@@ -42,14 +45,20 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    self.navigationController.navigationBarHidden = YES;
+    BACK_TITLE
+    
+    BACK_COLOR_WHITE
+    
+    self.title = @"二维码扫描";
+    
+    self.navigationController.navigationBarHidden = NO;
     
     self.tabBarController.tabBar.hidden = YES;
     
     [self  resumeAnimation];
     
     isScaning = YES;
-    
+   
     [super viewWillAppear:animated];
     
     [self.captureSession startRunning];
@@ -83,7 +92,7 @@
     //扫码说明
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, readerBackViewleftRectWidth*5+readerBackViewTopHeight+10, WIDTH, 24)];
     label.text = @"把二维码放入框内，可自动搜索";
-    label.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.6];
+    label.textColor = WORDSCOLOR;
     label.textAlignment = NSTextAlignmentCenter;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 2;
@@ -95,12 +104,13 @@
     self.flashLightButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [self.flashLightButton setBackgroundImage:[UIImage imageNamed:@"关灯"] forState:UIControlStateNormal];
     [self.flashLightButton setBackgroundImage:[UIImage imageNamed:@"开灯"] forState:UIControlStateSelected];
-    self.flashLightButton.frame=CGRectMake(0, 0, 42.0/320*WIDTH, 42.0/320*WIDTH);
-    self.flashLightButton.center = CGPointMake(WIDTH/2, HEIGHT/5*4);
+    self.flashLightButton.frame=CGRectMake(0, 0, 50.0/375*WIDTH, 50.0/375*WIDTH);
+    self.flashLightButton.center = CGPointMake(WIDTH/3, CGRectGetMaxY(label.frame) + 60.0/375*WIDTH);
     [self.flashLightButton addTarget:self action:@selector(flashLightClick) forControlEvents:UIControlEventTouchUpInside];
     
     //灯光标题
-    self.flashLightLable = [[UILabel alloc] initWithFrame:CGRectMake(0, self.flashLightButton.frame.origin.y+self.flashLightButton.frame.size.height, WIDTH, 24)];
+    self.flashLightLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.flashLightButton.frame.size.width, 24)];
+    self.flashLightLable.center = CGPointMake(self.flashLightButton.center.x, self.flashLightButton.center.y+self.flashLightButton.frame.size.height);
     self.flashLightLable.text = @"开灯";
     self.flashLightLable.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     self.flashLightLable.textAlignment = NSTextAlignmentCenter;
@@ -112,17 +122,29 @@
     [self.view addSubview:self.flashLightButton];
     [self.view addSubview:self.flashLightLable];
     
+    //图片获取
+    self.pictureButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [self.pictureButton setBackgroundImage:[UIImage imageNamed:@"相册"] forState:UIControlStateNormal];
+    self.pictureButton.frame=CGRectMake(0, 0, self.flashLightButton.frame.size.width, self.flashLightButton.frame.size.height);
+    self.pictureButton.center = CGPointMake(WIDTH - WIDTH/3, CGRectGetMaxY(label.frame) + 60.0/375*WIDTH);
+    [self.pictureButton addTarget:self action:@selector(pictureClick) forControlEvents:UIControlEventTouchUpInside];
     
-//    //假导航
-//    self.backbutton= [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.backbutton setBackgroundImage:[UIImage imageNamed:@"扫码返回"] forState:UIControlStateHighlighted];
-//    [self.backbutton setBackgroundImage:[UIImage imageNamed:@"扫码返回"] forState:UIControlStateNormal];
-//    
-//    [self.backbutton setFrame:CGRectMake(15,26, 27.0/320*WIDTH, 27.0/320*WIDTH)];
-//    [self.backbutton addTarget:self action:@selector(pressCancelButton:) forControlEvents:UIControlEventTouchDown];
-//    [self.view addSubview:self.backbutton];
+    //图片获取标题
+    self.pictureLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.flashLightButton.frame.size.width, 24)];
+    self.pictureLable.center = CGPointMake(self.pictureButton.center.x, self.pictureButton.center.y+self.pictureButton.frame.size.height);
+    self.pictureLable.text = @"相册";
+    self.pictureLable.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
+    self.pictureLable.textAlignment = NSTextAlignmentCenter;
+    self.pictureLable.lineBreakMode = NSLineBreakByWordWrapping;
+    self.pictureLable.numberOfLines = 2;
+    self.pictureLable.font=[UIFont systemFontOfSize:12];
+    self.pictureLable.backgroundColor = [UIColor clearColor];
     
+    [self.view addSubview:self.pictureButton];
+    [self.view addSubview:self.pictureLable];
+
     
+   
 }
 
 #pragma mark - 扫描线动画
@@ -132,7 +154,7 @@
     CABasicAnimation *scanNetAnimation = [CABasicAnimation animation];
     scanNetAnimation.keyPath = @"transform.translation.y";
     scanNetAnimation.toValue = @(nu);
-    scanNetAnimation.duration = 3.0;
+    scanNetAnimation.duration = 2.0;
     scanNetAnimation.repeatCount = MAXFLOAT;
     scanNetAnimation.autoreverses =YES;
     [_line.layer addAnimation:scanNetAnimation forKey:@"translationAnimation"];
@@ -151,12 +173,32 @@
         [_line.layer setBeginTime:beginTime];
         
         [_line.layer setSpeed:1.0];
-        
+
     }else{
+    
         [self addLineAnimation];
+        
     }
     
 }
+
+- (void)ac_pause :(CALayer *)layer
+{
+    CFTimeInterval localTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = localTime;
+}
+
+- (void)ac_resume :(CALayer *)layer
+{
+    CFTimeInterval lastLocalTime = layer.timeOffset;
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval localTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.beginTime = localTime - lastLocalTime;
+}
+
 
 //开启关闭闪光灯
 -(void)flashLightClick{
@@ -176,6 +218,141 @@
         self.flashLightButton.selected = NO;
         self.flashLightLable.text =@"开灯";
     }
+    
+}
+
+//获取相册图片
+-(void)pictureClick{
+    
+    UIImagePickerController *imagrPicker = [[UIImagePickerController alloc]init];
+    imagrPicker.delegate = self;
+    imagrPicker.allowsEditing = YES;
+    //将来源设置为相册
+    imagrPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    
+    [self presentViewController:imagrPicker animated:YES completion:nil];
+    
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    //获取选中的照片
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    
+    if (!image) {
+        image = info[UIImagePickerControllerOriginalImage];
+    }
+    //初始化  将类型设置为二维码
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:nil];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        //设置数组，放置识别完之后的数据
+        NSArray *features = [detector featuresInImage:[CIImage imageWithData:UIImagePNGRepresentation(image)]];
+        //判断是否有数据（即是否是二维码）
+        if (features.count >= 1) {
+            //取第一个元素就是二维码所存放的文本信息
+            CIQRCodeFeature *feature = features[0];
+            NSString *scannedResult = feature.messageString;
+            //通过对话框的形式呈现
+            [self alertControllerMessage:scannedResult andBool:YES];
+            
+        }else{
+            [self alertControllerMessage:@"未找到图中的二维码" andBool:NO];
+        }
+    }];
+}
+
+//封装一个方法
+-(void)alertControllerMessage:(NSString *)message andBool:(BOOL)isYes {
+
+    [self.captureSession stopRunning];
+    [self ac_pause:_line.layer];
+    
+    
+    if (isYes) {
+        
+        if ([message hasPrefix:@"http://"]||[message hasPrefix:@"https://"]||[message hasPrefix:@"sms:"]||[message hasPrefix:@"tel:"]){
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self.captureSession startRunning];
+
+            }];
+            
+            UIAlertAction *sure = [UIAlertAction actionWithTitle:@"sure" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:message]];
+                
+            }];
+            
+            [alert addAction:sure];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else if ([message hasPrefix:@"BEGIN:VCARD"]){
+            
+            CardViewController *card = [[CardViewController alloc]init];
+            
+            card.cardMessage = message;
+            
+            [self.navigationController pushViewController:card animated:NO];
+            
+        }else{
+            
+            UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+            
+            pasteboard.string=message;
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"文本内容已剪切到粘贴板" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *sure = [UIAlertAction actionWithTitle:@"sure" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self.captureSession startRunning];
+                
+                
+                [self ac_resume:_line.layer];
+            }];
+            
+            [alert addAction:sure];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+
+    }else{
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self.captureSession startRunning];
+            
+        }];
+        
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+    
+//    UIAlertController *alertController =[UIAlertController alertControllerWithTitle:@"拨打此电话" message:_textString preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }];
+//    
+//    UIAlertAction *play = [UIAlertAction actionWithTitle:@"拨打" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:400-966-0800"]];
+//        
+//        
+//    }];
+//    
+//    [alertController addAction:cancel];
+//    
+//    [alertController addAction:play];
+//    
+//    [self presentViewController:alertController animated:YES completion:nil];
+    
     
 }
 
@@ -218,9 +395,17 @@
     if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
         NSString*str=@"请在系统\"设置－隐私－相机\"中打开允许使用相机";
         
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:str preferredStyle:UIAlertControllerStyleAlert];
         
-        [alert show];
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        
+            
+        }];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        [alertController addAction:alertAction];
         
         return;
         
@@ -261,10 +446,6 @@
     
     
 }
-
-
-
-
 
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection

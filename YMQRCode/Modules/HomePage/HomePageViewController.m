@@ -38,15 +38,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    _appDele = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    _appDele.drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
     
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    
-    _appDele.drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+   
     
 }
 
@@ -184,9 +181,10 @@
 -(void)scanOnClick:(id)sender
 {
     BarCodeScanningViewController *barCode = [[BarCodeScanningViewController alloc]init];
-
     
     [self.navigationController pushViewController:barCode animated:YES];
+    
+    BACK_TITLE
 
 }
 

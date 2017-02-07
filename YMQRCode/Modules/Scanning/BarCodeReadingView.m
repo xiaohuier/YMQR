@@ -57,7 +57,7 @@
     // 4.下矩形
     CGContextFillPath(ctx);
     
-    CGContextAddRect(ctx, CGRectMake(0, self.topRectHeight+ leftRectHeight, WIDTH, HEIGHT - self.topRectHeight - leftRectHeight));
+    CGContextAddRect(ctx, CGRectMake(0, self.topRectHeight + leftRectHeight, WIDTH, HEIGHT - self.topRectHeight - leftRectHeight));
     
     CGContextSetRGBFillColor(ctx, 0, 0, 0,0.6);
     
