@@ -60,6 +60,14 @@
     
        [self.window makeKeyAndVisible];
     
+
+        [WXApi registerApp:@"wxdb95fdae31b45243" withDescription:@"4f88b993672d01fe36bd9f8808bfcff8"];
+    
+        [WeiboSDK registerApp:@""];
+        [WXApi registerApp:@"wxdb95fdae31b45243" withDescription:@"4f88b993672d01fe36bd9f8808bfcff8"];
+    
+        [WeiboSDK registerApp:@""];
+
     [self.window makeKeyAndVisible];
     
     [self.window makeKeyAndVisible];
@@ -69,6 +77,7 @@
     [self.window makeKeyAndVisible];
     
     
+
     
     return YES;
 }
