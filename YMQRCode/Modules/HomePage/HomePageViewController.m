@@ -193,7 +193,8 @@
     
     QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
     
-    
+    qrcode.textString = self.bodyView.codeTextView.text;
+
     
 //    if ([_viewType isEqualToString:@"http"]||[_viewType isEqualToString:@"文本"]) {
 //        

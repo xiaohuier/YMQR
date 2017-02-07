@@ -12,4 +12,6 @@
 
 @property (strong ,nonatomic)NSString *textString;
 
+@property (strong ,nonatomic)UIImageView *smallImage;
+
 @end

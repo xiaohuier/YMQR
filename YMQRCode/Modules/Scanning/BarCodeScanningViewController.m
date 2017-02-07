@@ -8,7 +8,7 @@
 
 #import "BarCodeScanningViewController.h"
 #import "BarCodeReadingView.h"
-#import "CardViewController.h"
+//#import "CardViewController.h"
 
 @interface BarCodeScanningViewController ()<CAAnimationDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -292,11 +292,11 @@
         }
         else if ([message hasPrefix:@"BEGIN:VCARD"]){
             
-            CardViewController *card = [[CardViewController alloc]init];
-            
-            card.cardMessage = message;
-            
-            [self.navigationController pushViewController:card animated:NO];
+//            CardViewController *card = [[CardViewController alloc]init];
+//            
+//            card.cardMessage = message;
+//            
+//            [self.navigationController pushViewController:card animated:NO];
             
         }else{
             
