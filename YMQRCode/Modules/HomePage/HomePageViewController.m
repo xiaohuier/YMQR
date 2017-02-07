@@ -181,16 +181,15 @@
 -(void)scanOnClick:(id)sender
 {
     BarCodeScanningViewController *barCode = [[BarCodeScanningViewController alloc]init];
+
     
     [self.navigationController pushViewController:barCode animated:YES];
     
-    BACK_TITLE
 
 }
 
 -(void)creatCodeOnClick:(id)sender
 {
-    BACK_TITLE
     
     QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
     
@@ -247,7 +246,6 @@
 //    }
     
     [self.navigationController pushViewController:qrcode animated:NO];
-
 }
 
 

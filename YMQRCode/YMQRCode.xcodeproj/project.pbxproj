@@ -144,11 +144,7 @@
 		36C85FE81E388C5800AA76C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				3671F5C21E496F1400A68381 /* QRCode */,
-=======
-				396ABBE71E496E550034D8DE /* Scanning */,
->>>>>>> womendexinshijie/master
 				36C85FE91E388C5800AA76C3 /* General */,
 				36C85FF01E388C5800AA76C3 /* Guide */,
 				36C85FF61E388C5800AA76C3 /* HomePage */,
@@ -420,11 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */,
-<<<<<<< HEAD
 				3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */,
-=======
-				396ABBEC1E496E810034D8DE /* BarCodeReadingView.m in Sources */,
->>>>>>> womendexinshijie/master
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
