@@ -60,6 +60,15 @@
     
        [self.window makeKeyAndVisible];
     
+    [self.window makeKeyAndVisible];
+    
+    [self.window makeKeyAndVisible];
+    
+    [self.window makeKeyAndVisible];
+    
+    [self.window makeKeyAndVisible];
+    
+    
     
     return YES;
 }
