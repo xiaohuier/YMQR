@@ -11,9 +11,7 @@
 #import "UIImage+QRCode.h"
 
 #import "QRCodeImageStyleViewController.h"
-#import <Photos/PHPhotoLibrary.h>
-#import <Photos/PHAssetChangeRequest.h>
-#import "ShareView.h"
+
 
 @interface QRCodeProduceViewController ()
 @property (nonatomic,strong)UIImage *qrCodeImage;
@@ -165,15 +163,14 @@
 //二维码样式选择
 -(void)styleOnClick:(id)sender
 {
-    QRCodeImageStyleViewController *styleView = [[QRCodeImageStyleViewController alloc]init];
+    QRCodeImageStyleViewController *styleView = [[QRCodeImageStyleViewController alloc]initWithQRCodeImage:self.qrCodeImage];
+    
     
 //    styleView.delegate = self;
     
-    styleView.qrCodeImage = self.qrCodeImage;
+    
     
     [self.navigationController pushViewController:styleView animated:NO];
-
-    
     
 }
 

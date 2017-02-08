@@ -20,4 +20,5 @@
 /**保存图片到系统相册*/
 +(void)saveImageToAlbum:(UIImage *)image completionHandler:(void(^)(BOOL success, NSError *error))completionHandler;
 
+
 @end

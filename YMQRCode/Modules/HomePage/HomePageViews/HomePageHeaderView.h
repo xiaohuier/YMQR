@@ -9,15 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "HomePageBodyView.h"
 
-//typedef NS_ENUM(NSInteger,HomePageHeaderType)
-//{
-//    HomePageHeaderHTTPType = 0,
-//    HomePageHeaderTextType,
-//    HomePageHeaderVCardType,
-//    HomePageHeaderTelPhoneType,
-//    HomePageHeaderMessageType
-//};
-
 @protocol HomePageHeaderDelegate <NSObject>
 
 -(void)buttonOnclick;
