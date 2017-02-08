@@ -22,22 +22,7 @@
 
 @property (nonatomic, strong)UIScrollView *vCardScrollView;
 
-//名片信息
-@property (nonatomic, strong)UITextField *nameTextfiled;
 
-@property (nonatomic, strong)UITextField *mailTextfiled;
-
-@property (nonatomic, strong)UITextField *telTextfiled;
-
-@property (nonatomic, strong)UITextField *positionTextfiled;
-
-@property (nonatomic, strong)UITextField *companyTextfiled;
-
-@property (nonatomic, strong)UITextField *urlTextfiled;
-
-@property (nonatomic, strong)UITextView *addressTextView;
-
-@property (nonatomic, strong)UITextView *remarksTextView;
 
 @property (nonatomic, strong)UILabel *fillAddress;
 
@@ -138,29 +123,7 @@
 
             break;
         case HomePageBodyMessageType:
-            if(!_isSelectTel){
-                
-                [self codeFillContext];
-                
-                _textlabel.text = @"☎️生成的电话号码二维码，扫描之后，手机可直接拨打扫描的电话号";
-                _textlabel.textColor = WORDSCOLOR;
-                _fillLabel.text = @"请输入家庭号码或手机号";
-                
-                _viewType = @"tel";
-                
-            }
             
-            _codeTextView.keyboardType = UIKeyboardTypeNumberPad;
-            
-            
-            _isSelectHttp = NO;
-            _isSelectText = NO;
-            _isSelectTel = YES;
-            _isSelectVcard = NO;
-            _isSelectMessage = NO;
-
-            break;
-        case HomePageBodyTelPhoneType:
             if(!_isSelectMessage){
                 
                 [self messageFillContext];
@@ -177,6 +140,30 @@
             _isSelectTel = NO;
             _isSelectVcard = NO;
             _isSelectMessage = YES;
+            
+            break;
+        case HomePageBodyTelPhoneType:
+            
+            if(!_isSelectTel){
+                
+                [self codeFillContext];
+                
+                _textlabel.text = @"☎️生成的电话号码二维码，扫描之后，手机可直接拨打扫描的电话号";
+                _textlabel.textColor = WORDSCOLOR;
+                _fillLabel.text = @"请输入家庭号码或手机号";
+                
+                _viewType = @"tel";
+                
+            }
+            
+            _codeTextView.keyboardType = UIKeyboardTypeNumberPad;
+            
+            _isSelectHttp = NO;
+            _isSelectText = NO;
+            _isSelectTel = YES;
+            _isSelectVcard = NO;
+            _isSelectMessage = NO;
+
             break;
         default:
             break;

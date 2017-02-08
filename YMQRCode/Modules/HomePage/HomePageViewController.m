@@ -196,55 +196,55 @@
     qrcode.textString = self.bodyView.codeTextView.text;
 
     BACK_TITLE
-//    if ([_viewType isEqualToString:@"http"]||[_viewType isEqualToString:@"文本"]) {
-//        
-//        qrcode.textString = _codeTextView.text;
-//        
-//    }else if ([_viewType isEqualToString:@"tel"]){
-//        
-//        if ([self isNullString:_codeTextView.text]) {
-//            qrcode.textString = @"";
-//        }else{
-//            
-//            qrcode.textString = [NSString stringWithFormat:@"tel:%@",_codeTextView.text];
-//            
-//        }
-//        
-//    }else if ([_viewType isEqualToString:@"message"]){
-//        
-//        if ([self isNullString:_textFile.text]&&[self isNullString:_codeTextView.text]) {
-//            
-//            qrcode.textString = @"";
-//            
-//        }else{
-//            
-//            if (IOS9_1) {
-//                
-//                qrcode.textString = [NSString stringWithFormat:@"sms:%@&body=%@",_textFile.text,_codeTextView.text];
-//                
-//            }else{
-//                
-//                qrcode.textString = [NSString stringWithFormat:@"sms:%@?body=%@",_textFile.text,_codeTextView.text];
-//                
-//            }
-//            
-//        }
-//        
-//        
-//        
-//    }else if ([_viewType isEqualToString:@"vCard"]){
-//        
-//        if ([self isBool]) {
-//            
-//            qrcode.textString = @"";
-//            
-//        }else{
-//            
-//            qrcode.textString = [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
-//        }
-//        
-//        
-//    }
+    if ([self.bodyView.viewType isEqualToString:@"http"]||[self.bodyView.viewType isEqualToString:@"文本"]) {
+        
+        qrcode.textString = self.bodyView.codeTextView.text;
+        
+    }else if ([self.bodyView.viewType isEqualToString:@"tel"]){
+        
+        if ([self isNullString:self.bodyView.codeTextView.text]) {
+            qrcode.textString = @"";
+        }else{
+            
+            qrcode.textString = [NSString stringWithFormat:@"tel:%@",self.bodyView.codeTextView.text];
+            
+        }
+        
+    }else if ([self.bodyView.viewType isEqualToString:@"message"]){
+        
+        if ([self isNullString:self.bodyView.textFile.text]&&[self isNullString:self.bodyView.codeTextView.text]) {
+            
+            qrcode.textString = @"";
+            
+        }else{
+            
+            if (IOS9_1) {
+                
+                qrcode.textString = [NSString stringWithFormat:@"sms:%@&body=%@",self.bodyView.textFile.text,self.bodyView.codeTextView.text];
+                
+            }else{
+                
+                qrcode.textString = [NSString stringWithFormat:@"sms:%@?body=%@",self.bodyView.textFile.text,self.bodyView.codeTextView.text];
+                
+            }
+            
+        }
+        
+        
+        
+    }else if ([self.bodyView.viewType isEqualToString:@"vCard"]){
+        
+        if ([self isBool]) {
+            
+            qrcode.textString = @"";
+            
+        }else{
+            
+            qrcode.textString = [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",self.bodyView.nameTextfiled.text,self.bodyView.companyTextfiled.text,self.bodyView.addressTextView.text,self.bodyView.positionTextfiled.text,self.bodyView.telTextfiled.text,self.bodyView.urlTextfiled.text,self.bodyView.mailTextfiled.text,self.bodyView.remarksTextView.text];
+        }
+        
+        
+    }
     
     [self.navigationController pushViewController:qrcode animated:NO];
 }
@@ -267,6 +267,47 @@
     
 }
 
+-(BOOL)isNullString:(NSString *)string {
+    
+    if (string == nil || string == NULL) {
+        
+        return YES;
+        
+    }
+    
+    if ([string  isEqualToString:@"null"]) {
+        
+        return YES;
+        
+    }
+    
+    if ([string isKindOfClass:[NSNull class]]) {
+        
+        return YES;
+        
+    }
+    
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
+}
+
+-(BOOL)isBool{
+    
+    
+    if ([self isNullString:self.bodyView.nameTextfiled.text]&&[self isNullString:self.bodyView.companyTextfiled.text]&&[self isNullString:self.bodyView.addressTextView.text]&&[self isNullString:self.bodyView.positionTextfiled.text]&&[self isNullString:self.bodyView.telTextfiled.text]&&[self isNullString:self.bodyView.urlTextfiled.text]&&[self isNullString:self.bodyView.mailTextfiled.text]&&[self isNullString:self.bodyView.remarksTextView.text]) {
+        
+        return YES;
+        
+    }
+    
+    
+    return NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -20,6 +20,23 @@
 
 @property (nonatomic, strong)UITextField *textFile;
 
+//名片信息
+@property (nonatomic, strong)UITextField *nameTextfiled;
+
+@property (nonatomic, strong)UITextField *mailTextfiled;
+
+@property (nonatomic, strong)UITextField *telTextfiled;
+
+@property (nonatomic, strong)UITextField *positionTextfiled;
+
+@property (nonatomic, strong)UITextField *companyTextfiled;
+
+@property (nonatomic, strong)UITextField *urlTextfiled;
+
+@property (nonatomic, strong)UITextView *addressTextView;
+
+@property (nonatomic, strong)UITextView *remarksTextView;
+
 - (instancetype)initWithType:(HomePageBodyType)type;
 
 @end

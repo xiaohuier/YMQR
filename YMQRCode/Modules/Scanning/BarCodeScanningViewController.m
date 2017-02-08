@@ -261,7 +261,7 @@
     }];
 }
 
-//封装一个方法
+#pragma mark -扫码处理
 -(void)alertControllerMessage:(NSString *)message andBool:(BOOL)isYes {
 
     [self.captureSession stopRunning];
@@ -270,7 +270,7 @@
     
     if (isYes) {
         
-        if ([message hasPrefix:@"http://"]||[message hasPrefix:@"https://"]||[message hasPrefix:@"sms:"]||[message hasPrefix:@"tel:"]){
+        if ([message hasPrefix:@"http://"]||[message hasPrefix:@"https://"]||[message hasPrefix:@"sms:"]){
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
             
@@ -297,6 +297,30 @@
 //            card.cardMessage = message;
 //            
 //            [self.navigationController pushViewController:card animated:NO];
+            
+        }else if ([message hasPrefix:@"tel:"]){
+            
+            UIAlertController *alertController =[UIAlertController alertControllerWithTitle:@"拨打此电话" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self.captureSession startRunning];
+                
+            }];
+            
+            UIAlertAction *play = [UIAlertAction actionWithTitle:@"拨打" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:message]];
+                
+                
+            }];
+            
+            [alertController addAction:cancel];
+            
+            [alertController addAction:play];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        
             
         }else{
             
@@ -334,24 +358,7 @@
         
     }
     
-//    UIAlertController *alertController =[UIAlertController alertControllerWithTitle:@"拨打此电话" message:_textString preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//        
-//    }];
-//    
-//    UIAlertAction *play = [UIAlertAction actionWithTitle:@"拨打" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:400-966-0800"]];
-//        
-//        
-//    }];
-//    
-//    [alertController addAction:cancel];
-//    
-//    [alertController addAction:play];
-//    
-//    [self presentViewController:alertController animated:YES completion:nil];
+
     
     
 }
@@ -456,11 +463,22 @@
         [self.captureSession stopRunning];
         isScaning = NO;
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
-        [self handleBarCodeWithCode:metadataObject.stringValue];
+        
+        if (metadataObject.stringValue){
+        
+            //通过对话框的形式呈现
+            [self alertControllerMessage:metadataObject.stringValue andBool:YES];
+            
+        }else{
+            [self alertControllerMessage:@"未找到图中的二维码" andBool:NO];
+        }
+
+        
+//        [self handleBarCodeWithCode:metadataObject.stringValue];
     }
     
 }
-#pragma mark -扫码处理
+
 - (void)handleBarCodeWithCode:(NSString *)barCode
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"saomiao" message:barCode preferredStyle:UIAlertControllerStyleAlert];
