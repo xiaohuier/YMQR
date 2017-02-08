@@ -36,6 +36,27 @@
 -(void)initSubview
 {
     if (self.textString.length == 0) {
+        
+        UILabel *labelWords = [[UILabel alloc]init];
+        
+        labelWords.text = @"未填写二维码内容，无法生成二维码";
+        
+        labelWords.textAlignment = NSTextAlignmentCenter;
+        
+        labelWords.textColor = WORDSCOLOR;
+        
+        [self.view addSubview:labelWords];
+        
+        [labelWords mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.size.mas_equalTo(CGSizeMake(300, 30));
+            
+            make.top.equalTo(self.view.mas_top).offset(50);
+            
+            make.centerX.equalTo(self.view.mas_centerX);
+     
+        }];
+        
         return;
     }
     

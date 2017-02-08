@@ -8,7 +8,7 @@
 
 #import "LeftViewController.h"
 #import "UIViewController+MMDrawerController.h"
-
+#import "ShareView.h"
 
 @interface LeftViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -87,9 +87,23 @@
     
     if (indexPath.row == 0) {
         
+        ShareView* shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+        
+        shareView.isSelect = @"0";
+        
+        shareView.urlString = @"https://itunes.apple.com/cn/app/mi-jin-she/id1111162244?mt=8";
+        
+        shareView.titleString = @"二维码的邀请";
+        
+        shareView.shareImage = [UIImage imageNamed:@"more_hy"];
+        
+        shareView.contentString = @"我正在用二维码生成与扫描！";
+        
+        shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描%@",shareView.urlString];
+        
+        [shareView shareViewController:self];
         
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
-        
     
     }else if (indexPath.row == 1){
         
@@ -122,6 +136,12 @@
     
     _headImageView.image = [UIImage imageNamed:@"register_bg"];
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"headerImage"]) {
+        
+        _headImageView.image = [UIImage imageWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"headerImage"]];
+        
+    }
+
     _headImageView.frame = CGRectMake(15, 48, 70, 70);
     
     _headImageView.layer.masksToBounds = YES;
@@ -181,10 +201,13 @@
         image = info[UIImagePickerControllerOriginalImage];
     }
     
+    
+    
     _headImageView.image = image;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(image) forKey:@"headerImage"];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
