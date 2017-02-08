@@ -9,7 +9,7 @@
 #import "QRCodeProduceViewController.h"
 
 #import "UIImage+QRCode.h"
-
+#import "ShareView.h"
 #import "QRCodeImageStyleViewController.h"
 
 
@@ -165,10 +165,7 @@
 {
     QRCodeImageStyleViewController *styleView = [[QRCodeImageStyleViewController alloc]initWithQRCodeImage:self.qrCodeImage];
     
-    
 //    styleView.delegate = self;
-    
-    
     
     [self.navigationController pushViewController:styleView animated:NO];
     
