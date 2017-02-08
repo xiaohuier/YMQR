@@ -22,6 +22,7 @@
 		36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C8605D1E388DDD00AA76C3 /* AppDelegate.m */; };
 		36C860601E388E2C00AA76C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8605F1E388E2C00AA76C3 /* Assets.xcassets */; };
 		36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860621E39861D00AA76C3 /* HomePageBodyView.m */; };
+		36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */; };
 		3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */; };
 		3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B61E49B2EC00909D91 /* BarCodeScanningViewController.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
@@ -82,6 +83,8 @@
 		36C8605F1E388E2C00AA76C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../YMQRCode/Assets.xcassets; sourceTree = "<group>"; };
 		36C860611E39861D00AA76C3 /* HomePageBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBodyView.h; sourceTree = "<group>"; };
 		36C860621E39861D00AA76C3 /* HomePageBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageBodyView.m; sourceTree = "<group>"; };
+		36FB752D1E4AB19A00FEA756 /* ColorsBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorsBtnView.h; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.h; sourceTree = "<group>"; };
+		36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorsBtnView.m; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.m; sourceTree = "<group>"; };
 		3919B9B31E49B2EC00909D91 /* BarCodeReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeReadingView.h; sourceTree = "<group>"; };
 		3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeReadingView.m; sourceTree = "<group>"; };
 		3919B9B51E49B2EC00909D91 /* BarCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScanningViewController.h; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 		360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */ = {
 			isa = PBXGroup;
 			children = (
+				36FB752C1E4AB16900FEA756 /* ColorsBtnView */,
 				360B50321E49BE2600C2BD9F /* QRCodeImageStyleViewController.h */,
 				360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */,
 			);
@@ -358,6 +362,15 @@
 				3919BA271E49E9E100909D91 /* ShareView */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		36FB752C1E4AB16900FEA756 /* ColorsBtnView */ = {
+			isa = PBXGroup;
+			children = (
+				36FB752D1E4AB19A00FEA756 /* ColorsBtnView.h */,
+				36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */,
+			);
+			name = ColorsBtnView;
 			sourceTree = "<group>";
 		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
@@ -592,6 +605,7 @@
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
 				3919BA471E49E9E100909D91 /* ShareView.m in Sources */,
+				36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */,
 				3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,

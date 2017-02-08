@@ -12,6 +12,7 @@
 
 #import "QRCodeImageStyleViewController.h"
 
+#import "ShareView.h"
 
 @interface QRCodeProduceViewController ()
 @property (nonatomic,strong)UIImage *qrCodeImage;
@@ -217,7 +218,6 @@
     
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
