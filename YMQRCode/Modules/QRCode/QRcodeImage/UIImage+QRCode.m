@@ -169,7 +169,6 @@ void ProviderReleaseDataStyle (void *info, const void *data, size_t size){
     else if(orientation == UIImageOrientationLeft){
         image = [UIImage imageWithCGImage:imRef scale:imageScale orientation: UIImageOrientationUp];
     }
-    NSLog(@"..........%@",image);
     return image;
 }
 
@@ -190,8 +189,26 @@ void ProviderReleaseDataStyle (void *info, const void *data, size_t size){
     
     // Return the new image.
     
-    NSLog(@"new%@",newImage);
     return newImage;
 }
+
+//最终决定截取图片的大小
+- (UIImage *)getCroppedImage :(CGRect)imageRect{
+    
+    
+    CGImageRef imageRef;
+
+    //按裁剪的比例
+    imageRef  = CGImageCreateWithImageInRect([self CGImage], imageRect);
+    
+    UIImage *result = [UIImage imageWithCGImage:imageRef
+                                          scale:self.scale
+                                    orientation:self.imageOrientation];
+    CGImageRelease(imageRef);
+    
+    return result;
+    
+}
+
 
 @end

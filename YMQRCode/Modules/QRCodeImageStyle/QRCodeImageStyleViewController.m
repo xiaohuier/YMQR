@@ -11,7 +11,9 @@
 #import "ColorsBtnView.h"
 #import "UIImage+QRCode.h"
 
-@interface QRCodeImageStyleViewController ()<ColorsBtnViewDelegate>
+#import "CutImageViewController.h"
+
+@interface QRCodeImageStyleViewController ()<ColorsBtnViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 //二维码的图片
 @property (nonatomic ,strong) UIImage *qrCodeImage;
@@ -263,7 +265,8 @@
   
 }
 
--(void)addImageOnClick{
+-(void)addImageOnClick:(id)sender
+{
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"请选择图片来源" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -301,13 +304,11 @@
 #pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-//    UIImage * image = info[UIImagePickerControllerOriginalImage];
-//    image =  [UIImage setupWithImage:image imageSize:image.size];
-//    
-//    [self.imageCropper  setImage:image];
-//    [self.imageCropper  setCropRegionRect:CGRectMake(50, 50, 1000, 680)];
-//    [self.view addSubview:self.imageCropper];
-//    
+    UIImage * image = info[UIImagePickerControllerOriginalImage];
+    CutImageViewController *cutImageVC = [[CutImageViewController alloc]initWithCutImage:image];
+    
+    [self.navigationController pushViewController:cutImageVC animated:YES];
+
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 

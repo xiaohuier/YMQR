@@ -28,4 +28,8 @@
 
 /**设置image的大小*/
 +(UIImage *)setupWithImage:(UIImage *)images imageSize:(CGSize)size;
+
+//最终决定截取图片的大小
+- (UIImage *)getCroppedImage :(CGRect)imageRect;
+
 @end

@@ -23,6 +23,8 @@
 		36C860601E388E2C00AA76C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8605F1E388E2C00AA76C3 /* Assets.xcassets */; };
 		36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860621E39861D00AA76C3 /* HomePageBodyView.m */; };
 		36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */; };
+		36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */; };
+		36FB75641E4B279600FEA756 /* CutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75631E4B279600FEA756 /* CutImageView.m */; };
 		3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */; };
 		3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B61E49B2EC00909D91 /* BarCodeScanningViewController.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
@@ -92,6 +94,10 @@
 		36C860621E39861D00AA76C3 /* HomePageBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageBodyView.m; sourceTree = "<group>"; };
 		36FB752D1E4AB19A00FEA756 /* ColorsBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorsBtnView.h; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.h; sourceTree = "<group>"; };
 		36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorsBtnView.m; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.m; sourceTree = "<group>"; };
+		36FB75341E4AFB8B00FEA756 /* CutImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CutImageViewController.h; path = CutImage/CutImageViewController.h; sourceTree = "<group>"; };
+		36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CutImageViewController.m; path = CutImage/CutImageViewController.m; sourceTree = "<group>"; };
+		36FB75621E4B279600FEA756 /* CutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutImageView.h; sourceTree = "<group>"; };
+		36FB75631E4B279600FEA756 /* CutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutImageView.m; sourceTree = "<group>"; };
 		3919B9B31E49B2EC00909D91 /* BarCodeReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeReadingView.h; sourceTree = "<group>"; };
 		3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeReadingView.m; sourceTree = "<group>"; };
 		3919B9B51E49B2EC00909D91 /* BarCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScanningViewController.h; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 		36C85FE81E388C5800AA76C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				36FB75301E4AFB4E00FEA756 /* CutImage */,
 				360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */,
 				3919B9B21E49B2EC00909D91 /* Scanning */,
 				3671F5C21E496F1400A68381 /* QRCode */,
@@ -398,6 +405,25 @@
 				36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */,
 			);
 			name = ColorsBtnView;
+			sourceTree = "<group>";
+		};
+		36FB75301E4AFB4E00FEA756 /* CutImage */ = {
+			isa = PBXGroup;
+			children = (
+				36FB75611E4B278400FEA756 /* CutImageView */,
+				36FB75341E4AFB8B00FEA756 /* CutImageViewController.h */,
+				36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */,
+			);
+			name = CutImage;
+			sourceTree = "<group>";
+		};
+		36FB75611E4B278400FEA756 /* CutImageView */ = {
+			isa = PBXGroup;
+			children = (
+				36FB75621E4B279600FEA756 /* CutImageView.h */,
+				36FB75631E4B279600FEA756 /* CutImageView.m */,
+			);
+			name = CutImageView;
 			sourceTree = "<group>";
 		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
@@ -656,8 +682,10 @@
 				3919BA471E49E9E100909D91 /* ShareView.m in Sources */,
 				36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */,
 				3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */,
+				36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,
+				36FB75641E4B279600FEA756 /* CutImageView.m in Sources */,
 				360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */,
 				36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
