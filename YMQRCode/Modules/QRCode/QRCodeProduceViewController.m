@@ -183,7 +183,19 @@
                 alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存成功" preferredStyle:UIAlertControllerStyleAlert];
 
             }else{
-                 alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
+                
+                NSString *err = [NSString stringWithFormat:@"%@",error];
+                
+                if([err rangeOfString:@"Code=2047"].location !=NSNotFound){
+                    
+                    alertController = [UIAlertController alertControllerWithTitle:@"图片保存失败" message:@"请选择允许访问相册权限后再次点击保存" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                }else{
+                    
+                    alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                }
+
             }
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
             
