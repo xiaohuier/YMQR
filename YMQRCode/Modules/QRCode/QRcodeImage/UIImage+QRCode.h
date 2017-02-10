@@ -32,4 +32,6 @@
 //最终决定截取图片的大小
 - (UIImage *)getCroppedImage :(CGRect)imageRect;
 
+/**把一个view转化成image*/
++(UIImage *)imageForView:(UIView *)view;
 @end

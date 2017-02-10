@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger,MoveType)
     CGContextSetLineDash(context, 0, lengths,2);
     
     CGContextStrokePath(context);
-//    画周围的黑色遮罩
+    //    画周围的黑色遮罩
     
     CGContextSetRGBFillColor(context, 0, 0, 0, 0.6);
     
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger,MoveType)
     CGContextClipToRects(context, clips2, sizeof(clips2) / sizeof(clips2[0]));
     
     CGContextFillRect(context, self.bounds);
-
+    
 }
 
 -(void)pan:(UIPanGestureRecognizer *)pan
@@ -131,11 +131,11 @@ typedef NS_ENUM(NSInteger,MoveType)
         if(CGRectContainsRect(self.bounds,clearRect)){
             //判断clearrect，不能小于最小值
             if (clearRect.size.width>=self.cutImageRectMin.width &&clearRect.size.height>=self.cutImageRectMin.height) {
-              _clearRect = clearRect;   
+                _clearRect = clearRect;
             }
         }
         
-       }
+    }
 }
 
 -(MoveType)judgeMoveType:(CGPoint)touchPoint

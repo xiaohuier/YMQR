@@ -24,7 +24,8 @@
 		36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860621E39861D00AA76C3 /* HomePageBodyView.m */; };
 		36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */; };
 		36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */; };
-		36FB75641E4B279600FEA756 /* CutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75631E4B279600FEA756 /* CutImageView.m */; };
+		36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */; };
+		36FB75901E4D898200FEA756 /* CutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB758F1E4D898200FEA756 /* CutImageView.m */; };
 		3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */; };
 		3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B61E49B2EC00909D91 /* BarCodeScanningViewController.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
@@ -96,8 +97,10 @@
 		36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorsBtnView.m; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.m; sourceTree = "<group>"; };
 		36FB75341E4AFB8B00FEA756 /* CutImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CutImageViewController.h; path = CutImage/CutImageViewController.h; sourceTree = "<group>"; };
 		36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CutImageViewController.m; path = CutImage/CutImageViewController.m; sourceTree = "<group>"; };
-		36FB75621E4B279600FEA756 /* CutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutImageView.h; sourceTree = "<group>"; };
-		36FB75631E4B279600FEA756 /* CutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutImageView.m; sourceTree = "<group>"; };
+		36FB758A1E4CAE6C00FEA756 /* YMQRCodeAppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMQRCodeAppService.h; sourceTree = "<group>"; };
+		36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMQRCodeAppService.m; sourceTree = "<group>"; };
+		36FB758E1E4D898200FEA756 /* CutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutImageView.h; sourceTree = "<group>"; };
+		36FB758F1E4D898200FEA756 /* CutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutImageView.m; sourceTree = "<group>"; };
 		3919B9B31E49B2EC00909D91 /* BarCodeReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeReadingView.h; sourceTree = "<group>"; };
 		3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeReadingView.m; sourceTree = "<group>"; };
 		3919B9B51E49B2EC00909D91 /* BarCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScanningViewController.h; sourceTree = "<group>"; };
@@ -187,17 +190,9 @@
 			name = QRCodeImageStyle;
 			sourceTree = "<group>";
 		};
-		360B50361E49EBB800C2BD9F /* ColorsBtnView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ColorsBtnView;
-			sourceTree = "<group>";
-		};
 		3671F5C21E496F1400A68381 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
-				360B50361E49EBB800C2BD9F /* ColorsBtnView */,
 				3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */,
 				3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */,
 			);
@@ -270,12 +265,12 @@
 			children = (
 				36FB75301E4AFB4E00FEA756 /* CutImage */,
 				360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */,
-				3919B9B21E49B2EC00909D91 /* Scanning */,
 				3671F5C21E496F1400A68381 /* QRCode */,
-				36C85FE91E388C5800AA76C3 /* General */,
-				36C85FF01E388C5800AA76C3 /* Guide */,
-				36C85FF61E388C5800AA76C3 /* HomePage */,
+				3919B9B21E49B2EC00909D91 /* Scanning */,
 				36C85FFE1E388C5800AA76C3 /* Left */,
+				36C85FF61E388C5800AA76C3 /* HomePage */,
+				36C85FF01E388C5800AA76C3 /* Guide */,
+				36C85FE91E388C5800AA76C3 /* General */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -368,6 +363,8 @@
 		36C860051E388C5800AA76C3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				36FB758A1E4CAE6C00FEA756 /* YMQRCodeAppService.h */,
+				36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -410,20 +407,21 @@
 		36FB75301E4AFB4E00FEA756 /* CutImage */ = {
 			isa = PBXGroup;
 			children = (
-				36FB75611E4B278400FEA756 /* CutImageView */,
+				36FB758D1E4D898200FEA756 /* CutImageView */,
 				36FB75341E4AFB8B00FEA756 /* CutImageViewController.h */,
 				36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */,
 			);
 			name = CutImage;
 			sourceTree = "<group>";
 		};
-		36FB75611E4B278400FEA756 /* CutImageView */ = {
+		36FB758D1E4D898200FEA756 /* CutImageView */ = {
 			isa = PBXGroup;
 			children = (
-				36FB75621E4B279600FEA756 /* CutImageView.h */,
-				36FB75631E4B279600FEA756 /* CutImageView.m */,
+				36FB758E1E4D898200FEA756 /* CutImageView.h */,
+				36FB758F1E4D898200FEA756 /* CutImageView.m */,
 			);
 			name = CutImageView;
+			path = CutImage/CutImageView;
 			sourceTree = "<group>";
 		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
@@ -573,7 +571,7 @@
 					36C85FCA1E388BE700AA76C3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 454TZ6A3QZ;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -685,11 +683,12 @@
 				36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,
-				36FB75641E4B279600FEA756 /* CutImageView.m in Sources */,
 				360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */,
 				36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */,
+				36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
 				36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */,
+				36FB75901E4D898200FEA756 /* CutImageView.m in Sources */,
 				3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */,
 				360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */,
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
@@ -829,8 +828,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mijinshe.YMQRCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44e9293d-5e94-4309-8417-4e540e3eddbc";
-				PROVISIONING_PROFILE_SPECIFIER = QRCodeDele;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -873,8 +872,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mijinshe.YMQRCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44e9293d-5e94-4309-8417-4e540e3eddbc";
-				PROVISIONING_PROFILE_SPECIFIER = QRCodeDele;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

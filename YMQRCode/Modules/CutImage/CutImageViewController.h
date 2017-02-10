@@ -9,7 +9,9 @@
 #import "BaseViewController.h"
 
 @interface CutImageViewController : BaseViewController
+
 @property (nonatomic,readonly)UIImage *cutImage;
 
 -(instancetype)initWithCutImage:(UIImage *)cutImage;
+
 @end

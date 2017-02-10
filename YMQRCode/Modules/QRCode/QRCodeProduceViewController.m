@@ -15,7 +15,8 @@
 #import "ShareView.h"
 
 @interface QRCodeProduceViewController ()
-@property (nonatomic,strong)UIImage *qrCodeImage;
+@property (nonatomic,strong) UIImageView *qrCodeImageView;
+@property (nonatomic,strong) UIImage *qrCodeImage;
 @end
 
 @implementation QRCodeProduceViewController
@@ -31,7 +32,30 @@
     
     self.title = @"二维码生成";
     
-     [self initSubview];
+    [self initSubview];
+    
+    [self creatQRCodeImage];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    self.qrCodeImageView.image = [YMQRCodeAppService shareInstance].QRCodeImage;
+    
+    self.smallImageView.image = [YMQRCodeAppService shareInstance].cutImage;
+    
+}
+
+-(void)creatQRCodeImage
+{
+    self.qrCodeImage = [UIImage creatQRCodeImageWithString:self.textString WidthAndHeight:300];
+    
+    [YMQRCodeAppService shareInstance].originalQRCodeImage =  self.qrCodeImage;
+    
+    [YMQRCodeAppService shareInstance].QRCodeImage = self.qrCodeImage;
+    
 }
 
 -(void)initSubview
@@ -55,20 +79,16 @@
             make.top.equalTo(self.view.mas_top).offset(50);
             
             make.centerX.equalTo(self.view.mas_centerX);
-     
+            
         }];
         
         return;
     }
     
-    self.qrCodeImage = [UIImage creatQRCodeImageWithString:self.textString WidthAndHeight:300];
+    self.qrCodeImageView = [[UIImageView alloc]init];
+    [self.view addSubview:self.qrCodeImageView];
     
-    UIImageView *qrCodeImageView = [[UIImageView alloc]init];
-    qrCodeImageView.image = self.qrCodeImage;
-    
-    [self.view addSubview:qrCodeImageView];
-    
-    [qrCodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.qrCodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.size.mas_equalTo(CGSizeMake(245, 245));
         
@@ -78,21 +98,23 @@
         
     }];
     
-    _smallImage = [[UIImageView alloc]init];
+    _smallImageView = [[UIImageView alloc]init];
     
-    _smallImage.layer.masksToBounds = YES;
+    _smallImageView.layer.masksToBounds = YES;
     
-    _smallImage.layer.cornerRadius = 10;
+    _smallImageView.layer.cornerRadius = 10;
     
-    [qrCodeImageView addSubview:_smallImage];
-
-    [_smallImage mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.qrCodeImageView addSubview:_smallImageView];
+    
+    [_smallImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.size.mas_equalTo(CGSizeMake(50, 50));
         
-        make.center.equalTo(qrCodeImageView);
+        make.center.equalTo(self.qrCodeImageView);
     }];
-
+    
+    
+    
     UIButton *styleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [styleButton setTitle:@"选择二维码样式" forState:UIControlStateNormal];
@@ -109,9 +131,9 @@
         
         make.size.mas_equalTo(CGSizeMake(230, 45));
         
-        make.centerX.equalTo(qrCodeImageView.mas_centerX);
+        make.centerX.equalTo(self.qrCodeImageView.mas_centerX);
         
-        make.top.equalTo(qrCodeImageView.mas_bottom).offset(18);
+        make.top.equalTo(self.qrCodeImageView.mas_bottom).offset(18);
         
     }];
     
@@ -130,7 +152,7 @@
     [saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
         
         
-        make.centerX.equalTo(qrCodeImageView.mas_centerX);
+        make.centerX.equalTo(self.qrCodeImageView.mas_centerX);
         
         make.top.equalTo(styleButton.mas_bottom).offset(15);
         
@@ -152,39 +174,41 @@
         
         make.size.equalTo(@[saveButton,shareButton,styleButton]);
         
-        make.centerX.equalTo(qrCodeImageView.mas_centerX);
+        make.centerX.equalTo(self.qrCodeImageView.mas_centerX);
         
         make.top.equalTo(saveButton.mas_bottom).offset(15);
         
     }];
     
-
-    
 }
+
 //二维码样式选择
 -(void)styleOnClick:(id)sender
 {
-    QRCodeImageStyleViewController *styleView = [[QRCodeImageStyleViewController alloc]initWithQRCodeImage:self.qrCodeImage];
-    
-//    styleView.delegate = self;
-    
-    [self.navigationController pushViewController:styleView animated:NO];
+    if (self.qrCodeImage) {
+        QRCodeImageStyleViewController *styleView = [[QRCodeImageStyleViewController alloc]init];
+        
+        [self.navigationController pushViewController:styleView animated:NO];
+    }
     
 }
 
 -(void)saveImageOnClick:(id)sender
 {
     if (self.qrCodeImage) {
-        [UIImage saveImageToAlbum:self.qrCodeImage completionHandler:^(BOOL success, NSError *error) {
+        
+        UIImage *saveImage = [UIImage imageForView:self.qrCodeImageView];
+        
+        [UIImage saveImageToAlbum:saveImage completionHandler:^(BOOL success, NSError *error) {
             
             UIAlertController *alertController;
             
             if (success) {
                 
                 alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存成功" preferredStyle:UIAlertControllerStyleAlert];
-
+                
             }else{
-                 alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
+                alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
             }
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
             
@@ -198,7 +222,6 @@
 
 -(void)shareImageOnClick:(id)sender
 {
-    
     
     ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
     
@@ -222,13 +245,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

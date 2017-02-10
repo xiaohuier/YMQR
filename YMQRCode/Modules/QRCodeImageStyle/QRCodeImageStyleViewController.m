@@ -13,6 +13,8 @@
 
 #import "CutImageViewController.h"
 
+
+
 @interface QRCodeImageStyleViewController ()<ColorsBtnViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 //二维码的图片
@@ -40,13 +42,13 @@
     return _typeArray;
 }
 
--(instancetype)initWithQRCodeImage:(UIImage *)qrCodeImage
+-(void)setQrCodeImage:(UIImage *)qrCodeImage
 {
-    if (self = [super init]) {
-        self.qrCodeImage = qrCodeImage;
-    }
-    return self;
+    _qrCodeImage = qrCodeImage;
+    [self.qrCodeImgView setImage:_qrCodeImage];
+    [YMQRCodeAppService shareInstance].QRCodeImage = _qrCodeImage;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,6 +59,13 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setQRCodeViewImage];
+    
+}
 
 
 -(void)initNavigation
@@ -81,9 +90,6 @@
 -(void)initSubView
 {
     _qrCodeImgView = [[UIImageView alloc]init];
-    
-    _qrCodeImgView.image = self.qrCodeImage;
-    
     [self.view addSubview:_qrCodeImgView];
     
     [_qrCodeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -115,19 +121,6 @@
     }];
     
     
-    
-    [_qrCodeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.view.mas_left).offset(65);
-        
-        make.right.equalTo(self.view.mas_right).offset(-65);
-        
-        make.size.height.equalTo(_qrCodeImgView.mas_width);
-        
-        make.top.equalTo(self.view.mas_top).offset(50);
-        
-    }];
-    
     ColorsBtnView * colorsBtnView = [[ColorsBtnView alloc]init];
     colorsBtnView.delegate = self;
     
@@ -143,7 +136,6 @@
     UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [imgButton setBackgroundImage:[UIImage imageNamed:@"selectImg"] forState:UIControlStateNormal];
-    
     [imgButton addTarget:self action:@selector(addImageOnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:imgButton];
@@ -198,8 +190,18 @@
         make.size.height.mas_equalTo(20);
         
     }];
-
     
+    
+}
+
+-(void)setQRCodeViewImage
+{
+    self.qrCodeImage = [YMQRCodeAppService shareInstance].QRCodeImage;
+    
+    UIImage *cutImage = [YMQRCodeAppService shareInstance].cutImage;
+    if (cutImage) {
+        self.smallImageView.image = cutImage;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,7 +218,9 @@
 {
     if(clickColor)
     {
-        self.qrCodeImgView.image = [UIImage imageColorToTransparent:self.qrCodeImage withColor:clickColor];
+        UIImage *originalQRCodeImage = [YMQRCodeAppService shareInstance].originalQRCodeImage;
+        
+        self.qrCodeImage = [UIImage imageColorToTransparent:originalQRCodeImage withColor:clickColor];
     }
 }
 
@@ -242,7 +246,7 @@
         case QRImageTypeBread:
             backgroundImage = [UIImage imageNamed:@"Bread"];
             rect = CGRectMake(125, 125, 250, 250);
-             color = [UIColor colorWithRed:96/255.0 green:56/255.0 blue:19/255.0 alpha:1.0];
+            color = [UIColor colorWithRed:96/255.0 green:56/255.0 blue:19/255.0 alpha:1.0];
             break;
         case QRImageTypeLeaf:
             backgroundImage = [UIImage imageNamed:@"Leaf"];
@@ -259,10 +263,13 @@
             return;
             break;
     }
-    UIImage *image = [UIImage imageColorToTransparent:self.qrCodeImage withColor:color];
-    self.qrCodeImgView.image =  [backgroundImage addImage:image withRect:rect];
     
-  
+    UIImage *originalQRCodeImage = [YMQRCodeAppService shareInstance].originalQRCodeImage;
+    
+    UIImage *image = [UIImage imageColorToTransparent:originalQRCodeImage withColor:color];
+    
+    self.qrCodeImage =  [backgroundImage addImage:image withRect:rect];
+    
 }
 
 -(void)addImageOnClick:(id)sender
@@ -297,7 +304,7 @@
     [actionSheet addAction:selectCamera];
     [actionSheet addAction:selectAlbum];
     [actionSheet addAction:cancel];
-
+    
     
 }
 
@@ -308,7 +315,7 @@
     CutImageViewController *cutImageVC = [[CutImageViewController alloc]initWithCutImage:image];
     
     [self.navigationController pushViewController:cutImageVC animated:YES];
-
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 

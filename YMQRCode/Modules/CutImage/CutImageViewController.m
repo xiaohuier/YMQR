@@ -89,9 +89,9 @@
 
     UIImage *newImage = [self.cutImage getCroppedImage:CGRectMake(0, 0, self.cutImage.size.width, self.cutImage.size.height)];
     
-     [self sendNotificationWithImage:newImage];
+    [self saveImageToAppSever:newImage];
     
-     [self pop];
+    [self pop];
 }
 
 -(void)cutImage:(id)sender
@@ -101,15 +101,16 @@
     CGRect imageRect = CGRectMake(_cutImageView.clearRect.origin.x *scale, _cutImageView.clearRect.origin.y *scale, _cutImageView.clearRect.size.width *scale, _cutImageView.clearRect.size.height *scale);
     UIImage *newImage = [self.cutImage getCroppedImage:imageRect];
     
-    [self sendNotificationWithImage:newImage];
-    
+    [self saveImageToAppSever:newImage];
+
     [self pop];
 }
 
--(void)sendNotificationWithImage:(UIImage *)cutImage
+-(void)saveImageToAppSever: (UIImage *)cutImage
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"cutImage" object:self userInfo:@{@"cutImage":cutImage}];
+    [YMQRCodeAppService shareInstance].cutImage = cutImage;
 }
+
 
 -(void)pop
 {
