@@ -168,12 +168,10 @@
 -(void)sideSlipOnClick:(id)sender
 {
 
-
     if (self.mm_drawerController.openSide == MMDrawerSideNone) {
         [self.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     }else{
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
-
     }
 
 }

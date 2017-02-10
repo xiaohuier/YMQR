@@ -20,5 +20,18 @@
 /**保存图片到系统相册*/
 +(void)saveImageToAlbum:(UIImage *)image completionHandler:(void(^)(BOOL success, NSError *error))completionHandler;
 
+/**传入一个颜色，把图片的颜色集体改变*/
++ (UIImage*)imageColorToTransparent:(UIImage*)image withColor:(UIColor *)color;
+/**把2个image合并*/
+-(UIImage *)addImage:(UIImage *)image withRect: (CGRect)rect;
 
+
+/**设置image的大小*/
++(UIImage *)setupWithImage:(UIImage *)images imageSize:(CGSize)size;
+
+//最终决定截取图片的大小
+- (UIImage *)getCroppedImage :(CGRect)imageRect;
+
+/**把一个view转化成image*/
++(UIImage *)imageForView:(UIView *)view;
 @end
