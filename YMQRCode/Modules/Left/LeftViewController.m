@@ -29,7 +29,7 @@
 
 -(void)initSubView
 {
-    UITableView *leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    UITableView *leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     leftTableView.delegate = self;
     

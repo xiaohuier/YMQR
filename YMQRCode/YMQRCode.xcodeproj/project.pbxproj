@@ -21,11 +21,16 @@
 		36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860001E388C5800AA76C3 /* LeftViewController.m */; };
 		36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C8605D1E388DDD00AA76C3 /* AppDelegate.m */; };
 		36C860601E388E2C00AA76C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8605F1E388E2C00AA76C3 /* Assets.xcassets */; };
-		36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860621E39861D00AA76C3 /* HomePageBodyView.m */; };
 		36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */; };
 		36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */; };
 		36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */; };
 		36FB75901E4D898200FEA756 /* CutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB758F1E4D898200FEA756 /* CutImageView.m */; };
+		36FB75A01E51667400FEA756 /* HomePageBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB759D1E51667400FEA756 /* HomePageBodyView.m */; };
+		36FB75A11E51667400FEA756 /* HomePageHttpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB759F1E51667400FEA756 /* HomePageHttpView.m */; };
+		36FB75A41E51669000FEA756 /* HomePageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A31E51669000FEA756 /* HomePageTextView.m */; };
+		36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A61E5166A400FEA756 /* HomePageVCardView.m */; };
+		36FB75AA1E5166D200FEA756 /* HomePageTelPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */; };
+		36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */; };
 		3919B9B71E49B2EC00909D91 /* BarCodeReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */; };
 		3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919B9B61E49B2EC00909D91 /* BarCodeScanningViewController.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
@@ -91,8 +96,6 @@
 		36C8605C1E388DDD00AA76C3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		36C8605D1E388DDD00AA76C3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		36C8605F1E388E2C00AA76C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../YMQRCode/Assets.xcassets; sourceTree = "<group>"; };
-		36C860611E39861D00AA76C3 /* HomePageBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBodyView.h; sourceTree = "<group>"; };
-		36C860621E39861D00AA76C3 /* HomePageBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageBodyView.m; sourceTree = "<group>"; };
 		36FB752D1E4AB19A00FEA756 /* ColorsBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorsBtnView.h; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.h; sourceTree = "<group>"; };
 		36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorsBtnView.m; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.m; sourceTree = "<group>"; };
 		36FB75341E4AFB8B00FEA756 /* CutImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CutImageViewController.h; path = CutImage/CutImageViewController.h; sourceTree = "<group>"; };
@@ -101,6 +104,18 @@
 		36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMQRCodeAppService.m; sourceTree = "<group>"; };
 		36FB758E1E4D898200FEA756 /* CutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutImageView.h; sourceTree = "<group>"; };
 		36FB758F1E4D898200FEA756 /* CutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutImageView.m; sourceTree = "<group>"; };
+		36FB759C1E51667400FEA756 /* HomePageBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageBodyView.h; sourceTree = "<group>"; };
+		36FB759D1E51667400FEA756 /* HomePageBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageBodyView.m; sourceTree = "<group>"; };
+		36FB759E1E51667400FEA756 /* HomePageHttpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageHttpView.h; sourceTree = "<group>"; };
+		36FB759F1E51667400FEA756 /* HomePageHttpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageHttpView.m; sourceTree = "<group>"; };
+		36FB75A21E51669000FEA756 /* HomePageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTextView.h; sourceTree = "<group>"; };
+		36FB75A31E51669000FEA756 /* HomePageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTextView.m; sourceTree = "<group>"; };
+		36FB75A51E5166A400FEA756 /* HomePageVCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageVCardView.h; sourceTree = "<group>"; };
+		36FB75A61E5166A400FEA756 /* HomePageVCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageVCardView.m; sourceTree = "<group>"; };
+		36FB75A81E5166D200FEA756 /* HomePageTelPhoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTelPhoneView.h; sourceTree = "<group>"; };
+		36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTelPhoneView.m; sourceTree = "<group>"; };
+		36FB75AB1E5166F100FEA756 /* HomePageMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageMessageView.h; sourceTree = "<group>"; };
+		36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageMessageView.m; sourceTree = "<group>"; };
 		3919B9B31E49B2EC00909D91 /* BarCodeReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeReadingView.h; sourceTree = "<group>"; };
 		3919B9B41E49B2EC00909D91 /* BarCodeReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeReadingView.m; sourceTree = "<group>"; };
 		3919B9B51E49B2EC00909D91 /* BarCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScanningViewController.h; sourceTree = "<group>"; };
@@ -334,8 +349,7 @@
 		36C85FF91E388C5800AA76C3 /* HomePageViews */ = {
 			isa = PBXGroup;
 			children = (
-				36C860611E39861D00AA76C3 /* HomePageBodyView.h */,
-				36C860621E39861D00AA76C3 /* HomePageBodyView.m */,
+				36FB759B1E51667400FEA756 /* HomePageBodyView */,
 				36C85FFA1E388C5800AA76C3 /* HomePageHeaderView.h */,
 				36C85FFB1E388C5800AA76C3 /* HomePageHeaderView.m */,
 			);
@@ -422,6 +436,25 @@
 			);
 			name = CutImageView;
 			path = CutImage/CutImageView;
+			sourceTree = "<group>";
+		};
+		36FB759B1E51667400FEA756 /* HomePageBodyView */ = {
+			isa = PBXGroup;
+			children = (
+				36FB759C1E51667400FEA756 /* HomePageBodyView.h */,
+				36FB759D1E51667400FEA756 /* HomePageBodyView.m */,
+				36FB759E1E51667400FEA756 /* HomePageHttpView.h */,
+				36FB759F1E51667400FEA756 /* HomePageHttpView.m */,
+				36FB75A21E51669000FEA756 /* HomePageTextView.h */,
+				36FB75A31E51669000FEA756 /* HomePageTextView.m */,
+				36FB75A51E5166A400FEA756 /* HomePageVCardView.h */,
+				36FB75A61E5166A400FEA756 /* HomePageVCardView.m */,
+				36FB75A81E5166D200FEA756 /* HomePageTelPhoneView.h */,
+				36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */,
+				36FB75AB1E5166F100FEA756 /* HomePageMessageView.h */,
+				36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */,
+			);
+			path = HomePageBodyView;
 			sourceTree = "<group>";
 		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
@@ -673,7 +706,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36C860631E39861D00AA76C3 /* HomePageBodyView.m in Sources */,
+				36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */,
+				36FB75A01E51667400FEA756 /* HomePageBodyView.m in Sources */,
+				36FB75A11E51667400FEA756 /* HomePageHttpView.m in Sources */,
 				3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */,
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
@@ -685,11 +720,14 @@
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,
 				360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */,
 				36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */,
+				36FB75A41E51669000FEA756 /* HomePageTextView.m in Sources */,
 				36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
 				36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */,
+				36FB75AA1E5166D200FEA756 /* HomePageTelPhoneView.m in Sources */,
 				36FB75901E4D898200FEA756 /* CutImageView.m in Sources */,
 				3919B9B81E49B2EC00909D91 /* BarCodeScanningViewController.m in Sources */,
+				36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */,
 				360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */,
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
 				36C85FD01E388BE700AA76C3 /* main.m in Sources */,

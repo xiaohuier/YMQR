@@ -22,6 +22,8 @@
 
 @end
 
+#define HEIGHT self.view.frame.size.width
+#define WIDTH self.view.frame.size.height
 #define readerBackViewTopHeight (HEIGHT)/6
 #define readerBackViewleftRectWidth (WIDTH)/7
 
