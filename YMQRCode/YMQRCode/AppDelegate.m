@@ -58,11 +58,11 @@
     }
     
        [self.window makeKeyAndVisible];
-
-    [JPUSHService setupWithOption:launchOptions appKey:appKey
-                          channel:channel
-                 apsForProduction:isProduction
-            advertisingIdentifier:nil];
+//
+//    [JPUSHService setupWithOption:launchOptions appKey:appKey
+//                          channel:channel
+//                 apsForProduction:isProduction
+//            advertisingIdentifier:nil];
 
     
     

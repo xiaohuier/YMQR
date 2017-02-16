@@ -12,7 +12,7 @@
 #import "HomePageHeaderView.h"
 #import "AppDelegate.h"
 
-#import "BarCodeScanningViewController.h"
+#import "QRScanViewController.h"
 
 
 #import "UIViewController+MMDrawerController.h"
@@ -50,8 +50,7 @@
 -(void)initNavigation
 {
     self.title = @"二维码生成和扫描";
-    
-    self.navigationController.navigationBar.translucent = NO;
+
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -100,9 +99,9 @@
         
         make.size.mas_equalTo(CGSizeMake(90, 90));
         
-        make.centerX.equalTo(self.view.mas_centerX);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
         
-        make.bottom.equalTo(self.view.mas_bottom).offset(-90);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(-90);
         
         make.top.mas_greaterThanOrEqualTo(self.bodyView.mas_bottom);
 
@@ -115,7 +114,7 @@
     
     self.createQRCodeButton.titleLabel.font = [UIFont systemFontOfSize:15];
     
-    [self.createQRCodeButton setBackgroundImage:[UIImage imageNamed:@"6"] forState:UIControlStateNormal];
+    [self.createQRCodeButton setBackgroundImage:[UIImage imageNamed:@"creatQRCode"] forState:UIControlStateNormal];
     
     [self.createQRCodeButton addTarget:self action:@selector(creatCodeOnClick:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -135,9 +134,9 @@
         
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 60));
         
-        make.centerX.equalTo(self.scanQRCodeButton.mas_centerX);
+        make.centerX.mas_equalTo(self.scanQRCodeButton.mas_centerX);
         
-        make.bottom.equalTo(self.view.mas_bottom).offset(0);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(0);
 
     }];
     
@@ -156,9 +155,9 @@
 
 -(void)scanOnClick:(id)sender
 {
-    BarCodeScanningViewController *barCode = [[BarCodeScanningViewController alloc]init];
+    QRScanViewController *scanVC = [[QRScanViewController alloc]init];
     
-    [self.navigationController pushViewController:barCode animated:YES];
+    [self.navigationController pushViewController:scanVC animated:NO];
 
 }
 
@@ -188,6 +187,7 @@
     }];
 
 }
+
 
 
 - (void)didReceiveMemoryWarning {

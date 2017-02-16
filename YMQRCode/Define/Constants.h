@@ -25,8 +25,6 @@
 
 #define IPHONE6_SCREEN_HEIGHT 667
 
-////尺寸换算
-//#define TRANSFROM_IPHONE6_RECT(x,y,width,height) CGRectMake(x/IPHONE6_SCREEN_WIDTH*SCREEN_WIDTH, y/IPHONE6_SCREEN_HEIGHT*SCREEN_HEIGHT, width/IPHONE6_SCREEN_WIDTH*SCREEN_WIDTH, height/IPHONE6_SCREEN_HEIGHT*SCREEN_HEIGHT)
 
 #define TRANSFROM_IPHONE6_WIDTH(width) width/IPHONE6_SCREEN_WIDTH*SCREEN_WIDTH
 
@@ -37,6 +35,11 @@
 #define IS_IPHONE_5 (SCREEN_HEIGHT == 568.0)
 #define IS_IPHONE_6 (SCREEN_HEIGHT == 667.0)
 #define IS_IPHONE_6P (SCREEN_HEIGHT == 736.0)
+
+//设置颜色
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue  & 0xFF))/255.0 alpha:1.0]
+
+#define UIColorFromRGBA(rgbValue,alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue  & 0xFF))/255.0 alpha:alphaValue]
 
 //系统判断
 #define IOS8_0 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f
