@@ -45,9 +45,6 @@
 
 #define IOS10_0 [[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0
 
-#define WIDTH self.view.bounds.size.width
-
-#define HEIGHT self.view.bounds.size.height
 
 #define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
 

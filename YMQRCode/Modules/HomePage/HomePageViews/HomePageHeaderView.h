@@ -11,7 +11,7 @@
 
 @protocol HomePageHeaderDelegate <NSObject>
 
--(void)buttonOnclick;
+-(void)homePageHeaderButtonChangeType: (HomePageBodyType)homePageBodyType;
 
 @end
 
@@ -23,7 +23,6 @@
 
 @property (nonatomic ,assign)id <HomePageHeaderDelegate> delegate;
 
--(void)buttonOnCilck:(UIButton *)button;
 
 
 

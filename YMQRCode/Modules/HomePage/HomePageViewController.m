@@ -7,6 +7,7 @@
 //
 
 #import "HomePageViewController.h"
+
 #import "HomePageBodyView.h"
 #import "HomePageHeaderView.h"
 #import "AppDelegate.h"
@@ -29,23 +30,13 @@
 /**生成二维码*/
 @property (nonatomic,strong)UIButton *createQRCodeButton;
 
-@property (nonatomic,strong)UIView *myBodyVeiw;
 
 
 @end
 
 @implementation HomePageViewController
 
--(void)viewDidAppear:(BOOL)animated{
-    
-    
-}
 
--(void)viewWillDisappear:(BOOL)animated
-{
-   
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,8 +54,6 @@
     self.navigationController.navigationBar.translucent = NO;
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    //    leftButton.backgroundColor = [UIColor orangeColor];
     
     leftButton.frame = CGRectMake(0, 0, 29, 22);
     
@@ -88,27 +77,16 @@
         make.top.mas_equalTo(0);
         make.height.mas_equalTo(220);
     }];
-
-    _myBodyVeiw = [[UIView alloc]init];
-    [self.view addSubview:_myBodyVeiw];
     
-    
-    [self.myBodyVeiw mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.headerView.mas_bottom);
-        make.left.right.mas_equalTo(0);
-    }];
-    
-    
-    self.bodyView = [[HomePageBodyView alloc]initWithType:self.headerView.homePageBodyType];
-    [self.myBodyVeiw addSubview:self.bodyView];
+    self.bodyView = [HomePageBodyView bodyViewWithType:HomePageBodyHTTPType];
+    [self.view addSubview:self.bodyView];
     
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.right.top.bottom.mas_equalTo(0);
-        
+        make.top.mas_equalTo(self.headerView.mas_bottom);
+        make.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(self.view.frame.size.height - 464);
     }];
 
-    
     
     self.scanQRCodeButton = [[UIButton alloc]init];
     
@@ -126,10 +104,10 @@
         
         make.bottom.equalTo(self.view.mas_bottom).offset(-90);
         
-        make.top.mas_equalTo(self.myBodyVeiw.mas_bottom);
+        make.top.mas_greaterThanOrEqualTo(self.bodyView.mas_bottom);
 
     }];
-    
+
     
     self.createQRCodeButton = [[UIButton alloc]init];
     
@@ -181,8 +159,6 @@
     BarCodeScanningViewController *barCode = [[BarCodeScanningViewController alloc]init];
     
     [self.navigationController pushViewController:barCode animated:YES];
-    
-    BACK_TITLE
 
 }
 
@@ -191,135 +167,34 @@
     
     QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
     
-    qrcode.textString = self.bodyView.codeTextView.text;
-
-    BACK_TITLE
-    if ([self.bodyView.viewType isEqualToString:@"http"]||[self.bodyView.viewType isEqualToString:@"文本"]) {
-        
-        qrcode.textString = self.bodyView.codeTextView.text;
-        
-    }else if ([self.bodyView.viewType isEqualToString:@"tel"]){
-        
-        if ([self isNullString:self.bodyView.codeTextView.text]) {
-            qrcode.textString = @"";
-        }else{
-            
-            qrcode.textString = [NSString stringWithFormat:@"tel:%@",self.bodyView.codeTextView.text];
-            
-        }
-        
-    }else if ([self.bodyView.viewType isEqualToString:@"message"]){
-        
-        if ([self isNullString:self.bodyView.textFile.text]&&[self isNullString:self.bodyView.codeTextView.text]) {
-            
-            qrcode.textString = @"";
-            
-        }else{
-            
-            if (IOS9_1) {
-                
-                qrcode.textString = [NSString stringWithFormat:@"sms:%@&body=%@",self.bodyView.textFile.text,self.bodyView.codeTextView.text];
-                
-            }else{
-                
-                qrcode.textString = [NSString stringWithFormat:@"sms:%@?body=%@",self.bodyView.textFile.text,self.bodyView.codeTextView.text];
-                
-            }
-            
-        }
-        
-        
-        
-    }else if ([self.bodyView.viewType isEqualToString:@"vCard"]){
-        
-        if ([self isBool]) {
-            
-            qrcode.textString = @"";
-            
-        }else{
-            
-            qrcode.textString = [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",self.bodyView.nameTextfiled.text,self.bodyView.companyTextfiled.text,self.bodyView.addressTextView.text,self.bodyView.positionTextfiled.text,self.bodyView.telTextfiled.text,self.bodyView.urlTextfiled.text,self.bodyView.mailTextfiled.text,self.bodyView.remarksTextView.text];
-        }
-        
-        
-    }
-    
+    qrcode.textString = self.bodyView.textString;
     [self.navigationController pushViewController:qrcode animated:NO];
 }
 
-
--(void)buttonOnclick
+-(void)homePageHeaderButtonChangeType: (HomePageBodyType)homePageBodyType
 {
     
     [self.bodyView removeFromSuperview];
     
-    self.bodyView = [[HomePageBodyView alloc]initWithType:self.headerView.homePageBodyType];
-    [self.myBodyVeiw addSubview:self.bodyView];
+    self.bodyView = [HomePageBodyView bodyViewWithType:homePageBodyType];
+    [self.view addSubview:self.bodyView];
     
+
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.left.right.top.bottom.mas_equalTo(0);
-        
+        make.top.mas_equalTo(self.headerView.mas_bottom);
+        make.left.right.mas_equalTo(0);
+        //这时候代码self.automaticallyAdjustsScrollViewInsets = true;已经失效了。
+        make.height.mas_equalTo(self.view.frame.size.height - 400);
     }];
-    
-    
+
 }
 
--(BOOL)isNullString:(NSString *)string {
-    
-    if (string == nil || string == NULL) {
-        
-        return YES;
-        
-    }
-    
-    if ([string  isEqualToString:@"null"]) {
-        
-        return YES;
-        
-    }
-    
-    if ([string isKindOfClass:[NSNull class]]) {
-        
-        return YES;
-        
-    }
-    
-    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
-        
-        return YES;
-        
-    }
-    
-    return NO;
-}
-
--(BOOL)isBool{
-    
-    
-    if ([self isNullString:self.bodyView.nameTextfiled.text]&&[self isNullString:self.bodyView.companyTextfiled.text]&&[self isNullString:self.bodyView.addressTextView.text]&&[self isNullString:self.bodyView.positionTextfiled.text]&&[self isNullString:self.bodyView.telTextfiled.text]&&[self isNullString:self.bodyView.urlTextfiled.text]&&[self isNullString:self.bodyView.mailTextfiled.text]&&[self isNullString:self.bodyView.remarksTextView.text]) {
-        
-        return YES;
-        
-    }
-    
-    
-    return NO;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

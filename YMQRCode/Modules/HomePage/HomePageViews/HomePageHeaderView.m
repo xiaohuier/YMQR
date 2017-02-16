@@ -8,6 +8,8 @@
 
 #import "HomePageHeaderView.h"
 #import "HomePageBodyView.h"
+
+
 @implementation HomePageHeaderView
 
 {
@@ -16,11 +18,12 @@
     UIButton *_vCardButton;
     UIButton *_telButton;
     UIButton *_messageButton;
-    
 }
+
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.homePageBodyType = HomePageBodyHTTPType;
         [self initSubView];
     }
     return self;
@@ -89,36 +92,24 @@
     switch (button.tag) {
         case 1000:
             self.homePageBodyType = HomePageBodyHTTPType;
-            if ([self.delegate respondsToSelector:@selector(buttonOnclick)]) {
-                [self.delegate buttonOnclick];
-            }
             break;
         case 1001:
             self.homePageBodyType = HomePageBodyTextType;
-            if ([self.delegate respondsToSelector:@selector(buttonOnclick)]) {
-                [self.delegate buttonOnclick];
-            }
             break;
         case 1002:
             self.homePageBodyType = HomePageBodyVCardType;
-            if ([self.delegate respondsToSelector:@selector(buttonOnclick)]) {
-                [self.delegate buttonOnclick];
-            }
             break;
         case 1003:
             self.homePageBodyType = HomePageBodyTelPhoneType;
-            if ([self.delegate respondsToSelector:@selector(buttonOnclick)]) {
-                [self.delegate buttonOnclick];
-            }
             break;
         case 1004:
             self.homePageBodyType = HomePageBodyMessageType;
-            if ([self.delegate respondsToSelector:@selector(buttonOnclick)]) {
-                [self.delegate buttonOnclick];
-            }
             break;
         default:
             break;
+    }
+    if ([self.delegate respondsToSelector:@selector(homePageHeaderButtonChangeType:)]) {
+        [self.delegate homePageHeaderButtonChangeType:self.homePageBodyType];
     }
     
 }
@@ -173,7 +164,6 @@
     CGSize titleSize = _httpButton.titleLabel.bounds.size;
     CGSize imageSize = _httpButton.imageView.bounds.size;
 
-    NSLog(@"titleSize  %f  %f     imageSize  %f  %f ",titleSize.width,titleSize.height,imageSize.width,imageSize.height);
     
     [_httpButton setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height , 0)];
     [_httpButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];
