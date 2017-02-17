@@ -26,15 +26,9 @@
     return self;
 }
 
--(UIImage *)navigationBarBackgroundImage
-{
-    return [UIImage new];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:11/255.0 green:95/255.0 blue:255/255.0 alpha:1];
     
     [self initSubView];
     
@@ -42,11 +36,20 @@
     
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    
-    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
-    
+-(UIButton *)appendBackBarButtonItem
+{
+    UIButton *backBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setImage:[UIImage imageNamed:@"back-button"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn  sizeToFit];
+    return backBtn;
 }
+
+-(UIImage *)navigationBarBackgroundImage
+{
+    return [UIImage new];
+}
+
 
 -(void)initSubView
 {
@@ -62,11 +65,12 @@
             make.height.mas_equalTo(height);
         }];
     }else{
-        NSInteger width = self.view.frame.size.height * self.cutImage.size.width /self.cutImage.size.height;
+        NSInteger height = (self.view.frame.size.width -40) * self.cutImage.size.height /self.cutImage.size.width;
         [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.bottom.mas_equalTo(0);
-            make.centerX.mas_equalTo(self.view);
-            make.width.mas_equalTo(width);
+            make.left.mas_equalTo(20);
+            make.right.mas_equalTo(-20);
+            make.centerY.mas_equalTo(self.view);
+            make.height.mas_equalTo(height);
         }];
     }
     
@@ -89,9 +93,9 @@
         
         make.size.mas_equalTo(CGSizeMake(100, 30));
         
-        make.right.equalTo(self.view.mas_right).offset(-30);
+        make.right.mas_equalTo(self.view.mas_right).offset(-30);
         
-        make.top.equalTo(self.view.mas_bottom).offset(-50);
+        make.top.mas_equalTo(self.view.mas_bottom).offset(-50);
         
     }];
     
@@ -107,10 +111,8 @@
     [cutButton mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.size.mas_equalTo(CGSizeMake(100, 30));
-        
-        make.left.equalTo(self.view.mas_left).offset(30);
-        
-        make.top.equalTo(self.view.mas_bottom).offset(-50);
+        make.left.mas_equalTo(self.view.mas_left).offset(30);
+        make.top.mas_equalTo(self.view.mas_bottom).offset(-50);
         
     }];
     
@@ -122,8 +124,8 @@
 
 -(void)originalImage:(id)sender
 {
-
-
+    
+    
     UIImage *newImage = [self.cutImage getCroppedImage:CGRectMake(0, 0, self.cutImage.size.width, self.cutImage.size.height)];
     
     [self saveImageToAppSever:newImage];
@@ -139,7 +141,7 @@
     UIImage *newImage = [self.cutImage getCroppedImage:imageRect];
     
     [self saveImageToAppSever:newImage];
-
+    
     [self pop];
 }
 
