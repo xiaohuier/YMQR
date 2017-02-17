@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CutImageView : UIView
-@property (nonatomic,strong)UIImage *image;
 
 @property (nonatomic,assign)NSInteger touchMoveLength;
 

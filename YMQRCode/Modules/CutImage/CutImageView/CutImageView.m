@@ -19,32 +19,65 @@ typedef NS_ENUM(NSInteger,MoveType)
 };
 
 @implementation CutImageView
+
 {
     MoveType _moveType;
 }
+
 -(instancetype)init
 {
     if (self = [super init]) {
-        _clearRect = CGRectMake(0, 0, 100, 100);
+        
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pan:)];
         [self addGestureRecognizer:pan];
+        self.touchMoveLength = 10;
+        self.cutImageRectMin = CGSizeMake(50, 50);
+        
     }
     return self;
 }
--(void)setImage:(UIImage *)image
+
+-(CGRect)clearRect
 {
-    _image = image;
+    if (_clearRect.size.height<50||_clearRect.size.width<50) {
+        _clearRect = CGRectMake(self.center.x -100, self.center.y -100, 200, 200);
+    }
+    return _clearRect;
 }
 
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect
+{
     [super drawRect:rect];
+    
+    [self clearRect];
+    
+    [self drawClearRect];
+    
+    [self drawbackground:rect];
+    
+    //画4个圆环
+    CGPoint ArcCenter1 = CGPointMake(CGRectGetMinX(_clearRect), CGRectGetMinY(_clearRect));
+    [self drawCircleWithPoint:ArcCenter1];
+    
+    CGPoint ArcCenter2 = CGPointMake(CGRectGetMinX(_clearRect), CGRectGetMaxY(_clearRect));
+    [self drawCircleWithPoint:ArcCenter2];
+    
+    CGPoint ArcCenter3 = CGPointMake(CGRectGetMaxX(_clearRect), CGRectGetMinY(_clearRect));
+    [self drawCircleWithPoint:ArcCenter3];
+    
+    CGPoint ArcCenter4 = CGPointMake(CGRectGetMaxX(_clearRect), CGRectGetMaxY(_clearRect));
+    [self drawCircleWithPoint:ArcCenter4];
+    
+}
+
+-(void)drawClearRect
+{
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    [self.image drawInRect:rect];
     
-    CGContextAddRect(context, _clearRect);
+    CGContextAddRect(context, self.clearRect);
     
     //给rect画虚线边框
     
@@ -55,7 +88,14 @@ typedef NS_ENUM(NSInteger,MoveType)
     CGContextSetLineDash(context, 0, lengths,2);
     
     CGContextStrokePath(context);
-    //    画周围的黑色遮罩
+    
+    CGContextSetLineDash(context, 0, NULL, 0);
+    
+}
+
+-(void)drawbackground:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
     
     CGContextSetRGBFillColor(context, 0, 0, 0, 0.6);
     
@@ -66,9 +106,27 @@ typedef NS_ENUM(NSInteger,MoveType)
         CGRectMake(_clearRect.origin.x, _clearRect.origin.y + _clearRect.size.height , rect.size.width - _clearRect.origin.x,rect.size.height - _clearRect.origin.y - _clearRect.size.height),
         CGRectMake(_clearRect.origin.x + _clearRect.size.width,_clearRect.origin.y,rect.size.width -_clearRect.origin.x - _clearRect.size.width,_clearRect.size.height)
     };
+    
     CGContextClipToRects(context, clips2, sizeof(clips2) / sizeof(clips2[0]));
     
     CGContextFillRect(context, self.bounds);
+    
+}
+
+-(void)drawCircleWithPoint:(CGPoint)point
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGFloat lineWidth = 2.0f;
+    CGContextAddArc(context, point.x, point.y, _touchMoveLength, 0, 2*M_PI, 1);
+    CGContextSetLineWidth(context,lineWidth);
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextStrokePath(context);
+    
+    CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
+    
+    CGContextAddArc(context, point.x, point.y, _touchMoveLength -lineWidth/2, 0, 2*M_PI, 1);
+    CGContextFillPath(context);
     
 }
 
@@ -78,14 +136,6 @@ typedef NS_ENUM(NSInteger,MoveType)
     CGPoint translatePoint = [pan translationInView:self];//移动的距离
     
     CGPoint point = [pan locationInView:self];//pan手势识别到的的点的位置
-    
-    if (self.touchMoveLength == 0) {
-        self.touchMoveLength = 20;
-    }
-    if (self.cutImageRectMin.height == 0 &&self.cutImageRectMin.width == 0) {
-        self.cutImageRectMin = CGSizeMake(50, 50);
-    }
-    
     
     if (pan.state == UIGestureRecognizerStateBegan) {
         _moveType = [self judgeMoveType:point];
@@ -122,9 +172,7 @@ typedef NS_ENUM(NSInteger,MoveType)
                 [pan setTranslation:CGPointZero inView:self];
                 [self setNeedsDisplay];
                 break;
-                
             default:
-                
                 break;
         }
         //判断clearRect不能出了self的范围

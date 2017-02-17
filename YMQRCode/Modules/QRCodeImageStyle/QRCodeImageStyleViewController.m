@@ -90,6 +90,7 @@
 -(void)initSubView
 {
     _qrCodeImgView = [[UIImageView alloc]init];
+    
     [self.view addSubview:_qrCodeImgView];
     
     [_qrCodeImgView mas_makeConstraints:^(MASConstraintMaker *make) {

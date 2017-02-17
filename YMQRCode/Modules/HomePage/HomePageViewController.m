@@ -47,6 +47,22 @@
 
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
+    
+}
+
 -(void)initNavigation
 {
     self.title = @"二维码生成和扫描";

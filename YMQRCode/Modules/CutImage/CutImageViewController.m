@@ -26,61 +26,80 @@
     return self;
 }
 
+-(UIImage *)navigationBarBackgroundImage
+{
+    return [UIImage new];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initSubView];
     
     self.view.backgroundColor = [UIColor grayColor];
+    
 }
 
 -(void)initSubView
 {
-    _cutImageView = [[CutImageView alloc]init];
-    _cutImageView.image = self.cutImage;
-    
-    [self.view addSubview:_cutImageView];
-    if (self.cutImage.size.width >self.cutImage.size.height) {
-        NSInteger height = self.view.frame.size.width * self.cutImage.size.height /self.cutImage.size.width;
-        [_cutImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.left.mas_equalTo(0);
+    UIImageView *backImageView = [[UIImageView alloc]initWithImage:self.cutImage];
+    backImageView.userInteractionEnabled = YES;
+    [self.view addSubview:backImageView];
+    if (self.cutImage.size.width > self.cutImage.size.height) {
+        NSInteger height = (self.view.frame.size.width -20) * self.cutImage.size.height /self.cutImage.size.width;
+        [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(10);
+            make.right.mas_equalTo(-10);
             make.centerY.mas_equalTo(self.view);
             make.height.mas_equalTo(height);
         }];
     }else{
         NSInteger width = self.view.frame.size.height * self.cutImage.size.width /self.cutImage.size.height;
-        [_cutImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.mas_equalTo(0);
             make.centerX.mas_equalTo(self.view);
             make.width.mas_equalTo(width);
         }];
     }
+
+    
+    
+    _cutImageView = [[CutImageView alloc]init];
+    _cutImageView.backgroundColor = [UIColor clearColor];
+    [backImageView addSubview:_cutImageView];
+    [_cutImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    
     
     UIButton *originalButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    originalButton.frame = CGRectMake(30, self.view.bounds.size.height -50 -64, 100, 30);
     originalButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [originalButton setTitle:@"保存整张图片" forState:UIControlStateNormal];
-    
+    [originalButton setTitle:@"使用整张图片" forState:UIControlStateNormal];
     [originalButton addTarget:self action:@selector(originalImage:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:originalButton];
+    [originalButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+    }];
+    
     
     UIButton *cutButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    cutButton.frame = CGRectMake(self.view.bounds.size.width - 130, self.view.bounds.size.height - 50 -64, 100, 30);
     cutButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [cutButton setTitle:@"保存裁剪图片" forState:UIControlStateNormal];
+    [cutButton setTitle:@"使用裁剪图片" forState:UIControlStateNormal];
     
     [cutButton addTarget:self action:@selector(cutImage:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:cutButton];
+    [cutButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+    }];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 -(void)originalImage:(id)sender
