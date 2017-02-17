@@ -166,16 +166,16 @@
 
     
     [_httpButton setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height , 0)];
-    [_httpButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];
+    [_httpButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 20.0, -(imageSize.width), 0, 0)];
     
     [_textButton setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height , 0)];
-    [_textButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];
+    [_textButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 20.0, -(imageSize.width), 0, 0)];
     
     [_vCardButton setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height , 0)];
-    [_vCardButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];
+    [_vCardButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 20.0, -(imageSize.width), 0, 0)];
     
     [_telButton setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height , 0)];
-    [_telButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];
+    [_telButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 20.0, -(imageSize.width), 0, 0)];
     
     [_messageButton setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height , 0)];
     [_messageButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];

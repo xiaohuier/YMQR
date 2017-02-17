@@ -29,5 +29,11 @@ typedef NS_ENUM(NSUInteger,QRImageType)
     QRImageTypeDefult
 };
 
+//QRScanViewType扫码格式
+typedef NS_ENUM(NSUInteger,QRScanViewType)
+{
+    QRScanViewBarCodeType = 0,//条形码
+    QRScanViewQRCodeType  //二维码
+};
 
 #endif /* Enums_h */

@@ -46,7 +46,6 @@
 {
     _qrCodeImage = qrCodeImage;
     [self.qrCodeImgView setImage:_qrCodeImage];
-    [YMQRCodeAppService shareInstance].QRCodeImage = _qrCodeImage;
 }
 
 
@@ -70,12 +69,13 @@
 
 -(void)initNavigation
 {
+    self.title = @"二维码样式";
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     rightButton.frame = CGRectMake(SCREEN_WIDTH - 40, 0, 40, 22);
     
-    [rightButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(saveBack:) forControlEvents:UIControlEventTouchUpInside];
     
     [rightButton setTitleColor:[UIColor colorWithRed:51/255.0 green:135/255.0 blue:236/255.0 alpha:1] forState:UIControlStateNormal];
     
@@ -90,6 +90,7 @@
 -(void)initSubView
 {
     _qrCodeImgView = [[UIImageView alloc]init];
+    
     [self.view addSubview:_qrCodeImgView];
     
     [_qrCodeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -208,8 +209,9 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)back:(id)sender
+-(void)saveBack:(id)sender
 {
+    [YMQRCodeAppService shareInstance].QRCodeImage = _qrCodeImage;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -42,14 +42,11 @@
     return self;
 }
 
--(void)appBecameActive{
-    [self viewWillAppear:NO];
-}
+
 -(void)viewWillAppear:(BOOL)animated{
     
-    BACK_TITLE
-    
-    BACK_COLOR_WHITE
+
+
     
     self.title = @"二维码扫描";
     
@@ -161,6 +158,7 @@
     scanNetAnimation.autoreverses =YES;
     [_line.layer addAnimation:scanNetAnimation forKey:@"translationAnimation"];
 }
+
 - (void)resumeAnimation
 {
     CAAnimation *anim = [_line.layer animationForKey:@"translationAnimation"];
@@ -402,7 +400,7 @@
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
     
     if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
-        NSString*str=@"请在系统\"设置－隐私－相机\"中打开允许使用相机";
+        NSString *str=@"请在系统\"设置－隐私－相机\"中打开允许使用相机";
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:str preferredStyle:UIAlertControllerStyleAlert];
         

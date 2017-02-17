@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
-
+-(BOOL)shouldHideBottomBarWhenPushed;
 @end
