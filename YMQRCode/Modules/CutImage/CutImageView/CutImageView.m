@@ -10,12 +10,12 @@
 
 typedef NS_ENUM(NSInteger,MoveType)
 {
-    MoveTopLineType,
-    MoveLeftLineType,
-    MoveRightLineType,
-    MoveBottomLineType,
+    MoveTopLeftType,//左上角
+    MoveBottomLeftType,//左下角
+    MoveTopRightType,//右上角
+    MoveBottomRightType,//右下角
     TouchMoveType,
-    NoMoveType,
+    NoMoveType
 };
 
 @implementation CutImageView
@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger,MoveType)
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pan:)];
         [self addGestureRecognizer:pan];
+        
+        
         self.touchMoveLength = 10;
         self.cutImageRectMin = CGSizeMake(50, 50);
         
@@ -68,6 +70,7 @@ typedef NS_ENUM(NSInteger,MoveType)
     
     CGPoint ArcCenter4 = CGPointMake(CGRectGetMaxX(_clearRect), CGRectGetMaxY(_clearRect));
     [self drawCircleWithPoint:ArcCenter4];
+    
     
 }
 
@@ -130,6 +133,7 @@ typedef NS_ENUM(NSInteger,MoveType)
     
 }
 
+
 -(void)pan:(UIPanGestureRecognizer *)pan
 {
     
@@ -143,27 +147,52 @@ typedef NS_ENUM(NSInteger,MoveType)
     
     if (pan.state == UIGestureRecognizerStateChanged) {
         CGRect clearRect = _clearRect;
+        
+        CGFloat length;
+        
+        length = MAX(fabs(translatePoint.x), fabs(translatePoint.y));
+        
+        
         switch (_moveType) {
-            case MoveTopLineType:
+            case MoveTopLeftType:
+                if (translatePoint.x > 0) {
+                    length = - length;
+                }
                 
-                clearRect.size = CGSizeMake(clearRect.size.width - translatePoint.y, clearRect.size.height - translatePoint.y);
-                clearRect.origin = CGPointMake(clearRect.origin.x + translatePoint.y, clearRect.origin.y + translatePoint.y);
+                clearRect.size = CGSizeMake(clearRect.size.width + length, clearRect.size.height + length);
+                clearRect.origin = CGPointMake(clearRect.origin.x - length, clearRect.origin.y -length);
                 [pan setTranslation:CGPointZero inView:self];
                 [self setNeedsDisplay];
                 break;
-            case MoveRightLineType:
-                clearRect.size = CGSizeMake(clearRect.size.width +translatePoint.x, clearRect.size.height+translatePoint.x);
+                
+            case MoveTopRightType:
+                if (translatePoint.x > 0) {
+                    length = - length;
+                }
+                
+                clearRect = CGRectMake(clearRect.origin.x, clearRect.origin.y +length, clearRect.size.width - length, clearRect.size.height - length);
                 [pan setTranslation:CGPointZero inView:self];
                 [self setNeedsDisplay];
                 break;
-            case MoveLeftLineType:
-                clearRect.size = CGSizeMake(clearRect.size.width -translatePoint.x, clearRect.size.height  - translatePoint.x);
-                clearRect.origin = CGPointMake(clearRect.origin.x + translatePoint.x, clearRect.origin.y + translatePoint.x);
+            case MoveBottomLeftType:
+                
+                if (translatePoint.x < 0) {
+                    length = - length;
+                }
+                NSLog(@"%f",length);
+                clearRect = CGRectMake(clearRect.origin.x + length, clearRect.origin.y, clearRect.size.width - length, clearRect.size.height - length);
+                
+                
                 [pan setTranslation:CGPointZero inView:self];
                 [self setNeedsDisplay];
                 break;
-            case MoveBottomLineType:
-                clearRect.size = CGSizeMake(clearRect.size.width+ translatePoint.y, clearRect.size.height + translatePoint.y);
+            case MoveBottomRightType:
+                if (translatePoint.x < 0) {
+                    length = - length;
+                }
+                
+                clearRect.size = CGSizeMake(clearRect.size.width+ length, clearRect.size.height + length);
+                
                 [pan setTranslation:CGPointZero inView:self];
                 [self setNeedsDisplay];
                 break;
@@ -189,38 +218,69 @@ typedef NS_ENUM(NSInteger,MoveType)
 -(MoveType)judgeMoveType:(CGPoint)touchPoint
 {
     //在这个方位内的，就拖着透明方块动
-    CGRect moveRect = CGRectMake(_clearRect.origin.x + self.touchMoveLength, _clearRect.origin.y + self.touchMoveLength, _clearRect.size.width - self.touchMoveLength*2, _clearRect.size.height - self.touchMoveLength * 2);
+    CGRect moveRect = _clearRect;
     
     //缩放的rect，分为四个，因为方向值不一样，所以符号得不一样
     
-    CGRect leftRect  = CGRectMake(_clearRect.origin.x - self.touchMoveLength, _clearRect.origin.y - self.touchMoveLength, 2*self.touchMoveLength, _clearRect.size.height + 2*self.touchMoveLength);
+    CGPoint ArcCenter1 = CGPointMake(CGRectGetMinX(_clearRect), CGRectGetMinY(_clearRect));
+    
+    CGPoint ArcCenter2 = CGPointMake(CGRectGetMinX(_clearRect), CGRectGetMaxY(_clearRect));
+    
+    CGPoint ArcCenter3 = CGPointMake(CGRectGetMaxX(_clearRect), CGRectGetMinY(_clearRect));
+    
+    CGPoint ArcCenter4 = CGPointMake(CGRectGetMaxX(_clearRect), CGRectGetMaxY(_clearRect));
+    
+    CGRect Rect1  = CGRectMake(ArcCenter1.x-_touchMoveLength,ArcCenter1.y-_touchMoveLength,_touchMoveLength*2,_touchMoveLength*2);
+    
+    CGRect Rect2  = CGRectMake(ArcCenter2.x-_touchMoveLength,ArcCenter2.y-_touchMoveLength,_touchMoveLength*2,_touchMoveLength*2);
+    
+    CGRect Rect3  = CGRectMake(ArcCenter3.x-_touchMoveLength,ArcCenter3.y-_touchMoveLength,_touchMoveLength*2,_touchMoveLength*2);
+    
+    CGRect Rect4  = CGRectMake(ArcCenter4.x-_touchMoveLength,ArcCenter4.y-_touchMoveLength,_touchMoveLength*2,_touchMoveLength*2);
+    
+    //    UIView *view = [[UIView alloc]initWithFrame:Rect1];
+    //    view.backgroundColor = [UIColor redColor];
+    //    [self addSubview:view];
+    //
+    //    view = [[UIView alloc]initWithFrame:Rect2];
+    //    view.backgroundColor = [UIColor yellowColor];
+    //    [self addSubview:view];
+    //
+    //    view = [[UIView alloc]initWithFrame:Rect3];
+    //    view.backgroundColor = [UIColor blueColor];
+    //    [self addSubview:view];
+    //
+    //    view = [[UIView alloc]initWithFrame:Rect4];
+    //    view.backgroundColor = [UIColor blackColor];
+    //    [self addSubview:view];
     
     
-    CGRect topRect  = CGRectMake(_clearRect.origin.x - self.touchMoveLength, _clearRect.origin.y - self.touchMoveLength, _clearRect.size.width + 2*self.touchMoveLength,2* self.touchMoveLength);
-    
-    CGRect rightRect  = CGRectMake(_clearRect.origin.x +_clearRect.size.width - self.touchMoveLength, _clearRect.origin.y - self.touchMoveLength, 2*self.touchMoveLength, _clearRect.size.height + 2*self.touchMoveLength);
-    
-    CGRect bottomRect  = CGRectMake(_clearRect.origin.x - self.touchMoveLength, _clearRect.origin.y +_clearRect.size.height - self.touchMoveLength, _clearRect.size.width + 2*self.touchMoveLength,2* self.touchMoveLength);
-    
-    
+    if (CGRectContainsPoint(Rect1, touchPoint)) {
+        //        NSLog(@"MoveTopLeftType");
+        return  MoveTopLeftType;
+    }
+    if (CGRectContainsPoint(Rect2, touchPoint)) {
+        //        NSLog(@"MoveBottomLeftType");
+        return  MoveBottomLeftType;
+    }
+    if (CGRectContainsPoint(Rect3, touchPoint)) {
+        //        NSLog(@"MoveTopRightType");
+        return MoveTopRightType;
+    }
+    if (CGRectContainsPoint(Rect4, touchPoint)) {
+        //        NSLog(@"MoveBottomRightType");
+        return MoveBottomRightType;
+    }
     if (CGRectContainsPoint(moveRect, touchPoint)) {
+        //        NSLog(@"TouchMoveType");
         return  TouchMoveType;
-    }
-    if (CGRectContainsPoint(leftRect, touchPoint)) {
-        return  MoveLeftLineType;
-    }
-    if (CGRectContainsPoint(topRect, touchPoint)) {
-        return  MoveTopLineType;
-    }
-    if (CGRectContainsPoint(rightRect, touchPoint)) {
-        return MoveRightLineType;
-    }
-    if (CGRectContainsPoint(bottomRect, touchPoint)) {
-        return  MoveBottomLineType;
     }else{
+        //        NSLog(@"NoMoveType");
         return NoMoveType;
     }
     
 }
+
+
 
 @end
