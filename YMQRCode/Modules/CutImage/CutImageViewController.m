@@ -34,9 +34,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:11/255.0 green:95/255.0 blue:255/255.0 alpha:1];
+    
     [self initSubView];
     
     self.view.backgroundColor = [UIColor grayColor];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
 }
 
@@ -61,8 +69,6 @@
             make.width.mas_equalTo(width);
         }];
     }
-
-    
     
     _cutImageView = [[CutImageView alloc]init];
     _cutImageView.backgroundColor = [UIColor clearColor];
@@ -81,6 +87,12 @@
     [self.view addSubview:originalButton];
     [originalButton mas_makeConstraints:^(MASConstraintMaker *make) {
         
+        make.size.mas_equalTo(CGSizeMake(100, 30));
+        
+        make.right.equalTo(self.view.mas_right).offset(-30);
+        
+        make.top.equalTo(self.view.mas_bottom).offset(-50);
+        
     }];
     
     
@@ -93,6 +105,12 @@
     
     [self.view addSubview:cutButton];
     [cutButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.size.mas_equalTo(CGSizeMake(100, 30));
+        
+        make.left.equalTo(self.view.mas_left).offset(30);
+        
+        make.top.equalTo(self.view.mas_bottom).offset(-50);
         
     }];
     

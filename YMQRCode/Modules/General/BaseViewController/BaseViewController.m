@@ -53,7 +53,6 @@
         [self appendBackBarButtonItem];
     }
     
-    
 }
 
 -(UIImage *)navigationBarBackgroundImage

@@ -63,7 +63,6 @@
     [super viewWillAppear:animated];
     
     [self setQRCodeViewImage];
-    
 }
 
 
@@ -316,9 +315,10 @@
     UIImage * image = info[UIImagePickerControllerOriginalImage];
     CutImageViewController *cutImageVC = [[CutImageViewController alloc]initWithCutImage:image];
     
-    [self.navigationController pushViewController:cutImageVC animated:YES];
+    [self.navigationController pushViewController:cutImageVC animated:NO];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

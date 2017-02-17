@@ -243,6 +243,8 @@
     
     shareView.titleString = @"二维码的邀请";
     
+    shareView.urlString = @"16156";
+    
     shareView.contentString = @"我正在用二维码生成与扫描！";
     
     shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描"];
