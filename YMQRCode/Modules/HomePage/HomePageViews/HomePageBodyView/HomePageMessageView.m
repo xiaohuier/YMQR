@@ -104,7 +104,7 @@
     
     [_fillLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(1);
-        make.left.mas_equalTo(2);
+        make.left.mas_equalTo(6);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(25);
     }];
