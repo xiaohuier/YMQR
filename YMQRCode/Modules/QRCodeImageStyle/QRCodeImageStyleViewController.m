@@ -37,7 +37,8 @@
                         @(QRImageTypeDish),
                         @(QRImageTypeBread),
                         @(QRImageTypeLeaf),
-                        @(QRImageTypeBuild),@(QRImageTypeDefult)]mutableCopy];
+                        @(QRImageTypeBuild),
+                        @(QRImageTypeDefult)]mutableCopy];
     }
     return _typeArray;
 }
@@ -94,13 +95,13 @@
     
     [_qrCodeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.view.mas_left).offset(65);
+        make.left.mas_equalTo(65);
         
-        make.right.equalTo(self.view.mas_right).offset(-65);
+        make.right.mas_equalTo(-65);
         
-        make.size.height.equalTo(_qrCodeImgView.mas_width);
+        make.height.mas_equalTo(_qrCodeImgView.mas_width);
         
-        make.top.equalTo(self.view.mas_top).offset(50);
+        make.top.mas_equalTo(50);
         
     }];
     
@@ -118,10 +119,11 @@
         make.size.mas_equalTo(CGSizeMake(50, 50));
         
         make.center.equalTo(_qrCodeImgView);
+        
     }];
     
     
-    ColorsBtnView * colorsBtnView = [[ColorsBtnView alloc]init];
+    ColorsBtnView *colorsBtnView = [[ColorsBtnView alloc]init];
     colorsBtnView.delegate = self;
     
     [self.view addSubview:colorsBtnView];
@@ -217,6 +219,11 @@
 #pragma mark - ColorsBtnViewDelegate
 -(void)colorsButtonOnClick:(UIColor *)clickColor
 {
+    if (self.smallImageView.isHidden == YES)
+    {
+        self.smallImageView.hidden = NO;
+    }
+    
     if(clickColor)
     {
         UIImage *originalQRCodeImage = [YMQRCodeAppService shareInstance].originalQRCodeImage;
@@ -227,6 +234,12 @@
 
 -(void)changeType:(id)sender
 {
+    
+    if (self.smallImageView.isHidden == NO)
+    {
+        self.smallImageView.hidden = YES;
+    }
+    
     self.type = [self.typeArray.firstObject intValue];
     [self.typeArray removeObjectAtIndex:0];
     UIImage *backgroundImage = nil;
@@ -260,7 +273,13 @@
             color = [UIColor colorWithRed:45/255.0 green:58/255.0 blue:85/255.0 alpha:1.0];
             break;
         default:
-            _qrCodeImgView.image = self.qrCodeImage;
+            
+            if (self.smallImageView.isHidden == YES)
+            {
+                self.smallImageView.hidden = NO;
+            }
+            
+            self.qrCodeImage = [YMQRCodeAppService shareInstance].originalQRCodeImage;
             return;
             break;
     }
@@ -268,6 +287,8 @@
     UIImage *originalQRCodeImage = [YMQRCodeAppService shareInstance].originalQRCodeImage;
     
     UIImage *image = [UIImage imageColorToTransparent:originalQRCodeImage withColor:color];
+    
+    rect = CGRectMake(rect.origin.x + 5, rect.origin.y + 5, rect.size.width -10, rect.size.height -10);
     
     self.qrCodeImage =  [backgroundImage addImage:image withRect:rect];
     

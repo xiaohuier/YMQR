@@ -26,10 +26,6 @@
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = NO;
     
-    BACK_COLOR_WHITE
-    
-    BACK_TITLE
-    
     self.title = @"二维码生成";
     
     [self initSubview];
@@ -131,9 +127,9 @@
         
         make.size.mas_equalTo(CGSizeMake(230, 45));
         
-        make.centerX.equalTo(self.qrCodeImageView.mas_centerX);
+        make.centerX.mas_equalTo(self.qrCodeImageView.mas_centerX);
         
-        make.top.equalTo(self.qrCodeImageView.mas_bottom).offset(18);
+        make.top.mas_equalTo(self.qrCodeImageView.mas_bottom).offset(18);
         
     }];
     
@@ -150,7 +146,6 @@
     [saveButton addTarget:self action:@selector(saveImageOnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         
         make.centerX.equalTo(self.qrCodeImageView.mas_centerX);
         
@@ -209,7 +204,6 @@
                 
             }else{
 
-                
                 NSString *err = [NSString stringWithFormat:@"%@",error];
                 
                 if([err rangeOfString:@"Code=2047"].location !=NSNotFound){
@@ -237,37 +231,25 @@
 -(void)shareImageOnClick:(id)sender
 {
     
-    ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+//    ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+//    
+//    shareView.shareImage = [UIImage imageNamed:@"Close_fx"];
+//    
+//    shareView.titleString = @"二维码的邀请";
+//    
+//    shareView.urlString = @"16156";
+//    
+//    shareView.contentString = @"我正在用二维码生成与扫描！";
+//    
+//    shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描"];
+//    
+//    [shareView shareViewController:self];
     
-    shareView.shareImage = [UIImage imageNamed:@"Close_fx"];
+    NSArray *activityItems =@[self.qrCodeImage];
     
-    shareView.titleString = @"二维码的邀请";
-    
-    shareView.urlString = @"16156";
-    
-    shareView.contentString = @"我正在用二维码生成与扫描！";
-    
-    shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描"];
-    
-    [shareView shareViewController:self];
-    
-    
-    
-}
+    UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:vc animated:TRUE completion:nil];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
