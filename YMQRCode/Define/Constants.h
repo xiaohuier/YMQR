@@ -55,10 +55,6 @@
 
 #define BUNDLE_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-#define BACK_TITLE UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];\
-self.navigationItem.backBarButtonItem = barItem;
-
-#define BACK_COLOR_WHITE self.navigationController.navigationBar.tintColor =[UIColor colorWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1];
 
 #define WORDSCOLOR [UIColor colorWithRed:153.0/255 green:153.0/255 blue:153.0/255 alpha:1];
 

@@ -17,9 +17,5 @@ static BOOL isProduction = FALSE;
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic,strong) MMDrawerController *drawer;
-
-@property (assign ,nonatomic)BOOL isBool;
-
 @end
 

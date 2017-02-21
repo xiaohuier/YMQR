@@ -50,8 +50,15 @@
         
         self.navigationController.navigationBar.translucent = NO;
         [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-        [self appendBackBarButtonItem];
     }
+    
+    if ([self appendBackBarButtonItem]) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[self appendBackBarButtonItem]];
+    }else{
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];\
+        self.navigationItem.backBarButtonItem = barItem;
+    }
+
     
 }
 
@@ -76,10 +83,10 @@
     return YES;
 }
 
--(void)appendBackBarButtonItem
+
+-(UIButton *)appendBackBarButtonItem
 {
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];\
-    self.navigationItem.backBarButtonItem = barItem;
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {
