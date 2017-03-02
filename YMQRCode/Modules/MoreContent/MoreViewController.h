@@ -10,6 +10,4 @@
 
 @interface MoreViewController : BaseViewController
 
-//@property (assign,nonatomic)void(^moreBlock)();
-
 @end

@@ -7,69 +7,184 @@
 //
 
 #import "MoreViewController.h"
-#import "MoreTableView.h"
+#import "ShareView.h"
+#import "MoreViewTableViewCell.h"
 
 
-@interface MoreViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,MoreTableViewDelegate>
+@interface MoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (strong ,nonatomic)MoreTableView *currentTableView;
+@property (strong ,nonatomic)UITableView *currentTableView;
 
 @end
 
 @implementation MoreViewController
 
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
  
+    [self initNavigation];
+    
     [self initSubViews];
+    
+}
+#pragma mark - Navigation
+-(void)initNavigation{
+    
+    self.title = @"关于";
+    
+    UIButton *backBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setImage:[UIImage imageNamed:@"gray-back"] forState:UIControlStateNormal];
+    [backBtn  sizeToFit];
+    [backBtn addTarget:self action:@selector(didTapBackButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
     
 }
 
 -(void)initSubViews{
+ 
+    _currentTableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
     
-    self.title = @"关于";
+    _currentTableView.alwaysBounceVertical = NO;
     
-    _currentTableView = [[MoreTableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+    _currentTableView.delegate = self;
     
-    _currentTableView.moreDelegate = self;
-    
-//    [self myHeaderImage];
+    _currentTableView.dataSource = self;
     
     [self.view addSubview:_currentTableView];
 }
 
--(void)myHeaderImage{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MoreViewTableViewCell *cell = [[MoreViewTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
     
-    UIImagePickerController *imagrPicker = [[UIImagePickerController alloc]init];
-    imagrPicker.delegate = self;
-    imagrPicker.allowsEditing = YES;
-    //将来源设置为相册
-    imagrPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    switch (indexPath.row) {
+        case 1:{
+            
+            cell.moreLabel.text = @"推荐给好友";
+
+            cell.moreImageView.image = [UIImage imageNamed:@"right-button"];
+            
+        }
+            break;
+        case 2:{
+            
+            cell.moreLabel.text = @"给我评论";
+            
+            cell.moreImageView.image = [UIImage imageNamed:@"right-button"];
+            
+        }
+            break;
+        case 3:{
+            
+            cell.moreLabel.text = [NSString stringWithFormat:@"当前版本V%@",BUNDLE_VERSION];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self presentViewController:imagrPicker animated:YES completion:nil];
+    // 1 松开手选中颜色消失
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];
+    
+    if (indexPath.row == 1) {
+        
+        ShareView* shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+        
+        shareView.isSelect = @"0";
+        
+        shareView.urlString = @"https://itunes.apple.com/cn/app/mi-jin-she/id1111162244?mt=8";
+        
+        shareView.titleString = @"二维码的邀请";
+        
+        shareView.shareImage = [UIImage imageNamed:@"more_hy"];
+        
+        shareView.contentString = @"我正在用二维码生成与扫描！";
+        
+        shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描%@",shareView.urlString];
+        
+        [shareView shareViewController:self];
+        
+    }else if (indexPath.row == 2){
+        
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1111162244&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+        
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 50;
     
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    //获取选中的照片
-    UIImage *image = info[UIImagePickerControllerEditedImage];
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    if (!image) {
-        image = info[UIImagePickerControllerOriginalImage];
+    return 200;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIImageView *headImageView = [[UIImageView  alloc]init];
+
+    headImageView.image = [UIImage imageNamed:@"topImage"];
+
+    return headImageView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 0.01;
+}
+
+//控制分割线
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+        
     }
     
-    _currentTableView.headImageView.image = image;
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        
+        [cell setPreservesSuperviewLayoutMargins:NO];
+        
+    }
     
-    [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(image) forKey:@"headerImage"];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+        
+    }
     
 }
 
-
+-(void)didTapBackButton:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {

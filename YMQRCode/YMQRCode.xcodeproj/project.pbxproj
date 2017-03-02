@@ -34,6 +34,7 @@
 		36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */; };
 		3914ECDD1E65127700C8098B /* YMFMDatebase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECDC1E65127700C8098B /* YMFMDatebase.m */; };
 		3914ECE01E6525D200C8098B /* QrcodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECDF1E6525D200C8098B /* QrcodeModel.m */; };
+		3914ECE51E67C2B500C8098B /* MoreViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECE41E67C2B500C8098B /* MoreViewTableViewCell.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
 		3919B9BF1E49B5BB00909D91 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */; };
 		3919B9C11E49B5C500909D91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9C01E49B5C500909D91 /* CoreGraphics.framework */; };
@@ -64,7 +65,6 @@
 		395A9EE71E4AF7290011FA82 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EE61E4AF7290011FA82 /* Security.framework */; };
 		395A9EE91E4AF7330011FA82 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EE81E4AF7330011FA82 /* UserNotifications.framework */; };
 		395A9EEB1E4AF73E0011FA82 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EEA1E4AF73E0011FA82 /* libresolv.tbd */; };
-		397274D71E5D333000D9A9C3 /* MoreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 397274D61E5D333000D9A9C3 /* MoreTableView.m */; };
 		397274DA1E5D35E300D9A9C3 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397274D91E5D35E300D9A9C3 /* MoreViewController.m */; };
 		3974F4431E4AD74200F80BED /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */; };
 		3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */; };
@@ -127,6 +127,8 @@
 		3914ECDC1E65127700C8098B /* YMFMDatebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMFMDatebase.m; sourceTree = "<group>"; };
 		3914ECDE1E6525D200C8098B /* QrcodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QrcodeModel.h; path = Service/QrcodeModel.h; sourceTree = SOURCE_ROOT; };
 		3914ECDF1E6525D200C8098B /* QrcodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QrcodeModel.m; path = Service/QrcodeModel.m; sourceTree = SOURCE_ROOT; };
+		3914ECE31E67C2B500C8098B /* MoreViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewTableViewCell.h; sourceTree = "<group>"; };
+		3914ECE41E67C2B500C8098B /* MoreViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewTableViewCell.m; sourceTree = "<group>"; };
 		3919B9BC1E49B5AE00909D91 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3919B9C01E49B5C500909D91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,8 +165,6 @@
 		395A9EE61E4AF7290011FA82 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		395A9EE81E4AF7330011FA82 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		395A9EEA1E4AF73E0011FA82 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		397274D51E5D333000D9A9C3 /* MoreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableView.h; sourceTree = "<group>"; };
-		397274D61E5D333000D9A9C3 /* MoreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableView.m; sourceTree = "<group>"; };
 		397274D81E5D35E300D9A9C3 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		397274D91E5D35E300D9A9C3 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.1.a"; sourceTree = "<group>"; };
@@ -486,15 +486,6 @@
 			name = HistoryView;
 			sourceTree = "<group>";
 		};
-		3914ECE21E66C1AE00C8098B /* MoreView */ = {
-			isa = PBXGroup;
-			children = (
-				397274D51E5D333000D9A9C3 /* MoreTableView.h */,
-				397274D61E5D333000D9A9C3 /* MoreTableView.m */,
-			);
-			name = MoreView;
-			sourceTree = "<group>";
-		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,9 +556,10 @@
 		397274D41E5D327A00D9A9C3 /* MoreContent */ = {
 			isa = PBXGroup;
 			children = (
-				3914ECE21E66C1AE00C8098B /* MoreView */,
 				397274D81E5D35E300D9A9C3 /* MoreViewController.h */,
 				397274D91E5D35E300D9A9C3 /* MoreViewController.m */,
+				3914ECE31E67C2B500C8098B /* MoreViewTableViewCell.h */,
+				3914ECE41E67C2B500C8098B /* MoreViewTableViewCell.m */,
 			);
 			path = MoreContent;
 			sourceTree = "<group>";
@@ -792,10 +784,10 @@
 				36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */,
 				3914ECDD1E65127700C8098B /* YMFMDatebase.m in Sources */,
 				360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */,
-				397274D71E5D333000D9A9C3 /* MoreTableView.m in Sources */,
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
 				36C85FD01E388BE700AA76C3 /* main.m in Sources */,
 				3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */,
+				3914ECE51E67C2B500C8098B /* MoreViewTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
