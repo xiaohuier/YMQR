@@ -7,13 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
-//#import "ShareView.h"
-
 #import "BaseNavigationController.h"
 #import "ShareView.h"
 #import "GuideViewController.h"
-#import "LeftViewController.h"
 #import "HomePageViewController.h"
 #import <IQKeyboardManager.h>
 #import "JPUSHService.h"
@@ -43,18 +39,11 @@
         GuideViewController *firstVc = [[GuideViewController alloc]init];
         [self.window setRootViewController:firstVc];
     }else{
-        HomePageViewController *HomePageVC = [[HomePageViewController alloc]init];
+        HomePageViewController *homePageVC = [[HomePageViewController alloc]init];
+
+        BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:homePageVC];
         
-        LeftViewController *leftVC = [[LeftViewController alloc]init];
-
-        BaseNavigationController *Nav = [[BaseNavigationController alloc]initWithRootViewController:HomePageVC];
-
-        MMDrawerController *drawer = [[MMDrawerController alloc] initWithCenterViewController:Nav leftDrawerViewController:leftVC];
-
-        drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-        drawer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
-        
-        [self.window setRootViewController:drawer];
+        [self.window setRootViewController:nav];
     }
     
        [self.window makeKeyAndVisible];

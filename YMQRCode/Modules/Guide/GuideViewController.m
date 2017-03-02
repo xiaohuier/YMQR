@@ -8,13 +8,9 @@
 
 #import "GuideViewController.h"
 #import "GuideScrollView.h"
-
 #import "AppDelegate.h"
-
 #import "BaseNavigationController.h"
-#import "LeftViewController.h"
 #import "HomePageViewController.h"
-#import <MMDrawerController.h>
 
 @interface GuideViewController ()
 
@@ -43,18 +39,11 @@
 
 -(void)startApp:(id)sender
 {
-    HomePageViewController *HomePageVC = [[HomePageViewController alloc]init];
+    HomePageViewController *homePageVC = [[HomePageViewController alloc]init];
     
-    LeftViewController *leftVC = [[LeftViewController alloc]init];
+    BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:homePageVC];
     
-    BaseNavigationController *Nav = [[BaseNavigationController alloc]initWithRootViewController:HomePageVC];
-    
-    MMDrawerController *drawer = [[MMDrawerController alloc] initWithCenterViewController:Nav leftDrawerViewController:leftVC];
-    
-    drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    drawer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
-    
-    [UIApplication sharedApplication].keyWindow.rootViewController = drawer;
+    [UIApplication sharedApplication].keyWindow.rootViewController = nav;
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"noFirstLaunch"];
     

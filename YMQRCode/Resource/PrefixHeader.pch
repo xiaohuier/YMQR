@@ -16,6 +16,10 @@
 
 #import "Enums.h"
 
+#import "YMFMDatebase.h"
+
+#import "FMResultSet.h"
+
 #import "YMQRCodeAppService.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.

@@ -27,8 +27,7 @@
 
 -(void)initSubView
 {
-    _colorArray = @[COLOR0,COLOR1,COLOR2,COLOR3,COLOR4,COLOR5,COLOR6,COLOR7,COLOR8,COLOR9,COLOR10,COLOR11];
-    
+    _colorArray = @[RGB(251, 20, 37),RGB(252, 147, 37),RGB(41, 145, 255),RGB(159, 36, 233),RGB(48, 218, 169),RGB(50, 197, 66),RGB(255, 255, 37),RGB(252, 0, 138),RGB(144, 92, 17),RGB(252, 109, 113),RGB(78, 249, 253),RGB(0, 0, 0)];
     for (int i = 0; i<12; i++) {
         UIButton *btn = [[UIButton alloc]init];
         btn.backgroundColor = _colorArray[i];

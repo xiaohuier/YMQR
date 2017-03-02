@@ -31,12 +31,12 @@
     [self initSubview];
     
     [self creatQRCodeImage];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     
     self.qrCodeImageView.image = [YMQRCodeAppService shareInstance].QRCodeImage;
     
@@ -81,7 +81,18 @@
         return;
     }
     
+    if (self.isPreservation) {
+        
+        YMFMDatebase *database = [YMFMDatebase sharedYMFMDatabase];
+        
+        [database createTable:@"qrcodeTable" byModel:@{@"content":@"varchar(500)", @"time":@"datetime"}];
+        
+        [database insertDataToTable:@"qrcodeTable" byModel:@{@"content":self.textString, @"time":[self getCurrentTime]}];
+        
+    }
+    
     self.qrCodeImageView = [[UIImageView alloc]init];
+    
     [self.view addSubview:self.qrCodeImageView];
     
     [self.qrCodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,8 +119,6 @@
         
         make.center.equalTo(self.qrCodeImageView);
     }];
-    
-    
     
     UIButton *styleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -181,9 +190,11 @@
 -(void)styleOnClick:(id)sender
 {
     if (self.qrCodeImage) {
+        
         QRCodeImageStyleViewController *styleView = [[QRCodeImageStyleViewController alloc]init];
         
         [self.navigationController pushViewController:styleView animated:NO];
+        
     }
     
 }
@@ -215,8 +226,7 @@
                     alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
                     
                 }
-
-
+                
             }
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
             
@@ -230,7 +240,6 @@
 
 -(void)shareImageOnClick:(id)sender
 {
-    
 //    ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
 //    
 //    shareView.shareImage = [UIImage imageNamed:@"Close_fx"];
@@ -250,6 +259,21 @@
     UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
     [self presentViewController:vc animated:TRUE completion:nil];
 
+}
+
+-(NSString *)getCurrentTime{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    
+    [formatter setTimeZone:timeZone];
+    
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    
+    return dateTime;
 }
 
 @end

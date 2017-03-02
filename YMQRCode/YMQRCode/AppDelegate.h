@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MMDrawerController.h>
 
 static NSString *appKey = @"304534c0e95652c37f8552cf";
 static NSString *channel = @"Publish channel";
