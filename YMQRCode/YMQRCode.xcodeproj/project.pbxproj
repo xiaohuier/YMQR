@@ -20,7 +20,6 @@
 		36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FF51E388C5800AA76C3 /* GuideViewController.m */; };
 		36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FF81E388C5800AA76C3 /* HomePageViewController.m */; };
 		36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FFB1E388C5800AA76C3 /* HomePageHeaderView.m */; };
-		36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C860001E388C5800AA76C3 /* LeftViewController.m */; };
 		36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C8605D1E388DDD00AA76C3 /* AppDelegate.m */; };
 		36C860601E388E2C00AA76C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8605F1E388E2C00AA76C3 /* Assets.xcassets */; };
 		36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */; };
@@ -33,6 +32,8 @@
 		36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A61E5166A400FEA756 /* HomePageVCardView.m */; };
 		36FB75AA1E5166D200FEA756 /* HomePageTelPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */; };
 		36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */; };
+		3914ECDD1E65127700C8098B /* YMFMDatebase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECDC1E65127700C8098B /* YMFMDatebase.m */; };
+		3914ECE01E6525D200C8098B /* QrcodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECDF1E6525D200C8098B /* QrcodeModel.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
 		3919B9BF1E49B5BB00909D91 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */; };
 		3919B9C11E49B5C500909D91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9C01E49B5C500909D91 /* CoreGraphics.framework */; };
@@ -63,7 +64,11 @@
 		395A9EE71E4AF7290011FA82 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EE61E4AF7290011FA82 /* Security.framework */; };
 		395A9EE91E4AF7330011FA82 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EE81E4AF7330011FA82 /* UserNotifications.framework */; };
 		395A9EEB1E4AF73E0011FA82 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EEA1E4AF73E0011FA82 /* libresolv.tbd */; };
+		397274D71E5D333000D9A9C3 /* MoreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 397274D61E5D333000D9A9C3 /* MoreTableView.m */; };
+		397274DA1E5D35E300D9A9C3 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397274D91E5D35E300D9A9C3 /* MoreViewController.m */; };
 		3974F4431E4AD74200F80BED /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */; };
+		3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */; };
+		3979E8991E63B3A0004ED5DA /* HistoryRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,8 +99,6 @@
 		36C85FF81E388C5800AA76C3 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		36C85FFA1E388C5800AA76C3 /* HomePageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageHeaderView.h; sourceTree = "<group>"; };
 		36C85FFB1E388C5800AA76C3 /* HomePageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageHeaderView.m; sourceTree = "<group>"; };
-		36C85FFF1E388C5800AA76C3 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		36C860001E388C5800AA76C3 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		36C860031E388C5800AA76C3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		36C8605C1E388DDD00AA76C3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		36C8605D1E388DDD00AA76C3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -120,6 +123,10 @@
 		36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTelPhoneView.m; sourceTree = "<group>"; };
 		36FB75AB1E5166F100FEA756 /* HomePageMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageMessageView.h; sourceTree = "<group>"; };
 		36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageMessageView.m; sourceTree = "<group>"; };
+		3914ECDB1E65127700C8098B /* YMFMDatebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMFMDatebase.h; sourceTree = "<group>"; };
+		3914ECDC1E65127700C8098B /* YMFMDatebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMFMDatebase.m; sourceTree = "<group>"; };
+		3914ECDE1E6525D200C8098B /* QrcodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QrcodeModel.h; path = Service/QrcodeModel.h; sourceTree = SOURCE_ROOT; };
+		3914ECDF1E6525D200C8098B /* QrcodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QrcodeModel.m; path = Service/QrcodeModel.m; sourceTree = SOURCE_ROOT; };
 		3919B9BC1E49B5AE00909D91 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3919B9C01E49B5C500909D91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,9 +163,17 @@
 		395A9EE61E4AF7290011FA82 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		395A9EE81E4AF7330011FA82 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		395A9EEA1E4AF73E0011FA82 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		397274D51E5D333000D9A9C3 /* MoreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableView.h; sourceTree = "<group>"; };
+		397274D61E5D333000D9A9C3 /* MoreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableView.m; sourceTree = "<group>"; };
+		397274D81E5D35E300D9A9C3 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		397274D91E5D35E300D9A9C3 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.1.a"; sourceTree = "<group>"; };
 		3974F4421E4AD74200F80BED /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		3974F4441E4AD74E00F80BED /* YMQRCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YMQRCode.entitlements; sourceTree = "<group>"; };
+		3979E8941E63B37F004ED5DA /* HistoryRecordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecordTableView.h; sourceTree = "<group>"; };
+		3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecordTableView.m; sourceTree = "<group>"; };
+		3979E8971E63B3A0004ED5DA /* HistoryRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecordViewController.h; sourceTree = "<group>"; };
+		3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecordViewController.m; sourceTree = "<group>"; };
 		478A4EB0A02E4D03A93F0211 /* Pods-YMQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.release.xcconfig"; sourceTree = "<group>"; };
 		6DBFA0E601D70516FE7FC9EC /* libPods-YMQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YMQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA03E0E5273666E1C999009 /* Pods-YMQRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.debug.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +295,8 @@
 		36C85FE71E388C5800AA76C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3914ECDE1E6525D200C8098B /* QrcodeModel.h */,
+				3914ECDF1E6525D200C8098B /* QrcodeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,11 +304,12 @@
 		36C85FE81E388C5800AA76C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3979E8931E63B34A004ED5DA /* HistoryRecord */,
+				397274D41E5D327A00D9A9C3 /* MoreContent */,
 				36FB75301E4AFB4E00FEA756 /* CutImage */,
 				360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */,
 				3671F5C21E496F1400A68381 /* QRCode */,
 				3919B9B21E49B2EC00909D91 /* Scanning */,
-				36C85FFE1E388C5800AA76C3 /* Left */,
 				36C85FF61E388C5800AA76C3 /* HomePage */,
 				36C85FF01E388C5800AA76C3 /* Guide */,
 				36C85FE91E388C5800AA76C3 /* General */,
@@ -365,15 +383,6 @@
 			path = HomePageViews;
 			sourceTree = "<group>";
 		};
-		36C85FFE1E388C5800AA76C3 /* Left */ = {
-			isa = PBXGroup;
-			children = (
-				36C85FFF1E388C5800AA76C3 /* LeftViewController.h */,
-				36C860001E388C5800AA76C3 /* LeftViewController.m */,
-			);
-			path = Left;
-			sourceTree = "<group>";
-		};
 		36C860011E388C5800AA76C3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +395,8 @@
 		36C860051E388C5800AA76C3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3914ECDB1E65127700C8098B /* YMFMDatebase.h */,
+				3914ECDC1E65127700C8098B /* YMFMDatebase.m */,
 				36FB758A1E4CAE6C00FEA756 /* YMQRCodeAppService.h */,
 				36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */,
 			);
@@ -466,6 +477,24 @@
 			path = HomePageBodyView;
 			sourceTree = "<group>";
 		};
+		3914ECE11E66C16B00C8098B /* HistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				3979E8941E63B37F004ED5DA /* HistoryRecordTableView.h */,
+				3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */,
+			);
+			name = HistoryView;
+			sourceTree = "<group>";
+		};
+		3914ECE21E66C1AE00C8098B /* MoreView */ = {
+			isa = PBXGroup;
+			children = (
+				397274D51E5D333000D9A9C3 /* MoreTableView.h */,
+				397274D61E5D333000D9A9C3 /* MoreTableView.m */,
+			);
+			name = MoreView;
+			sourceTree = "<group>";
+		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +562,16 @@
 			path = WeChat;
 			sourceTree = "<group>";
 		};
+		397274D41E5D327A00D9A9C3 /* MoreContent */ = {
+			isa = PBXGroup;
+			children = (
+				3914ECE21E66C1AE00C8098B /* MoreView */,
+				397274D81E5D35E300D9A9C3 /* MoreViewController.h */,
+				397274D91E5D35E300D9A9C3 /* MoreViewController.m */,
+			);
+			path = MoreContent;
+			sourceTree = "<group>";
+		};
 		3974F4401E4AD74200F80BED /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +580,16 @@
 				3974F4421E4AD74200F80BED /* JPUSHService.h */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		3979E8931E63B34A004ED5DA /* HistoryRecord */ = {
+			isa = PBXGroup;
+			children = (
+				3914ECE11E66C16B00C8098B /* HistoryView */,
+				3979E8971E63B3A0004ED5DA /* HistoryRecordViewController.h */,
+				3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */,
+			);
+			path = HistoryRecord;
 			sourceTree = "<group>";
 		};
 		3ACA8989EFA0A25A66FF8921 /* Pods */ = {
@@ -614,6 +663,9 @@
 						DevelopmentTeam = 454TZ6A3QZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -721,6 +773,7 @@
 				3690445E1E53087F00D6E597 /* QRScanView.m in Sources */,
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
+				397274DA1E5D35E300D9A9C3 /* MoreViewController.m in Sources */,
 				3919BA471E49E9E100909D91 /* ShareView.m in Sources */,
 				36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */,
 				36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */,
@@ -731,14 +784,18 @@
 				36FB75A41E51669000FEA756 /* HomePageTextView.m in Sources */,
 				36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
-				36C860271E388C5800AA76C3 /* LeftViewController.m in Sources */,
 				36FB75AA1E5166D200FEA756 /* HomePageTelPhoneView.m in Sources */,
 				369044611E531F9800D6E597 /* QRScanViewController.m in Sources */,
+				3914ECE01E6525D200C8098B /* QrcodeModel.m in Sources */,
+				3979E8991E63B3A0004ED5DA /* HistoryRecordViewController.m in Sources */,
 				36FB75901E4D898200FEA756 /* CutImageView.m in Sources */,
 				36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */,
+				3914ECDD1E65127700C8098B /* YMFMDatebase.m in Sources */,
 				360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */,
+				397274D71E5D333000D9A9C3 /* MoreTableView.m in Sources */,
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
 				36C85FD01E388BE700AA76C3 /* main.m in Sources */,
+				3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +917,6 @@
 					"$(inherited)",
 					"-ObjC",
 					"-l\"IQKeyboardManager\"",
-					"-l\"MMDrawerController\"",
 					"-l\"Masonry\"",
 					"-framework",
 					"\"CoreGraphics\"",
@@ -904,7 +960,6 @@
 					"$(inherited)",
 					"-ObjC",
 					"-l\"IQKeyboardManager\"",
-					"-l\"MMDrawerController\"",
 					"-l\"Masonry\"",
 					"-framework",
 					"\"CoreGraphics\"",

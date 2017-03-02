@@ -59,7 +59,6 @@
         self.navigationItem.backBarButtonItem = barItem;
     }
 
-    
 }
 
 -(UIImage *)navigationBarBackgroundImage

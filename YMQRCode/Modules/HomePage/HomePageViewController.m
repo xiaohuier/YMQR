@@ -11,14 +11,10 @@
 #import "HomePageBodyView.h"
 #import "HomePageHeaderView.h"
 #import "AppDelegate.h"
-
 #import "QRScanViewController.h"
-
-
-#import "UIViewController+MMDrawerController.h"
-
 #import "QRCodeProduceViewController.h"
-
+#import "MoreViewController.h"
+#import "HistoryRecordViewController.h"
 
 @interface HomePageViewController ()<UITextViewDelegate,HomePageHeaderDelegate>
 /**头部5个按钮*/
@@ -30,12 +26,17 @@
 /**生成二维码*/
 @property (nonatomic,strong)UIButton *createQRCodeButton;
 
-
-
 @end
 
 @implementation HomePageViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self initSubViews];
+    
+}
 
 
 - (void)viewDidLoad {
@@ -43,7 +44,7 @@
     // Do any additional setup after loading the view.
     
     [self initNavigation];
-    [self initSubViews];
+    
 
 }
 
@@ -51,38 +52,39 @@
     
     [super viewDidAppear:animated];
     
-    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    self.mm_drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone;
-    
+  
 }
 
 -(void)initNavigation
 {
     self.title = @"二维码生成和扫描";
 
+    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithTitle:@"关于" style:UIBarButtonItemStylePlain target:self action:@selector(moreBarButton:)];
+    self.navigationItem.leftBarButtonItem = leftBarItem;
+    self.navigationItem.leftBarButtonItem.tintColor = RGB(41, 123, 231);
     
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    leftButton.frame = CGRectMake(0, 0, 29, 22);
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"历史" style:UIBarButtonItemStylePlain target:self action:@selector(historyBarButton:)];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
+    self.navigationItem.rightBarButtonItem.tintColor = RGB(41, 123, 231);
     
-    [leftButton addTarget:self action:@selector(sideSlipOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"navigationImg"] forState:UIControlStateNormal];
-    
-    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];;
-    
-    self.navigationItem.leftBarButtonItem=leftBarItem;
+
 }
 
 -(void)initSubViews
 {
+    if (self.headerView) {
+        [self.headerView removeFromSuperview];
+        [self.bodyView  removeFromSuperview];
+        [self.scanQRCodeButton removeFromSuperview];
+        [self.createQRCodeButton removeFromSuperview];
+    }
+    
     self.headerView = [[HomePageHeaderView alloc]init];
     self.headerView.delegate = self;
     [self.view addSubview:self.headerView];
@@ -158,16 +160,21 @@
     
 }
 
--(void)sideSlipOnClick:(id)sender
+-(void)moreBarButton:(id)sender
 {
-
-    if (self.mm_drawerController.openSide == MMDrawerSideNone) {
-        [self.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    }else{
-        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
-    }
+    MoreViewController *moreVC = [[MoreViewController alloc]init];
+    
+    [self.navigationController pushViewController:moreVC animated:YES];
 
 }
+
+-(void)historyBarButton:(id)sender
+{
+    HistoryRecordViewController *historyRecord = [[HistoryRecordViewController alloc]init];
+    
+    [self.navigationController pushViewController:historyRecord animated:YES];
+}
+
 
 -(void)scanOnClick:(id)sender
 {
@@ -181,9 +188,10 @@
 {
     
     QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
-    
+    qrcode.isPreservation = YES;
     qrcode.textString = self.bodyView.textString;
     [self.navigationController pushViewController:qrcode animated:NO];
+
 }
 
 -(void)homePageHeaderButtonChangeType: (HomePageBodyType)homePageBodyType

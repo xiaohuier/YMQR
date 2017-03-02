@@ -14,4 +14,6 @@
 
 @property (strong ,nonatomic)UIImageView *smallImageView;
 
+@property (assign ,nonatomic)BOOL isPreservation;
+
 @end

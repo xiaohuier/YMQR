@@ -105,6 +105,19 @@
         _textlabel.text = [NSString stringWithFormat:@"已输入字符: %lu个",(unsigned long)range.location];
         
     }
+    
+    if (range.location == 0) {
+        
+        [_fillLabel setHidden:NO];
+        
+    }
+    
+    if (text.length != 0) {
+        
+        [_fillLabel setHidden:YES];
+        
+    }
+    
     return YES;
 }
 
