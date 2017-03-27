@@ -23,7 +23,7 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.homePageBodyType = HomePageBodyHTTPType;
+        self.homePageBodyType = QRStringHTTPType;
         [self initSubView];
     }
     return self;
@@ -89,25 +89,8 @@
 
 -(void)buttonOnCilck:(UIButton *)button
 {
-    switch (button.tag) {
-        case 1000:
-            self.homePageBodyType = HomePageBodyHTTPType;
-            break;
-        case 1001:
-            self.homePageBodyType = HomePageBodyTextType;
-            break;
-        case 1002:
-            self.homePageBodyType = HomePageBodyVCardType;
-            break;
-        case 1003:
-            self.homePageBodyType = HomePageBodyTelPhoneType;
-            break;
-        case 1004:
-            self.homePageBodyType = HomePageBodyMessageType;
-            break;
-        default:
-            break;
-    }
+    self.homePageBodyType = button.tag - 1000;
+    
     if ([self.delegate respondsToSelector:@selector(homePageHeaderButtonChangeType:)]) {
         [self.delegate homePageHeaderButtonChangeType:self.homePageBodyType];
     }
@@ -181,4 +164,6 @@
     [_messageButton setTitleEdgeInsets:UIEdgeInsetsMake(imageSize.height + 24.0, -(imageSize.width), 0, 0)];
  
 }
+
+
 @end

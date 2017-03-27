@@ -160,6 +160,7 @@
     
     self.bottom = CGRectGetMaxY(textLayer.frame);
     textLayer.string = text;
+   
 }
 
 -(void)changeType:(QRScanViewType)type
@@ -173,4 +174,6 @@
     _tipString = tipString;
     [self initTips];
 }
+
+
 @end

@@ -10,11 +10,20 @@
 #import "QRScanView.h"
 
 #import <AVFoundation/AVFoundation.h>
+#import "QRScanService.h"
+
+#import "HistoryScanBookDao.h"
+#import "HistoryScanTextDao.h"
+#import "UIImage+QRCode.h"
+
 
 @interface QRScanViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
 @property(nonatomic,strong)QRScanView *scanView;
 @property(nonatomic,strong)AVCaptureSession *captureSession;
+@property(nonatomic,strong)AVCaptureMetadataOutput *captureOutput;
 @property (nonatomic,assign)QRScanViewType type;
+
 @end
 
 @implementation QRScanViewController
@@ -252,6 +261,7 @@
     if (!image) {
         image = info[UIImagePickerControllerOriginalImage];
     }
+    
     //初始化  将类型设置为二维码
     CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:nil];
     
@@ -264,6 +274,7 @@
             CIQRCodeFeature *feature = features[0];
             NSString *scannedResult = feature.messageString;
             NSLog(@"scannedResult = %@",scannedResult);
+            
         }else{
             
         }
@@ -277,14 +288,49 @@
         qrCode  = [(AVMetadataMachineReadableCodeObject *)metadata stringValue];
         break;
     }
+    if (!qrCode) {
+        return;
+    }
     
     if (self.type == QRScanViewBarCodeType) {
         NSLog(@"条形码ISBN = %@",qrCode);
+        [QRScanService fetchBookWithISBN:qrCode completionHandle:^(HistoryBookModel *bookmodel) {
+            
+            NSDictionary *dic = [bookmodel modelToDic];
+            [[HistoryScanBookDao shareInstance]insertModel:dic];
+            
+            [self aleart:bookmodel.title];
+        }];
         
-    }else if (self.type == QRScanViewQRCodeType){
+        
+    }else if (self.type == QRScanViewQRCodeType)
+    {
         NSLog(@"二维码内容为 = %@",qrCode);
+        
+      //  UIImage *image = [UIImage imageForView:self.view];
+     
+        
+        NSDictionary *dic = @{@"jsonString":qrCode,@"imagePath":[NSNull null]};
+        [[HistoryScanTextDao shareInstance]insertModel:dic];
+        
+        [self aleart:qrCode];
+        
     }
     
+    [self.scanView stopAnimation];
+    [self.captureSession stopRunning];
+    
+}
+
+-(void)aleart:(NSString *)message
+{
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"扫描成功" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertVc addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.scanView startAnimation];
+        [self.captureSession startRunning];
+
+    }]];
+    [self presentViewController:alertVc animated:YES completion:nil];
     
 }
 

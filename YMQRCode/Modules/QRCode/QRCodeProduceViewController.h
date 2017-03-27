@@ -12,8 +12,9 @@
 
 @property (strong ,nonatomic)NSString *textString;
 
+@property (nonatomic,assign )QRStringType type;
+
 @property (strong ,nonatomic)UIImageView *smallImageView;
 
-@property (assign ,nonatomic)BOOL isPreservation;
 
 @end

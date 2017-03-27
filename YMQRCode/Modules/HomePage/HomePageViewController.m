@@ -39,19 +39,20 @@
 }
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setu，p after loading the view.
     
     [self initNavigation];
     
 
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated
+{
     
     [super viewDidAppear:animated];
-    
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -95,7 +96,7 @@
         make.height.mas_equalTo(220);
     }];
     
-    self.bodyView = [HomePageBodyView bodyViewWithType:HomePageBodyHTTPType];
+    self.bodyView = [HomePageBodyView bodyViewWithType:QRStringHTTPType];
     [self.view addSubview:self.bodyView];
     
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -188,18 +189,20 @@
 {
     
     QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
-    qrcode.isPreservation = YES;
-    qrcode.textString = self.bodyView.textString;
+    
+    qrcode.textString = self.bodyView.textString;  
+    qrcode.type = self.bodyView.type;
+    
     [self.navigationController pushViewController:qrcode animated:NO];
 
 }
 
--(void)homePageHeaderButtonChangeType: (HomePageBodyType)homePageBodyType
+-(void)homePageHeaderButtonChangeType:(QRStringType)qrStringType
 {
     
     [self.bodyView removeFromSuperview];
     
-    self.bodyView = [HomePageBodyView bodyViewWithType:homePageBodyType];
+    self.bodyView = [HomePageBodyView bodyViewWithType:qrStringType];
     [self.view addSubview:self.bodyView];
     
 
@@ -210,6 +213,8 @@
         make.height.mas_equalTo(self.view.frame.size.height - 400);
     }];
 
+    
+    
 }
 
 

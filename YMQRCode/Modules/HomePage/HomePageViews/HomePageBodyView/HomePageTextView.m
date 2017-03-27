@@ -132,7 +132,13 @@
 
 -(NSString *)textString
 {
-    return _codeTextView.text;
+    
+    NSDictionary *dic = @{@"text":_codeTextView.text};
+    
+    NSString *textString = [dic yy_modelToJSONString];
+    
+    return  textString;
+    
 }
 
 @end

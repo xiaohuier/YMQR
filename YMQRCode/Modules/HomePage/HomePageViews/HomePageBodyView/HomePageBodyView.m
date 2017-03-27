@@ -16,29 +16,38 @@
 
 @interface HomePageBodyView ()
 @property (nonatomic,copy)NSString *textString;
+@property (nonatomic,assign)QRStringType type;
 @end
 
 @implementation HomePageBodyView
 
-+(instancetype)bodyViewWithType:(HomePageBodyType)type
++(instancetype)bodyViewWithType:(QRStringType)type
 {
+    HomePageBodyView *view;
     switch (type) {
-        case HomePageBodyHTTPType:
-            return [[HomePageHttpView alloc]init];
+        case QRStringHTTPType:
+            view = [[HomePageHttpView alloc]init];
+            view.type = type;
             break;
-        case HomePageBodyTextType:
-            return [[HomePageTextView alloc]init];
+        case QRStringTextType:
+           view = [[HomePageTextView alloc]init];
+            view.type = type;
             break;
-        case HomePageBodyVCardType:
-            return [[HomePageVCardView alloc]init];
+        case QRStringVCardType:
+            view = [[HomePageVCardView alloc]init];
+            view.type = type;
             break;
-        case HomePageBodyTelPhoneType:
-            return [[HomePageTelPhoneView alloc]init];
+        case QRStringTelPhoneType:
+            view = [[HomePageTelPhoneView alloc]init];
+            view.type = type;
             break;
-        case HomePageBodyMessageType:
-            return [[HomePageMessageView alloc]init];
+        case QRStringMessageType:
+            view = [[HomePageMessageView alloc]init];
+            view.type = type;
             break;
     }
+    return view;
+    
 }
 
 -(BOOL)isNULL

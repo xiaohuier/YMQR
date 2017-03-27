@@ -77,7 +77,7 @@
         
         make.right.mas_equalTo(_codeTextView.mas_right);
         
-//        make.bottom.mas_equalTo(self.mas_bottom);
+        //        make.bottom.mas_equalTo(self.mas_bottom);
         
     }];
     
@@ -123,6 +123,9 @@
 
 -(NSString *)textString
 {
-   return  [NSString stringWithFormat:@"tel:%@",_codeTextView.text];;
+    NSDictionary *dic = @{@"text":_codeTextView.text};
+    NSString *textString = [dic yy_modelToJSONString];
+    
+    return  textString;
 }
 @end

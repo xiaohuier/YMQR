@@ -8,11 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		1A2C28AA28742DA82AAA375A /* libPods-YMQRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBFA0E601D70516FE7FC9EC /* libPods-YMQRCode.a */; };
+		360841851E839E93008C65AC /* HistoryTextDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 360841841E839E93008C65AC /* HistoryTextDao.m */; };
+		360841881E839EFB008C65AC /* HistoryScanBookDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 360841871E839EFB008C65AC /* HistoryScanBookDao.m */; };
+		3608418B1E83B9D4008C65AC /* HistoryScanTextDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 3608418A1E83B9D4008C65AC /* HistoryScanTextDao.m */; };
 		360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 360B502F1E49B54200C2BD9F /* UIImage+QRCode.m */; };
 		360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */; };
+		3632155C1E7A676800921ECB /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3632155B1E7A676800921ECB /* HistoryTableViewCell.m */; };
+		363EE08C1E828FDC008D6935 /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 363EE08B1E828FDC008D6935 /* TextModel.m */; };
+		363EE0901E829082008D6935 /* VCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 363EE08F1E829082008D6935 /* VCardModel.m */; };
+		363EE0941E8290D5008D6935 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 363EE0931E8290D5008D6935 /* MessageModel.m */; };
+		365300C01E6FEDBD00E9CD25 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 365300BC1E6FEDBD00E9CD25 /* DataBase.m */; };
+		365300C11E6FEDBD00E9CD25 /* DataBaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 365300BF1E6FEDBD00E9CD25 /* DataBaseHelper.m */; };
 		3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */; };
 		3690445E1E53087F00D6E597 /* QRScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3690445D1E53087F00D6E597 /* QRScanView.m */; };
 		369044611E531F9800D6E597 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 369044601E531F9800D6E597 /* QRScanViewController.m */; };
+		36A2E56E1E6D350C00DE15AD /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A2E56D1E6D350C00DE15AD /* BaseModel.m */; };
+		36A2E5781E6E4CD300DE15AD /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A2E5771E6E4CD300DE15AD /* HttpModel.m */; };
+		36A2E5801E6E547900DE15AD /* HistoryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A2E57F1E6E547900DE15AD /* HistoryBookModel.m */; };
+		36A2E5841E6E565A00DE15AD /* QRScanService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A2E5831E6E565A00DE15AD /* QRScanService.m */; };
+		36A2E5A31E6FB04F00DE15AD /* SqlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A2E5A21E6FB04F00DE15AD /* SqlModel.m */; };
 		36C85FD01E388BE700AA76C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FCF1E388BE700AA76C3 /* main.m */; };
 		36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FEC1E388C5800AA76C3 /* BaseNavigationController.m */; };
 		36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FEF1E388C5800AA76C3 /* BaseViewController.m */; };
@@ -22,6 +36,9 @@
 		36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C85FFB1E388C5800AA76C3 /* HomePageHeaderView.m */; };
 		36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C8605D1E388DDD00AA76C3 /* AppDelegate.m */; };
 		36C860601E388E2C00AA76C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C8605F1E388E2C00AA76C3 /* Assets.xcassets */; };
+		36D3BED91E792BE700A04674 /* HistoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D3BED81E792BE700A04674 /* HistoryService.m */; };
+		36DEDF421E8256A100133040 /* HistoryBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36DEDF411E8256A100133040 /* HistoryBookTableViewCell.m */; };
+		36F5AABB1E724AE40006666C /* HistoryTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5AABA1E724AE40006666C /* HistoryTextModel.m */; };
 		36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */; };
 		36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75351E4AFB8B00FEA756 /* CutImageViewController.m */; };
 		36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */; };
@@ -32,8 +49,6 @@
 		36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A61E5166A400FEA756 /* HomePageVCardView.m */; };
 		36FB75AA1E5166D200FEA756 /* HomePageTelPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */; };
 		36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */; };
-		3914ECDD1E65127700C8098B /* YMFMDatebase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECDC1E65127700C8098B /* YMFMDatebase.m */; };
-		3914ECE01E6525D200C8098B /* QrcodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECDF1E6525D200C8098B /* QrcodeModel.m */; };
 		3914ECE51E67C2B500C8098B /* MoreViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3914ECE41E67C2B500C8098B /* MoreViewTableViewCell.m */; };
 		3919B9BD1E49B5AE00909D91 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BC1E49B5AE00909D91 /* Photos.framework */; };
 		3919B9BF1E49B5BB00909D91 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3919B9BE1E49B5BB00909D91 /* CoreTelephony.framework */; };
@@ -72,17 +87,45 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		360841831E839E93008C65AC /* HistoryTextDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTextDao.h; path = HistoryDao/HistoryTextDao.h; sourceTree = "<group>"; };
+		360841841E839E93008C65AC /* HistoryTextDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTextDao.m; path = HistoryDao/HistoryTextDao.m; sourceTree = "<group>"; };
+		360841861E839EFB008C65AC /* HistoryScanBookDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryScanBookDao.h; path = HistoryDao/HistoryScanBookDao.h; sourceTree = "<group>"; };
+		360841871E839EFB008C65AC /* HistoryScanBookDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryScanBookDao.m; path = HistoryDao/HistoryScanBookDao.m; sourceTree = "<group>"; };
+		360841891E83B9D4008C65AC /* HistoryScanTextDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryScanTextDao.h; path = HistoryDao/HistoryScanTextDao.h; sourceTree = "<group>"; };
+		3608418A1E83B9D4008C65AC /* HistoryScanTextDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryScanTextDao.m; path = HistoryDao/HistoryScanTextDao.m; sourceTree = "<group>"; };
 		360B502E1E49B54200C2BD9F /* UIImage+QRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+QRCode.h"; path = "Modules/QRCode/QRcodeImage/UIImage+QRCode.h"; sourceTree = SOURCE_ROOT; };
 		360B502F1E49B54200C2BD9F /* UIImage+QRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+QRCode.m"; path = "Modules/QRCode/QRcodeImage/UIImage+QRCode.m"; sourceTree = SOURCE_ROOT; };
 		360B50321E49BE2600C2BD9F /* QRCodeImageStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeImageStyleViewController.h; path = QRCodeImageStyle/QRCodeImageStyleViewController.h; sourceTree = "<group>"; };
 		360B50331E49BE2600C2BD9F /* QRCodeImageStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeImageStyleViewController.m; path = QRCodeImageStyle/QRCodeImageStyleViewController.m; sourceTree = "<group>"; };
 		360B50351E49DA1000C2BD9F /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
+		3632155A1E7A676800921ECB /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewCell.h; path = HistoryTableViewCell/HistoryTableViewCell.h; sourceTree = "<group>"; };
+		3632155B1E7A676800921ECB /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewCell.m; path = HistoryTableViewCell/HistoryTableViewCell.m; sourceTree = "<group>"; };
+		363EE08A1E828FDC008D6935 /* TextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextModel.h; path = TextModel/TextModel.h; sourceTree = "<group>"; };
+		363EE08B1E828FDC008D6935 /* TextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextModel.m; path = TextModel/TextModel.m; sourceTree = "<group>"; };
+		363EE08E1E829082008D6935 /* VCardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCardModel.h; path = VCardModel/VCardModel.h; sourceTree = "<group>"; };
+		363EE08F1E829082008D6935 /* VCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCardModel.m; path = VCardModel/VCardModel.m; sourceTree = "<group>"; };
+		363EE0921E8290D5008D6935 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = MessageModel/MessageModel.h; sourceTree = "<group>"; };
+		363EE0931E8290D5008D6935 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageModel.m; path = MessageModel/MessageModel.m; sourceTree = "<group>"; };
+		365300BB1E6FEDBD00E9CD25 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		365300BC1E6FEDBD00E9CD25 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		365300BE1E6FEDBD00E9CD25 /* DataBaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseHelper.h; sourceTree = "<group>"; };
+		365300BF1E6FEDBD00E9CD25 /* DataBaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseHelper.m; sourceTree = "<group>"; };
 		3671F5C31E496F7700A68381 /* QRCodeProduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeProduceViewController.h; path = QRCode/QRCodeProduceViewController.h; sourceTree = "<group>"; };
 		3671F5C41E496F7700A68381 /* QRCodeProduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeProduceViewController.m; path = QRCode/QRCodeProduceViewController.m; sourceTree = "<group>"; };
 		3690445C1E53087F00D6E597 /* QRScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRScanView.h; path = ScanView/QRScanView.h; sourceTree = "<group>"; };
 		3690445D1E53087F00D6E597 /* QRScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRScanView.m; path = ScanView/QRScanView.m; sourceTree = "<group>"; };
 		3690445F1E531F9800D6E597 /* QRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		369044601E531F9800D6E597 /* QRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
+		36A2E56C1E6D350C00DE15AD /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = BaseModel/BaseModel.h; sourceTree = "<group>"; };
+		36A2E56D1E6D350C00DE15AD /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseModel.m; path = BaseModel/BaseModel.m; sourceTree = "<group>"; };
+		36A2E5761E6E4CD300DE15AD /* HttpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpModel.h; path = HttpModel/HttpModel.h; sourceTree = "<group>"; };
+		36A2E5771E6E4CD300DE15AD /* HttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpModel.m; path = HttpModel/HttpModel.m; sourceTree = "<group>"; };
+		36A2E57E1E6E547900DE15AD /* HistoryBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryBookModel.h; path = BookModel/HistoryBookModel.h; sourceTree = "<group>"; };
+		36A2E57F1E6E547900DE15AD /* HistoryBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryBookModel.m; path = BookModel/HistoryBookModel.m; sourceTree = "<group>"; };
+		36A2E5821E6E565A00DE15AD /* QRScanService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRScanService.h; path = QRScanService/QRScanService.h; sourceTree = "<group>"; };
+		36A2E5831E6E565A00DE15AD /* QRScanService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRScanService.m; path = QRScanService/QRScanService.m; sourceTree = "<group>"; };
+		36A2E5A11E6FB04F00DE15AD /* SqlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqlModel.h; path = SqlModel/SqlModel.h; sourceTree = "<group>"; };
+		36A2E5A21E6FB04F00DE15AD /* SqlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SqlModel.m; path = SqlModel/SqlModel.m; sourceTree = "<group>"; };
 		36C85FCB1E388BE700AA76C3 /* YMQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C85FCF1E388BE700AA76C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36C85FDF1E388BE700AA76C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,6 +146,12 @@
 		36C8605C1E388DDD00AA76C3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		36C8605D1E388DDD00AA76C3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		36C8605F1E388E2C00AA76C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../YMQRCode/Assets.xcassets; sourceTree = "<group>"; };
+		36D3BED71E792BE700A04674 /* HistoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryService.h; path = HistoryService/HistoryService.h; sourceTree = "<group>"; };
+		36D3BED81E792BE700A04674 /* HistoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryService.m; path = HistoryService/HistoryService.m; sourceTree = "<group>"; };
+		36DEDF401E8256A100133040 /* HistoryBookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryBookTableViewCell.h; path = HistoryTableViewCell/HistoryBookTableViewCell.h; sourceTree = "<group>"; };
+		36DEDF411E8256A100133040 /* HistoryBookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryBookTableViewCell.m; path = HistoryTableViewCell/HistoryBookTableViewCell.m; sourceTree = "<group>"; };
+		36F5AAB91E724AE40006666C /* HistoryTextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTextModel.h; path = HistoryModel/HistoryTextModel.h; sourceTree = "<group>"; };
+		36F5AABA1E724AE40006666C /* HistoryTextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTextModel.m; path = HistoryModel/HistoryTextModel.m; sourceTree = "<group>"; };
 		36FB752D1E4AB19A00FEA756 /* ColorsBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorsBtnView.h; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.h; sourceTree = "<group>"; };
 		36FB752E1E4AB19A00FEA756 /* ColorsBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorsBtnView.m; path = QRCodeImageStyle/ColorsBtnView/ColorsBtnView.m; sourceTree = "<group>"; };
 		36FB75341E4AFB8B00FEA756 /* CutImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CutImageViewController.h; path = CutImage/CutImageViewController.h; sourceTree = "<group>"; };
@@ -123,10 +172,6 @@
 		36FB75A91E5166D200FEA756 /* HomePageTelPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTelPhoneView.m; sourceTree = "<group>"; };
 		36FB75AB1E5166F100FEA756 /* HomePageMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageMessageView.h; sourceTree = "<group>"; };
 		36FB75AC1E5166F100FEA756 /* HomePageMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageMessageView.m; sourceTree = "<group>"; };
-		3914ECDB1E65127700C8098B /* YMFMDatebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMFMDatebase.h; sourceTree = "<group>"; };
-		3914ECDC1E65127700C8098B /* YMFMDatebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMFMDatebase.m; sourceTree = "<group>"; };
-		3914ECDE1E6525D200C8098B /* QrcodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QrcodeModel.h; path = Service/QrcodeModel.h; sourceTree = SOURCE_ROOT; };
-		3914ECDF1E6525D200C8098B /* QrcodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QrcodeModel.m; path = Service/QrcodeModel.m; sourceTree = SOURCE_ROOT; };
 		3914ECE31E67C2B500C8098B /* MoreViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewTableViewCell.h; sourceTree = "<group>"; };
 		3914ECE41E67C2B500C8098B /* MoreViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewTableViewCell.m; sourceTree = "<group>"; };
 		3919B9BC1E49B5AE00909D91 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -220,6 +265,85 @@
 			name = QRCodeImageStyle;
 			sourceTree = "<group>";
 		};
+		363215591E7A611E00921ECB /* HistoryTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3632155A1E7A676800921ECB /* HistoryTableViewCell.h */,
+				3632155B1E7A676800921ECB /* HistoryTableViewCell.m */,
+				36DEDF401E8256A100133040 /* HistoryBookTableViewCell.h */,
+				36DEDF411E8256A100133040 /* HistoryBookTableViewCell.m */,
+			);
+			name = HistoryTableViewCell;
+			sourceTree = "<group>";
+		};
+		363EE0891E828FB0008D6935 /* TextModel */ = {
+			isa = PBXGroup;
+			children = (
+				363EE08A1E828FDC008D6935 /* TextModel.h */,
+				363EE08B1E828FDC008D6935 /* TextModel.m */,
+			);
+			name = TextModel;
+			sourceTree = "<group>";
+		};
+		363EE08D1E82906B008D6935 /* VCardModel */ = {
+			isa = PBXGroup;
+			children = (
+				363EE08E1E829082008D6935 /* VCardModel.h */,
+				363EE08F1E829082008D6935 /* VCardModel.m */,
+			);
+			name = VCardModel;
+			sourceTree = "<group>";
+		};
+		363EE0911E8290C1008D6935 /* MessageModel */ = {
+			isa = PBXGroup;
+			children = (
+				363EE0921E8290D5008D6935 /* MessageModel.h */,
+				363EE0931E8290D5008D6935 /* MessageModel.m */,
+			);
+			name = MessageModel;
+			sourceTree = "<group>";
+		};
+		365300B91E6FEDBD00E9CD25 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				365300C21E6FEDD600E9CD25 /* HistoryDao */,
+				365300BA1E6FEDBD00E9CD25 /* DataBase */,
+				365300BD1E6FEDBD00E9CD25 /* DataBaseHelper */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		365300BA1E6FEDBD00E9CD25 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				365300BB1E6FEDBD00E9CD25 /* DataBase.h */,
+				365300BC1E6FEDBD00E9CD25 /* DataBase.m */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		365300BD1E6FEDBD00E9CD25 /* DataBaseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				365300BE1E6FEDBD00E9CD25 /* DataBaseHelper.h */,
+				365300BF1E6FEDBD00E9CD25 /* DataBaseHelper.m */,
+			);
+			path = DataBaseHelper;
+			sourceTree = "<group>";
+		};
+		365300C21E6FEDD600E9CD25 /* HistoryDao */ = {
+			isa = PBXGroup;
+			children = (
+				360841831E839E93008C65AC /* HistoryTextDao.h */,
+				360841841E839E93008C65AC /* HistoryTextDao.m */,
+				360841861E839EFB008C65AC /* HistoryScanBookDao.h */,
+				360841871E839EFB008C65AC /* HistoryScanBookDao.m */,
+				360841891E83B9D4008C65AC /* HistoryScanTextDao.h */,
+				3608418A1E83B9D4008C65AC /* HistoryScanTextDao.m */,
+			);
+			name = HistoryDao;
+			sourceTree = "<group>";
+		};
 		3671F5C21E496F1400A68381 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,9 +362,55 @@
 			name = ScanView;
 			sourceTree = "<group>";
 		};
+		36A2E56B1E6D34D500DE15AD /* BaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				36A2E56C1E6D350C00DE15AD /* BaseModel.h */,
+				36A2E56D1E6D350C00DE15AD /* BaseModel.m */,
+			);
+			name = BaseModel;
+			sourceTree = "<group>";
+		};
+		36A2E5751E6D58F500DE15AD /* HttpModel */ = {
+			isa = PBXGroup;
+			children = (
+				36A2E5761E6E4CD300DE15AD /* HttpModel.h */,
+				36A2E5771E6E4CD300DE15AD /* HttpModel.m */,
+			);
+			name = HttpModel;
+			sourceTree = "<group>";
+		};
+		36A2E57D1E6E545A00DE15AD /* HistoryBookModel */ = {
+			isa = PBXGroup;
+			children = (
+				36A2E57E1E6E547900DE15AD /* HistoryBookModel.h */,
+				36A2E57F1E6E547900DE15AD /* HistoryBookModel.m */,
+			);
+			name = HistoryBookModel;
+			sourceTree = "<group>";
+		};
+		36A2E5811E6E562900DE15AD /* QRScanService */ = {
+			isa = PBXGroup;
+			children = (
+				36A2E5821E6E565A00DE15AD /* QRScanService.h */,
+				36A2E5831E6E565A00DE15AD /* QRScanService.m */,
+			);
+			name = QRScanService;
+			sourceTree = "<group>";
+		};
+		36A2E5A01E6FB01100DE15AD /* SqlModel */ = {
+			isa = PBXGroup;
+			children = (
+				36A2E5A11E6FB04F00DE15AD /* SqlModel.h */,
+				36A2E5A21E6FB04F00DE15AD /* SqlModel.m */,
+			);
+			name = SqlModel;
+			sourceTree = "<group>";
+		};
 		36C85FC21E388BE700AA76C3 = {
 			isa = PBXGroup;
 			children = (
+				365300B91E6FEDBD00E9CD25 /* Dao */,
 				36C85FE51E388C5800AA76C3 /* Define */,
 				36C85FE71E388C5800AA76C3 /* Model */,
 				36C85FE81E388C5800AA76C3 /* Modules */,
@@ -295,8 +465,14 @@
 		36C85FE71E388C5800AA76C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3914ECDE1E6525D200C8098B /* QrcodeModel.h */,
-				3914ECDF1E6525D200C8098B /* QrcodeModel.m */,
+				363EE0911E8290C1008D6935 /* MessageModel */,
+				363EE08D1E82906B008D6935 /* VCardModel */,
+				363EE0891E828FB0008D6935 /* TextModel */,
+				36F5AAB81E724AC20006666C /* HistoryTextModel */,
+				36A2E5A01E6FB01100DE15AD /* SqlModel */,
+				36A2E57D1E6E545A00DE15AD /* HistoryBookModel */,
+				36A2E5751E6D58F500DE15AD /* HttpModel */,
+				36A2E56B1E6D34D500DE15AD /* BaseModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,8 +571,8 @@
 		36C860051E388C5800AA76C3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3914ECDB1E65127700C8098B /* YMFMDatebase.h */,
-				3914ECDC1E65127700C8098B /* YMFMDatebase.m */,
+				36D3BED61E792ABD00A04674 /* HistoryService */,
+				36A2E5811E6E562900DE15AD /* QRScanService */,
 				36FB758A1E4CAE6C00FEA756 /* YMQRCodeAppService.h */,
 				36FB758B1E4CAE6C00FEA756 /* YMQRCodeAppService.m */,
 			);
@@ -427,6 +603,24 @@
 				3919BA271E49E9E100909D91 /* ShareView */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		36D3BED61E792ABD00A04674 /* HistoryService */ = {
+			isa = PBXGroup;
+			children = (
+				36D3BED71E792BE700A04674 /* HistoryService.h */,
+				36D3BED81E792BE700A04674 /* HistoryService.m */,
+			);
+			name = HistoryService;
+			sourceTree = "<group>";
+		};
+		36F5AAB81E724AC20006666C /* HistoryTextModel */ = {
+			isa = PBXGroup;
+			children = (
+				36F5AAB91E724AE40006666C /* HistoryTextModel.h */,
+				36F5AABA1E724AE40006666C /* HistoryTextModel.m */,
+			);
+			name = HistoryTextModel;
 			sourceTree = "<group>";
 		};
 		36FB752C1E4AB16900FEA756 /* ColorsBtnView */ = {
@@ -577,6 +771,7 @@
 		3979E8931E63B34A004ED5DA /* HistoryRecord */ = {
 			isa = PBXGroup;
 			children = (
+				363215591E7A611E00921ECB /* HistoryTableViewCell */,
 				3914ECE11E66C16B00C8098B /* HistoryView */,
 				3979E8971E63B3A0004ED5DA /* HistoryRecordViewController.h */,
 				3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */,
@@ -758,34 +953,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363EE0901E829082008D6935 /* VCardModel.m in Sources */,
+				363EE0941E8290D5008D6935 /* MessageModel.m in Sources */,
 				36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */,
 				36FB75A01E51667400FEA756 /* HomePageBodyView.m in Sources */,
+				3608418B1E83B9D4008C65AC /* HistoryScanTextDao.m in Sources */,
 				36FB75A11E51667400FEA756 /* HomePageHttpView.m in Sources */,
 				3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */,
 				3690445E1E53087F00D6E597 /* QRScanView.m in Sources */,
 				36C860251E388C5800AA76C3 /* HomePageHeaderView.m in Sources */,
+				36A2E5A31E6FB04F00DE15AD /* SqlModel.m in Sources */,
+				36A2E5801E6E547900DE15AD /* HistoryBookModel.m in Sources */,
 				36C860241E388C5800AA76C3 /* HomePageViewController.m in Sources */,
 				397274DA1E5D35E300D9A9C3 /* MoreViewController.m in Sources */,
+				360841881E839EFB008C65AC /* HistoryScanBookDao.m in Sources */,
 				3919BA471E49E9E100909D91 /* ShareView.m in Sources */,
 				36FB752F1E4AB19A00FEA756 /* ColorsBtnView.m in Sources */,
 				36FB75361E4AFB8B00FEA756 /* CutImageViewController.m in Sources */,
+				36A2E5841E6E565A00DE15AD /* QRScanService.m in Sources */,
 				36C860201E388C5800AA76C3 /* BaseNavigationController.m in Sources */,
+				360841851E839E93008C65AC /* HistoryTextDao.m in Sources */,
 				36C8605E1E388DDD00AA76C3 /* AppDelegate.m in Sources */,
 				360B50341E49BE2600C2BD9F /* QRCodeImageStyleViewController.m in Sources */,
 				36C860231E388C5800AA76C3 /* GuideViewController.m in Sources */,
 				36FB75A41E51669000FEA756 /* HomePageTextView.m in Sources */,
 				36FB758C1E4CAE6C00FEA756 /* YMQRCodeAppService.m in Sources */,
 				36C860211E388C5800AA76C3 /* BaseViewController.m in Sources */,
+				36A2E56E1E6D350C00DE15AD /* BaseModel.m in Sources */,
 				36FB75AA1E5166D200FEA756 /* HomePageTelPhoneView.m in Sources */,
 				369044611E531F9800D6E597 /* QRScanViewController.m in Sources */,
-				3914ECE01E6525D200C8098B /* QrcodeModel.m in Sources */,
 				3979E8991E63B3A0004ED5DA /* HistoryRecordViewController.m in Sources */,
+				365300C01E6FEDBD00E9CD25 /* DataBase.m in Sources */,
+				36A2E5781E6E4CD300DE15AD /* HttpModel.m in Sources */,
 				36FB75901E4D898200FEA756 /* CutImageView.m in Sources */,
+				3632155C1E7A676800921ECB /* HistoryTableViewCell.m in Sources */,
 				36FB75A71E5166A400FEA756 /* HomePageVCardView.m in Sources */,
-				3914ECDD1E65127700C8098B /* YMFMDatebase.m in Sources */,
+				36F5AABB1E724AE40006666C /* HistoryTextModel.m in Sources */,
+				363EE08C1E828FDC008D6935 /* TextModel.m in Sources */,
+				36DEDF421E8256A100133040 /* HistoryBookTableViewCell.m in Sources */,
+				36D3BED91E792BE700A04674 /* HistoryService.m in Sources */,
 				360B50301E49B54200C2BD9F /* UIImage+QRCode.m in Sources */,
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
 				36C85FD01E388BE700AA76C3 /* main.m in Sources */,
+				365300C11E6FEDBD00E9CD25 /* DataBaseHelper.m in Sources */,
 				3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */,
 				3914ECE51E67C2B500C8098B /* MoreViewTableViewCell.m in Sources */,
 			);
