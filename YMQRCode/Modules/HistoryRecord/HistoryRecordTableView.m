@@ -7,7 +7,6 @@
 //
 
 #import "HistoryRecordTableView.h"
-#import "QrcodeModel.h"
 
 @interface HistoryRecordTableView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -19,9 +18,7 @@
 
 @property (nonatomic ,strong)UIButton *deleteButton;
 
-@property (nonatomic ,strong)QrcodeModel *qrcode;
 
-@property (nonatomic ,strong)YMFMDatebase *database;
 
 @property (strong ,nonatomic)UIViewController *presentViewController;
 
@@ -39,19 +36,7 @@
         
         _myArray = [[NSMutableArray alloc]init];
         
-        _database = [YMFMDatebase sharedYMFMDatabase];
         
-        FMResultSet *resultSet =[_database selectFromTable:@"qrcodeTable" byParaName:nil  paraValue:nil];
-        
-        while ([resultSet next]) {
-            
-            _qrcode = [[QrcodeModel alloc]init];
-            
-            _qrcode.content = [resultSet stringForColumn:@"content"];
-            _qrcode.time = [resultSet stringForColumn:@"time"];
-            
-            [_myArray addObject:_qrcode];
-        }
 
         self.allowsMultipleSelectionDuringEditing = YES;
         
@@ -105,10 +90,6 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
         
     }
-
-    cell.textLabel.text = [_myArray[indexPath.row] content];
-    
-    cell.detailTextLabel.text = [_myArray[indexPath.row] time];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -125,7 +106,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [_database deleteDataFromTable:@"qrcodeTable" byParaName:@"time" paraVulue:[self.myArray[indexPath.row]time]];
+   
     
     // 删除模型
     [self.myArray removeObjectAtIndex:indexPath.row];
@@ -142,8 +123,7 @@
     if (!self.allowClick) {
         
         if([_jumpDelegate respondsToSelector:@selector(jumpQrcodeGeneration:)]){
-            
-            [_jumpDelegate jumpQrcodeGeneration:[_myArray[indexPath.row]content]];
+        
             
         }
         
@@ -193,8 +173,6 @@
     
     
     if(deletedWineArray.count){
-        
-        [_database deleteinTransactionDataFromTable:@"qrcodeTable" byParaName:@"time" paraVulue:deletedWineArray];
         
     }
     

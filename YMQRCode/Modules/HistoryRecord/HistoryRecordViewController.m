@@ -10,110 +10,108 @@
 #import "HistoryRecordTableView.h"
 #import "QRCodeProduceViewController.h"
 
-@interface HistoryRecordViewController ()<HistoryRecordDelegate>
+#import "HistoryService.h"
+#import "HistoryTextModel.h"
 
-@property (strong ,nonatomic)HistoryRecordTableView *currentHistoryTableView;
+#import "HistoryTableViewCell.h"
 
-@property (strong ,nonatomic)UIBarButtonItem *editButtonItem;
+#import "HistoryBookTableViewCell.h"
 
-@property (strong ,nonatomic)UIBarButtonItem *deleteButtonItem;
+static NSString * const identifier   = @"HistoryTableViewCell";
+static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 
-@property (strong ,nonatomic)UIBarButtonItem *allSelectButtonItem;
+@interface HistoryRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic ,assign)BOOL isShow;
+@property (nonatomic,strong)UITableView *tableView;
 
-@property (nonatomic ,assign)BOOL isAllShow;
+@property (nonatomic,strong)NSArray * dataArray;
+
+@property (nonatomic,assign)QRHistoryType type;
 
 @end
 
 @implementation HistoryRecordViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-   
-    [self initSubViews];
-
+-(instancetype)init
+{
+    if (self = [super init]) {
+        self.type = QRHistoryCreatType;
+    }
+    return self;
 }
 
--(void)initSubViews{
+- (void)viewDidLoad {
     
+    [super viewDidLoad];
+    
+    [self initNavigation];
+    
+    [self initSubViews];
+    
+    [self loadData];
+    
+}
+
+-(void)initNavigation
+{
     self.title = @"历史记录";
     
-    _editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(OnEditButton:)];
-
-    self.navigationItem.rightBarButtonItem = _editButtonItem;
+    UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(OnEditButton:)];
     
-    _currentHistoryTableView = [[HistoryRecordTableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
-    
-    _currentHistoryTableView.jumpDelegate = self;
-    
-    [self.view addSubview:_currentHistoryTableView];
+    self.navigationItem.rightBarButtonItem = editButtonItem;
 }
 
--(void)jumpQrcodeGeneration:(NSString *)content{
+-(void)initSubViews
+{
     
-    QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
+    NSArray *SegmentedControlArray = @[@"创建",@"扫描",@"图书"];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:SegmentedControlArray];
+    segmentedControl.frame = CGRectMake((self.view.bounds.size.width - 270)/2, 18, 270, 30);
+    segmentedControl.selectedSegmentIndex = 0;
     
-    qrcode.isPreservation = NO;
+    [segmentedControl addTarget:self action:@selector(changeType:) forControlEvents:UIControlEventValueChanged];
     
-    qrcode.textString = content;
+    [self.view addSubview:segmentedControl];
     
-    [self.navigationController pushViewController:qrcode animated:NO];
+    
+    self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 48, self.view.bounds.size.width, self.view.bounds.size.height - 48) style:UITableViewStylePlain];
+    
+    self.tableView.delegate = self;
+    
+    self.tableView.dataSource = self;
+    
+    [self.tableView registerClass:[HistoryTableViewCell class] forCellReuseIdentifier:identifier];
+    
+    [self.tableView registerClass:[HistoryBookTableViewCell class] forCellReuseIdentifier:bookIdentifier];
+    
+    [self.view addSubview:self.tableView];
+    
     
 }
-// 编辑按钮
--(void)OnEditButton:(id)sender{
 
-    _isShow = !_isShow;
+-(void)changeType:(UISegmentedControl *)control
+{
+    self.type = control.selectedSegmentIndex;
     
-    _currentHistoryTableView.allowClick = _isShow;
-    
-    if (_isShow) {
-        
-        self.currentHistoryTableView.bottomView.hidden = NO;
-        
-        [_editButtonItem setTitle:@"完成"];
-        
-    }else{
-        
-        [_editButtonItem setTitle:@"编辑"];
-        
-        self.currentHistoryTableView.bottomView.hidden = YES;
-        
+    [self loadData];
+}
+
+-(void)loadData
+{
+   
+    switch (self.type) {
+        case QRHistoryCreatType:
+            self.dataArray = [HistoryService selectHistoryTextCount:20 offset:0];
+            break;
+        case QRHistoryScanType:
+            self.dataArray = [HistoryService selectHistoryScanTextCount:20 offset:0];
+            break;
+        case QRHistoryBookType:
+            self.dataArray = [HistoryService selectHistoryScanBookCount:20 offset:0];
+            break;
     }
     
-    [_currentHistoryTableView OnEditButton:sender];
-}
-// 删除按钮
--(void)OnDeleteButton:(id)sender{
-
-    [_currentHistoryTableView OnSubDeleteButton:sender];
-    
-}
-// 全选按钮
--(void)OnAllButton:(id)sender{
-
-    _isAllShow = !_isAllShow;
-    
-    if (_isAllShow) {
-        
-        [_allSelectButtonItem setTitle:@"全不选"];
-        
-    }else{
-        
-        [_allSelectButtonItem setTitle:@"全选"];
-        
-    }
-    
-    [_currentHistoryTableView OnSubAllButton:sender];
-
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    
-    
-    _currentHistoryTableView.bottomView.hidden = YES;
-    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,14 +119,60 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+
+#pragma mark - UITableViewDelegate
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
 }
-*/
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.type == QRHistoryBookType)
+    {
+        HistoryBookTableViewCell *cell = (HistoryBookTableViewCell *)[tableView dequeueReusableCellWithIdentifier:bookIdentifier];
+        
+        HistoryBookModel *model = self.dataArray[indexPath.row];
+        
+        if (cell == nil) {
+            cell = [[HistoryBookTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        cell.model = model;
+        return cell;
+        
+    }else{
+        HistoryTableViewCell *cell = (HistoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+        HistoryTextModel *model = self.dataArray[indexPath.row];
+        
+        if (cell == nil) {
+            cell = [[HistoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        cell.model = model;
+        return cell;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.type == QRHistoryBookType) {
+        return 100.0f;
+    }else{
+        return 44.f;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *activityItems =@[self.dataArray[indexPath.row]];
+    
+    UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:vc animated:TRUE completion:nil];
+    
+}
+
+
 
 @end

@@ -11,10 +11,12 @@
 
 @interface HomePageBodyView : UIView
 
-+(instancetype)bodyViewWithType:(HomePageBodyType)type;
++(instancetype)bodyViewWithType:(QRStringType)type;
 
 -(BOOL)isNULL;
 
 @property (nonatomic,copy,readonly)NSString *textString;
+
+@property (nonatomic,readonly)QRStringType type;
 
 @end

@@ -22,6 +22,7 @@
 
 /**传入一个颜色，把图片的颜色集体改变*/
 + (UIImage*)imageColorToTransparent:(UIImage*)image withColor:(UIColor *)color;
+
 /**把2个image合并*/
 -(UIImage *)addImage:(UIImage *)image withRect: (CGRect)rect;
 
@@ -34,4 +35,5 @@
 
 /**把一个view转化成image*/
 +(UIImage *)imageForView:(UIView *)view;
+
 @end

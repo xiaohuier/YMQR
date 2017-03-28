@@ -46,6 +46,8 @@
 -(void)setQrCodeImage:(UIImage *)qrCodeImage
 {
     _qrCodeImage = qrCodeImage;
+    
+    
     [self.qrCodeImgView setImage:_qrCodeImage];
 }
 

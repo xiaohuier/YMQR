@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.navigationController.navigationBar.hidden = NO;
     
     self.title = @"二维码生成";
@@ -46,11 +46,16 @@
 
 -(void)creatQRCodeImage
 {
+    
     self.qrCodeImage = [UIImage creatQRCodeImageWithString:self.textString WidthAndHeight:300];
     
     [YMQRCodeAppService shareInstance].originalQRCodeImage =  self.qrCodeImage;
     
     [YMQRCodeAppService shareInstance].QRCodeImage = self.qrCodeImage;
+    
+    [YMQRCodeAppService shareInstance].cutImage = nil;
+    
+    [[YMQRCodeAppService shareInstance]insertToDataBaseWithType:_type jsonString:_textString];
     
 }
 
@@ -81,15 +86,6 @@
         return;
     }
     
-    if (self.isPreservation) {
-        
-        YMFMDatebase *database = [YMFMDatebase sharedYMFMDatabase];
-        
-        [database createTable:@"qrcodeTable" byModel:@{@"content":@"varchar(500)", @"time":@"datetime"}];
-        
-        [database insertDataToTable:@"qrcodeTable" byModel:@{@"content":self.textString, @"time":[self getCurrentTime]}];
-        
-    }
     
     self.qrCodeImageView = [[UIImageView alloc]init];
     
@@ -214,7 +210,7 @@
                 alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存成功" preferredStyle:UIAlertControllerStyleAlert];
                 
             }else{
-
+                
                 NSString *err = [NSString stringWithFormat:@"%@",error];
                 
                 if([err rangeOfString:@"Code=2047"].location !=NSNotFound){
@@ -240,25 +236,25 @@
 
 -(void)shareImageOnClick:(id)sender
 {
-//    ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
-//    
-//    shareView.shareImage = [UIImage imageNamed:@"Close_fx"];
-//    
-//    shareView.titleString = @"二维码的邀请";
-//    
-//    shareView.urlString = @"16156";
-//    
-//    shareView.contentString = @"我正在用二维码生成与扫描！";
-//    
-//    shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描"];
-//    
-//    [shareView shareViewController:self];
+    //    ShareView * shareView =[[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+    //
+    //    shareView.shareImage = [UIImage imageNamed:@"Close_fx"];
+    //
+    //    shareView.titleString = @"二维码的邀请";
+    //
+    //    shareView.urlString = @"16156";
+    //
+    //    shareView.contentString = @"我正在用二维码生成与扫描！";
+    //
+    //    shareView.weiboString = [NSString stringWithFormat:@"我正在用二维码生成与扫描"];
+    //
+    //    [shareView shareViewController:self];
     
     NSArray *activityItems =@[self.qrCodeImage];
     
     UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
     [self presentViewController:vc animated:TRUE completion:nil];
-
+    
 }
 
 -(NSString *)getCurrentTime{

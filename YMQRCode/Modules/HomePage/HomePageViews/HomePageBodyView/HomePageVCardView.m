@@ -273,7 +273,21 @@
 
 -(NSString *)textString
 {
-    return  [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
+    NSDictionary *dic = @{@"VCARD":_nameTextfiled.text,
+                          @"FN":_companyTextfiled.text,
+                          @"ORG":_addressLabel.text,
+                          @"ADR":_positionTextfiled.text,
+                          @"TITLE":_positionTextfiled.text,
+                          @"TEL":_telTextfiled.text,
+                          @"URL":_urlTextfiled.text,
+                          @"EMAIL":_mailTextfiled.text,
+                          @"NOTE":_remarksTextView.text,
+                          };
+    NSString *textString = [dic yy_modelToJSONString];
+    
+    return  textString;
+    
+//    return  [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
 
 }
 @end

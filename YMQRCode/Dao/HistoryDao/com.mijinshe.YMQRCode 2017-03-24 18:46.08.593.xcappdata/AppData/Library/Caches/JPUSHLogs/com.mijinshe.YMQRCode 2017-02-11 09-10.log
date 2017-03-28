@@ -1,0 +1,48 @@
+2017-02-11 17:10:49.752 | JIGUANG | D - [JIGUANGService] Action - JPUSH begin Setup with appkey:304534c0e95652c37f8552cf channel:Publish channel isProduction:FALSE advertisingIdentifier: 
+2017-02-11 17:10:49.769 | JIGUANG | I - [JIGUANGService] 
+--------------------------- JPush Log ----------------------------
+--------------------JPush SDK Version:3.0.1--build:21----------
+--------------------JCore Lib Version:1.1.0--build:8----------
+-----------------AppKey:304534c0e95652c37f8552cf----------------
+----------------------------------------------------------------
+2017-02-11 17:10:49.770 | JIGUANG | I - [JIGUANGClientController] Action - jpush setup
+2017-02-11 17:10:49.770 | JIGUANG | I - [JIGUANGClientController] Action - setup
+2017-02-11 17:10:49.793 | JIGUANG | D - [JIGUANGPageFlow] trySetupSession
+2017-02-11 17:10:49.793 | JIGUANG | D - [JIGUANGPageFlow] setupSession
+2017-02-11 17:10:49.798 | JIGUANG | D - [JIGUANGHttpSessionController] Action - setupSession
+2017-02-11 17:10:49.798 | JIGUANG | D - [JIGUANGPageFlow] setupSession
+2017-02-11 17:10:49.798 | JIGUANG | D - [JIGUANGPageFlow] resetCurrentPage
+2017-02-11 17:10:51.818 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:10:53.813 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:10:55.815 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:10:57.815 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:10:59.815 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:11:17.105 | JIGUANG | D - [JIGUANGPageFlow] savePageFlowWithTime
+2017-02-11 17:15:28.389 | JIGUANG | D - [JIGUANGHttpSessionController] Action - setupSession
+2017-02-11 17:15:28.390 | JIGUANG | D - [JIGUANGPageFlow] setupSession
+2017-02-11 17:15:28.390 | JIGUANG | D - [JIGUANGPageFlow] resetCurrentPage
+2017-02-11 17:15:30.078 | JIGUANG | D - [JIGUANGPageFlow] savePageFlowWithTime
+2017-02-11 17:45:25.188 | JIGUANG | D - [JIGUANGService] Action - JPUSH begin Setup with appkey:304534c0e95652c37f8552cf channel:Publish channel isProduction:FALSE advertisingIdentifier: 
+2017-02-11 17:45:25.205 | JIGUANG | I - [JIGUANGService] 
+--------------------------- JPush Log ----------------------------
+--------------------JPush SDK Version:3.0.1--build:21----------
+--------------------JCore Lib Version:1.1.0--build:8----------
+-----------------AppKey:304534c0e95652c37f8552cf----------------
+----------------------------------------------------------------
+2017-02-11 17:45:25.206 | JIGUANG | I - [JIGUANGClientController] Action - jpush setup
+2017-02-11 17:45:25.206 | JIGUANG | I - [JIGUANGClientController] Action - setup
+2017-02-11 17:45:25.231 | JIGUANG | D - [JIGUANGPageFlow] trySetupSession
+2017-02-11 17:45:25.232 | JIGUANG | D - [JIGUANGPageFlow] setupSession
+2017-02-11 17:45:25.244 | JIGUANG | D - [JIGUANGHttpSessionController] Action - setupSession
+2017-02-11 17:45:25.244 | JIGUANG | D - [JIGUANGPageFlow] setupSession
+2017-02-11 17:45:25.244 | JIGUANG | D - [JIGUANGPageFlow] resetCurrentPage
+2017-02-11 17:45:27.247 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:45:29.251 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:45:31.249 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:45:33.246 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:45:35.250 | JIGUANG | W - [JIGUANGClientController] Not get deviceToken yet. Maybe: your certificate not configured APNs? or current network is not so good so APNs registration failed?  or there is no APNs register code? Please refer to JPush docs.
+2017-02-11 17:46:25.292 | JIGUANG | D - [JIGUANGPageFlow] savePageFlowWithTime
+2017-02-11 17:48:03.381 | JIGUANG | D - [JIGUANGHttpSessionController] Action - setupSession
+2017-02-11 17:48:03.390 | JIGUANG | D - [JIGUANGPageFlow] setupSession
+2017-02-11 17:48:03.391 | JIGUANG | D - [JIGUANGPageFlow] resetCurrentPage
+2017-02-11 17:48:33.228 | JIGUANG | D - [JIGUANGPageFlow] savePageFlowWithTime

@@ -53,6 +53,11 @@
     _currentTableView.dataSource = self;
     
     [self.view addSubview:_currentTableView];
+    
+//    [_currentTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_offset
+//    }];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;

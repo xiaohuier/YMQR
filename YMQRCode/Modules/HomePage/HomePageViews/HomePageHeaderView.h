@@ -11,7 +11,7 @@
 
 @protocol HomePageHeaderDelegate <NSObject>
 
--(void)homePageHeaderButtonChangeType: (HomePageBodyType)homePageBodyType;
+-(void)homePageHeaderButtonChangeType: (QRStringType)homePageBodyType;
 
 @end
 
@@ -19,7 +19,7 @@
 
 @interface HomePageHeaderView : UIView
 
-@property (nonatomic,assign)HomePageBodyType homePageBodyType;
+@property (nonatomic,assign)QRStringType homePageBodyType;
 
 @property (nonatomic ,assign)id <HomePageHeaderDelegate> delegate;
 

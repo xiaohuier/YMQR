@@ -139,13 +139,19 @@
 
 -(NSString *)textString
 {
-    if (IOS9_1) {
-        
-       return  [NSString stringWithFormat:@"sms:%@&body=%@",_textFiled.text,_codeTextView.text];
-        
-    }else{
-        
-        return  [NSString stringWithFormat:@"sms:%@?body=%@",_textFiled.text,_codeTextView.text];
-    }
+    NSDictionary *dic = @{@"sms":_textFiled.text,
+                          @"body":_codeTextView.text};
+    NSString *textString = [dic yy_modelToJSONString];
+    
+    return  textString;
+    
+//    if (IOS9_1) {
+//        
+//       return  [NSString stringWithFormat:@"sms:%@&body=%@",_textFiled.text,_codeTextView.text];
+//        
+//    }else{
+//        
+//        return  [NSString stringWithFormat:@"sms:%@?body=%@",_textFiled.text,_codeTextView.text];
+//    }
 }
 @end

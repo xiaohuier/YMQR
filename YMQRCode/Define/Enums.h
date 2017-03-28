@@ -8,14 +8,15 @@
 
 #ifndef Enums_h
 #define Enums_h
-//HomePageBodyView 的type
-typedef NS_ENUM(NSInteger,HomePageBodyType)
+
+//二维码字符串 的type
+typedef NS_ENUM(NSInteger,QRStringType)
 {
-    HomePageBodyHTTPType = 0,
-    HomePageBodyTextType,
-    HomePageBodyVCardType,
-    HomePageBodyTelPhoneType,
-    HomePageBodyMessageType
+    QRStringHTTPType = 0,
+    QRStringTextType,
+    QRStringVCardType,
+    QRStringTelPhoneType,
+    QRStringMessageType
 };
 
 //QRImageType二维码图片格式
@@ -34,6 +35,18 @@ typedef NS_ENUM(NSUInteger,QRScanViewType)
 {
     QRScanViewBarCodeType = 0,//条形码
     QRScanViewQRCodeType  //二维码
+};
+
+
+/**
+ 历史记录格式
+ - QRHistoryCreatType:
+ */
+typedef NS_ENUM(NSUInteger,QRHistoryType)
+{
+    QRHistoryCreatType = 0,//创建
+    QRHistoryScanType, //扫描
+    QRHistoryBookType //图书
 };
 
 #endif /* Enums_h */

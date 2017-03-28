@@ -15,6 +15,7 @@
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
 
+#import "BaseModel.h"
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -53,7 +54,6 @@
 //                 apsForProduction:isProduction
 //            advertisingIdentifier:nil];
 
-    
     
     return YES;
 }
