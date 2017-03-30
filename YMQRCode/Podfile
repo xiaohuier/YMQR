@@ -8,4 +8,6 @@ pod 'MJExtension'
 pod 'YYModel'
 pod 'YYCategories'
 pod 'SDWebImage'
+pod 'SVPullToRefresh'
+pod 'MJRefresh'
 end

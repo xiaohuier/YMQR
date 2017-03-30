@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,6 +40,11 @@
 			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,12 +62,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>26D0E74669FFCD18E162D19DAD6E888D</key>
+		<key>022BFC6692E0DE6A3DC2E754240C61A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42808F5F151E62B19A40C533BE35D07A</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4A9C15EE01C8299A85B5982F2685AC12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63CA91C50BBB5FDFD9E2EE6E7C42AE5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9B4B8F33BF95322FA5467286FF8FB17</key>
+		<key>DC85D721C374D2540B00CD05EDDD8701</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEE3F8C99D09F3A3FDEA04594AC99FF6</key>
+		<key>EF7444237587F36A3DA76ADA854A5B0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

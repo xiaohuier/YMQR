@@ -40,13 +40,11 @@
     BOOL success =   [self saveQRCodeImage:_QRCodeImage WithCutImage:_cutImage];
     
     NSParameterAssert(success);
-    
 }
 
 -(void)setCutImage:(UIImage *)cutImage
 {
     _cutImage = cutImage;
-    
 }
 
 -(BOOL)saveQRCodeImage:(UIImage *)qrCodeImage WithCutImage:(UIImage *)cutImage
@@ -123,7 +121,6 @@
     CFRelease(uuid_ref);
     NSString *uuid = [NSString stringWithString:(__bridge NSString *)uuid_string_ref];
     CFRelease(uuid_string_ref);
-    
     
     return uuid;
 }

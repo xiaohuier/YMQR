@@ -64,4 +64,10 @@
     return  [self selectModel:nil withSqlString:sqlString];
 }
 
+-(BOOL)deleteAllData
+{
+    NSString *sqlString =[NSString stringWithFormat:@"DELETE FROM %@",self.tableName];
+    return [self deleteModel:nil withSqlString:sqlString];
+    
+}
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "HistoryRecordViewController.h"
-#import "HistoryRecordTableView.h"
+
 #import "QRCodeProduceViewController.h"
 
 #import "HistoryService.h"
@@ -17,7 +17,10 @@
 
 #import "HistoryBookTableViewCell.h"
 
+#import <SVPullToRefresh.h>
+
 static NSString * const identifier   = @"HistoryTableViewCell";
+
 static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 
 @interface HistoryRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,6 +31,10 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 
 @property (nonatomic,assign)QRHistoryType type;
 
+@property (nonatomic,assign)NSInteger count;
+
+@property (nonatomic,assign)NSInteger offset;
+
 @end
 
 @implementation HistoryRecordViewController
@@ -36,6 +43,8 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 {
     if (self = [super init]) {
         self.type = QRHistoryCreatType;
+        self.count = 30;
+        self.offset = 0;
     }
     return self;
 }
@@ -56,7 +65,7 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 {
     self.title = @"历史记录";
     
-    UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(OnEditButton:)];
+    UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清除记录" style:UIBarButtonItemStylePlain target:self action:@selector(onEditButton:)];
     
     self.navigationItem.rightBarButtonItem = editButtonItem;
 }
@@ -86,12 +95,21 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
     
     [self.view addSubview:self.tableView];
     
+//    typeof(self) weakSelf = self;
     
+//    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        _offset =_offset + _count;
+//        [weakSelf loadData];
+//        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+//    }];
+  
 }
 
 -(void)changeType:(UISegmentedControl *)control
 {
     self.type = control.selectedSegmentIndex;
+    
+    self.offset = 0;
     
     [self loadData];
 }
@@ -101,17 +119,22 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
    
     switch (self.type) {
         case QRHistoryCreatType:
-            self.dataArray = [HistoryService selectHistoryTextCount:20 offset:0];
+            self.dataArray = [HistoryService selectHistoryTextCount:self.count offset:self.offset];
             break;
         case QRHistoryScanType:
-            self.dataArray = [HistoryService selectHistoryScanTextCount:20 offset:0];
+            self.dataArray = [HistoryService selectHistoryScanTextCount:self.count offset:self.offset];
             break;
         case QRHistoryBookType:
-            self.dataArray = [HistoryService selectHistoryScanBookCount:20 offset:0];
+            self.dataArray = [HistoryService selectHistoryScanBookCount:self.count offset:self.offset];
             break;
     }
     
     [self.tableView reloadData];
+}
+
+-(void)addMoreData
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -173,6 +196,12 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
     
 }
 
-
+-(void)onEditButton:(id)sender
+{
+    [HistoryService deleteAllData:self.type];
+    self.dataArray = nil;
+    
+    [self.tableView reloadData];
+}
 
 @end

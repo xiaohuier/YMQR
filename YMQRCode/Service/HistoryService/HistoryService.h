@@ -16,6 +16,7 @@
 
 #import "HistoryScanTextDao.h"
 
+
 @interface HistoryService : NSObject
 
 +(NSArray <HistoryTextModel *>*)selectHistoryTextCount:(NSInteger)count offset:(NSInteger)offset;
@@ -23,5 +24,7 @@
 +(NSArray <HistoryBookModel *>*)selectHistoryScanBookCount:(NSInteger)count offset:(NSInteger)offset;
 
 +(NSArray <HistoryTextModel *>*)selectHistoryScanTextCount:(NSInteger)count offset:(NSInteger)offset;
+
++(BOOL)deleteAllData:(QRHistoryType)type;
 
 @end

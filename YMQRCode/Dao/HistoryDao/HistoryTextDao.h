@@ -26,4 +26,11 @@
  */
 -(NSArray <NSDictionary *>*)descendSelectHistoryCount:(NSInteger)count offset:(NSInteger)offset;
 
+/**
+ 删除表中所有数据
+ @return bool
+ */
+
+-(BOOL)deleteAllData;
+
 @end
