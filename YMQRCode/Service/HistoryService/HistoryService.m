@@ -68,4 +68,18 @@
     return mutableArray.copy;
 }
 
++(BOOL)deleteAllData:(QRHistoryType)type
+{
+    switch (type) {
+        case QRHistoryCreatType:
+            return [[HistoryTextDao shareInstance]deleteAllData];
+            break;
+        case QRHistoryScanType:
+         return   [[HistoryScanTextDao shareInstance]deleteAllData];
+            break;
+        case QRHistoryBookType:
+          return  [[HistoryScanBookDao shareInstance]deleteAllData];
+            break;
+    }
+}
 @end

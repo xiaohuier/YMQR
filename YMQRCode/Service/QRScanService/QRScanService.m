@@ -33,13 +33,16 @@
                 [mutableDic setObject:tags forKey:@"tags"];
             }
             
-             HistoryBookModel *bookModel = [[HistoryBookModel alloc]initWithDictionary:mutableDic];
-            completionHandle(bookModel);
+            HistoryBookModel *bookModel = [[HistoryBookModel alloc]initWithDictionary:mutableDic];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandle(bookModel);
+            });
+            
         }
-       
+        
     }];
     [task resume];
-
+    
 }
 +(NSArray *)arrayToString:(NSArray *)array with:(NSString *)key
 {

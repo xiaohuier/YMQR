@@ -325,10 +325,14 @@
 -(void)aleart:(NSString *)message
 {
     UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"扫描成功" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alertVc addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertVc addAction:[UIAlertAction actionWithTitle:@"继续扫描" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.scanView startAnimation];
         [self.captureSession startRunning];
-
+    }]];
+    [alertVc addAction:[UIAlertAction actionWithTitle:@"停止扫描" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.scanView stopAnimation];
+        [self.captureSession stopRunning];
+        [self.navigationController popViewControllerAnimated:YES];
     }]];
     [self presentViewController:alertVc animated:YES completion:nil];
     

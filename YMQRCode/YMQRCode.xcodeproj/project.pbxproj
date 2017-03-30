@@ -82,7 +82,6 @@
 		395A9EEB1E4AF73E0011FA82 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EEA1E4AF73E0011FA82 /* libresolv.tbd */; };
 		397274DA1E5D35E300D9A9C3 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397274D91E5D35E300D9A9C3 /* MoreViewController.m */; };
 		3974F4431E4AD74200F80BED /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */; };
-		3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */; };
 		3979E8991E63B3A0004ED5DA /* HistoryRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -215,8 +214,6 @@
 		3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.1.a"; sourceTree = "<group>"; };
 		3974F4421E4AD74200F80BED /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		3974F4441E4AD74E00F80BED /* YMQRCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YMQRCode.entitlements; sourceTree = "<group>"; };
-		3979E8941E63B37F004ED5DA /* HistoryRecordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecordTableView.h; sourceTree = "<group>"; };
-		3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecordTableView.m; sourceTree = "<group>"; };
 		3979E8971E63B3A0004ED5DA /* HistoryRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecordViewController.h; sourceTree = "<group>"; };
 		3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecordViewController.m; sourceTree = "<group>"; };
 		478A4EB0A02E4D03A93F0211 /* Pods-YMQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.release.xcconfig"; sourceTree = "<group>"; };
@@ -671,15 +668,6 @@
 			path = HomePageBodyView;
 			sourceTree = "<group>";
 		};
-		3914ECE11E66C16B00C8098B /* HistoryView */ = {
-			isa = PBXGroup;
-			children = (
-				3979E8941E63B37F004ED5DA /* HistoryRecordTableView.h */,
-				3979E8951E63B37F004ED5DA /* HistoryRecordTableView.m */,
-			);
-			name = HistoryView;
-			sourceTree = "<group>";
-		};
 		3919B9B21E49B2EC00909D91 /* Scanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,7 +760,6 @@
 			isa = PBXGroup;
 			children = (
 				363215591E7A611E00921ECB /* HistoryTableViewCell */,
-				3914ECE11E66C16B00C8098B /* HistoryView */,
 				3979E8971E63B3A0004ED5DA /* HistoryRecordViewController.h */,
 				3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */,
 			);
@@ -996,7 +983,6 @@
 				36C860221E388C5800AA76C3 /* GuideScrollView.m in Sources */,
 				36C85FD01E388BE700AA76C3 /* main.m in Sources */,
 				365300C11E6FEDBD00E9CD25 /* DataBaseHelper.m in Sources */,
-				3979E8961E63B37F004ED5DA /* HistoryRecordTableView.m in Sources */,
 				3914ECE51E67C2B500C8098B /* MoreViewTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
