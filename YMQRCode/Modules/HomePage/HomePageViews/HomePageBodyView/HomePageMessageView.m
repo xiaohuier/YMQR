@@ -91,7 +91,6 @@
         make.height.mas_equalTo(90);
     }];
     
-    
     [_textlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_codeTextView.mas_bottom).offset(1);
         make.left.mas_equalTo((width - 240)/4);
@@ -101,7 +100,6 @@
 
     }];
     
-    
     [_fillLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(1);
         make.left.mas_equalTo(6);
@@ -109,17 +107,20 @@
         make.height.mas_equalTo(25);
     }];
 
-    
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if (range.location == 0) {
+-(void)textViewDidChange:(UITextView *)textView{
+    
+    if (textView.text.length == 0) {
         
         [_fillLabel setHidden:NO];
         
     }
     
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
     if (text.length != 0) {
         
         [_fillLabel setHidden:YES];
@@ -128,30 +129,64 @@
     return YES;
 }
 
--(BOOL)isNULL
-{
-    if (_codeTextView.text.length==0||_textFiled.text.length == 0) {
-        return NO;
-    }else{
+-(BOOL)isNullString:(NSString *)string {
+    
+    if (string == nil || string == NULL) {
+        
         return YES;
+        
     }
+    
+    if ([string  isEqualToString:@"null"]) {
+        
+        return YES;
+        
+    }
+    
+    if ([string isKindOfClass:[NSNull class]]) {
+        
+        return YES;
+        
+    }
+    
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
 }
+
 
 -(NSString *)textString
 {
-    NSDictionary *dic = @{@"sms":_textFiled.text,
-                          @"body":_codeTextView.text};
-    NSString *textString = [dic yy_modelToJSONString];
+//    NSDictionary *dic = @{@"sms":_textFiled.text,
+//                          @"body":_codeTextView.text};
+//    NSString *textString = [dic yy_modelToJSONString];
+//
+    NSString *textString;
     
+    
+    if (![self isNullString:_textFiled.text]&&![self isNullString:_codeTextView.text]){
+        
+        if (IOS9_1) {
+            
+            textString = [NSString stringWithFormat:@"sms:%@&body=%@",_textFiled.text,_codeTextView.text];
+            
+        }else{
+            
+            textString = [NSString stringWithFormat:@"sms:%@?body=%@",_textFiled.text,_codeTextView.text];
+            
+        }
+        
+    }else{
+        
+        textString = @"";
+        
+    }
+
     return  textString;
-    
-//    if (IOS9_1) {
-//        
-//       return  [NSString stringWithFormat:@"sms:%@&body=%@",_textFiled.text,_codeTextView.text];
-//        
-//    }else{
-//        
-//        return  [NSString stringWithFormat:@"sms:%@?body=%@",_textFiled.text,_codeTextView.text];
-//    }
+
 }
 @end

@@ -4,35 +4,113 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>MJExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-YMQRCode.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>SVPullToRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>YYCategories.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>YYModel.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>022BFC6692E0DE6A3DC2E754240C61A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0659B71386995AC7EE2A305F0A360EB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>26D0E74669FFCD18E162D19DAD6E888D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>42808F5F151E62B19A40C533BE35D07A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4A9C15EE01C8299A85B5982F2685AC12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63CA91C50BBB5FDFD9E2EE6E7C42AE5E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9650B5ADCE86F1A055FAFC635284BDB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -43,6 +121,36 @@
 			<true/>
 		</dict>
 		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9E033EDB5EC0819481B0546434FA577B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A316B54C67E947D23CECD230FA5BFAEF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A9B4B8F33BF95322FA5467286FF8FB17</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC85D721C374D2540B00CD05EDDD8701</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DEE3F8C99D09F3A3FDEA04594AC99FF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF7444237587F36A3DA76ADA854A5B0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

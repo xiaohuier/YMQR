@@ -230,64 +230,107 @@
     
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if(textView == _addressTextView){
-        if (range.location == 0) {
+-(void)textViewDidChange:(UITextView *)textView{
+    
+    if(textView == _addressTextView&&textView.text.length == 0){
+        
+        [_addressLabel setHidden:NO];
             
-            [_addressLabel setHidden:NO];
+    }else{
+        
+        if (textView.text.length == 0) {
+            
+            [_remarksLabel setHidden:NO];
             
         }
         
+    }
+
+}
+
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if(textView == _addressTextView){
+       
         if (text.length != 0) {
             
             [_addressLabel setHidden:YES];
             
         }
+        
     }else if (textView == _remarksTextView){
-        if (range.location == 0) {
-            
-            [_remarksLabel setHidden:NO];
-            
-        }
         
         if (text.length != 0) {
             
             [_remarksLabel setHidden:YES];
             
         }
+        
     }
     return YES;
 }
 
 
--(BOOL)isNULL
-{
-
-    if (_nameTextfiled.text.length==0) {
-        return NO;
-    }else{
+-(BOOL)isNullString:(NSString *)string {
+    
+    if (string == nil || string == NULL) {
+        
         return YES;
+        
     }
+    
+    if ([string  isEqualToString:@"null"]) {
+        
+        return YES;
+        
+    }
+    
+    if ([string isKindOfClass:[NSNull class]]) {
+        
+        return YES;
+        
+    }
+    
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
 }
+
 
 -(NSString *)textString
 {
-    NSDictionary *dic = @{@"VCARD":_nameTextfiled.text,
-                          @"FN":_companyTextfiled.text,
-                          @"ORG":_addressLabel.text,
-                          @"ADR":_positionTextfiled.text,
-                          @"TITLE":_positionTextfiled.text,
-                          @"TEL":_telTextfiled.text,
-                          @"URL":_urlTextfiled.text,
-                          @"EMAIL":_mailTextfiled.text,
-                          @"NOTE":_remarksTextView.text,
-                          };
-    NSString *textString = [dic yy_modelToJSONString];
+//    NSDictionary *dic = @{@"VCARD":_nameTextfiled.text,
+//                          @"FN":_companyTextfiled.text,
+//                          @"ORG":_addressLabel.text,
+//                          @"ADR":_positionTextfiled.text,
+//                          @"TITLE":_positionTextfiled.text,
+//                          @"TEL":_telTextfiled.text,
+//                          @"URL":_urlTextfiled.text,
+//                          @"EMAIL":_mailTextfiled.text,
+//                          @"NOTE":_remarksTextView.text,
+//                          };
+//    NSString *textString = [dic yy_modelToJSONString];
     
+    NSString *textString;
+    
+    if ([self isNullString:_nameTextfiled.text]&&[self isNullString:_companyTextfiled.text]&&[self isNullString:_addressTextView.text]&&[self isNullString:_positionTextfiled.text]&&[self isNullString:_telTextfiled.text]&&[self isNullString:_urlTextfiled.text]&&[self isNullString:_mailTextfiled.text]&&[self isNullString:_remarksTextView.text]){
+        
+        textString = @"";
+        
+    }else{
+        
+        textString = [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
+        
+    }
+
     return  textString;
     
-//    return  [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
-
 }
+
+
 @end

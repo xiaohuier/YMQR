@@ -96,14 +96,19 @@
     
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if (range.location == 0) {
+-(void)textViewDidChange:(UITextView *)textView{
+    
+    if (textView.text.length == 0) {
         
         [_fillLabel setHidden:NO];
         
     }
     
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+       
     if (text.length != 0) {
         
         [_fillLabel setHidden:YES];
@@ -112,20 +117,56 @@
     return YES;
 }
 
--(BOOL)isNULL
-{
-    if (_codeTextView.text.length==0) {
-        return NO;
-    }else{
+-(BOOL)isNullString:(NSString *)string {
+    
+    if (string == nil || string == NULL) {
+        
         return YES;
+        
     }
+    
+    if ([string  isEqualToString:@"null"]) {
+        
+        return YES;
+        
+    }
+    
+    if ([string isKindOfClass:[NSNull class]]) {
+        
+        return YES;
+        
+    }
+    
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
 }
+
 
 -(NSString *)textString
 {
-    NSDictionary *dic = @{@"text":_codeTextView.text};
-    NSString *textString = [dic yy_modelToJSONString];
+    
+        
+    //        NSDictionary *dic = @{@"text":_codeTextView.text};
+    //
+    //        NSString *textString = [dic yy_modelToJSONString];
+    
+    NSString *textString;
+    
+    if (![self isNullString:_codeTextView.text]){
+        
+        textString = [NSString stringWithFormat:@"tel:%@",_codeTextView.text];
+        
+    }else{
+        
+        textString = @"";
+    }
     
     return  textString;
+        
 }
 @end

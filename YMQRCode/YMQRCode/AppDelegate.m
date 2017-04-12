@@ -27,10 +27,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    [WXApi registerApp:@"wxdb95fdae31b45243" withDescription:@"4f88b993672d01fe36bd9f8808bfcff8"];
-//
-//    
-//    [WeiboSDK registerApp:@""];
+    
+    [WXApi registerApp:@"wxdb95fdae31b45243" withDescription:@"4f88b993672d01fe36bd9f8808bfcff8"];
+    
+    [WeiboSDK registerApp:@"1801286617"];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -48,11 +48,11 @@
     }
     
        [self.window makeKeyAndVisible];
-//
-//    [JPUSHService setupWithOption:launchOptions appKey:appKey
-//                          channel:channel
-//                 apsForProduction:isProduction
-//            advertisingIdentifier:nil];
+
+    [JPUSHService setupWithOption:launchOptions appKey:appKey
+                          channel:channel
+                 apsForProduction:isProduction
+            advertisingIdentifier:nil];
 
     
     return YES;

@@ -30,8 +30,6 @@
     
     [self initSubview];
     
-    [self creatQRCodeImage];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -54,6 +52,15 @@
     [YMQRCodeAppService shareInstance].QRCodeImage = self.qrCodeImage;
     
     [YMQRCodeAppService shareInstance].cutImage = nil;
+    
+    
+    NSDictionary *dic;
+    
+    NSString *jsonString;
+    
+    dic = @{@"text":_textString};
+    
+    jsonString = [dic yy_modelToJSONString];
     
     [[YMQRCodeAppService shareInstance]insertToDataBaseWithType:_type jsonString:_textString];
     
@@ -179,6 +186,10 @@
         make.top.equalTo(saveButton.mas_bottom).offset(15);
         
     }];
+    
+    
+    [self creatQRCodeImage];
+    
     
 }
 

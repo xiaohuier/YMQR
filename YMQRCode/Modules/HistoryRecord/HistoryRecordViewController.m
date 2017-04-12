@@ -35,6 +35,10 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 
 @property (nonatomic,assign)NSInteger offset;
 
+@property (strong, nonatomic) NSString *currentJsonStr;
+
+@property (assign, nonatomic) NSInteger currentType;
+
 @end
 
 @implementation HistoryRecordViewController
@@ -83,7 +87,7 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
     [self.view addSubview:segmentedControl];
     
     
-    self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 48, self.view.bounds.size.width, self.view.bounds.size.height - 48) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 68, SCREEN_WIDTH, SCREEN_HEIGHT - 68 - 64) style:UITableViewStylePlain];
     
     self.tableView.delegate = self;
     
@@ -174,6 +178,13 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
             cell = [[HistoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.model = model;
+        
+        _currentType = model.type;
+        
+        _currentJsonStr = model.jsonString;
+        
+        NSLog(@"- 1 --- %@v ",_currentJsonStr);
+        
         return cell;
     }
 }
@@ -189,12 +200,50 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *activityItems =@[self.dataArray[indexPath.row]];
     
-    UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
-    [self presentViewController:vc animated:TRUE completion:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (self.type == QRHistoryBookType) {
+        
+        HistoryBookModel *model = self.dataArray[indexPath.row];
+        
+        UIImage *urlImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.image]]];
+        
+        NSArray *activityItems =@[urlImage];
+        
+        UIActivityViewController *activityView = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    
+        [self presentViewController:activityView animated:TRUE completion:nil];
+        
+    }else {
+    
+        QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
+        
+        qrcode.textString = _currentJsonStr;
+        
+        qrcode.type = _currentType;
+        
+        [self.navigationController pushViewController:qrcode animated:NO];
+        
+    }
+
+}
+
+- (id)toArrayOrNSDictionary:(NSData *)jsonData{
+    NSError *error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                    options:NSJSONReadingAllowFragments
+                                                      error:&error];
+    
+    if (jsonObject != nil && error == nil){
+        return jsonObject;
+    }else{
+        // 解析错误
+        return nil;
+    }
     
 }
+
 
 -(void)onEditButton:(id)sender
 {

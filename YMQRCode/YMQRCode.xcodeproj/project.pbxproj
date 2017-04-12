@@ -835,7 +835,7 @@
 					36C85FCA1E388BE700AA76C3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 454TZ6A3QZ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1118,8 +1118,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mijinshe.YMQRCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "44e9293d-5e94-4309-8417-4e540e3eddbc";
+				PROVISIONING_PROFILE_SPECIFIER = QRCodeDele;
 			};
 			name = Debug;
 		};
@@ -1161,8 +1161,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mijinshe.YMQRCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "44e9293d-5e94-4309-8417-4e540e3eddbc";
+				PROVISIONING_PROFILE_SPECIFIER = QRCodeDele;
 			};
 			name = Release;
 		};
