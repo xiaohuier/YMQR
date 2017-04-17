@@ -33,21 +33,22 @@
 {
     //二维码内容填写区域
     _codeTextView = [[UITextView alloc]init];
-    
+    _codeTextView.font = [UIFont systemFontOfSize:14];
     _codeTextView.layer.cornerRadius = 10;
     _codeTextView.delegate = self;
     _codeTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
-    
+    _codeTextView.keyboardType = UIKeyboardTypeURL;
+    _codeTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self addSubview:_codeTextView];
     
     _fillLabel = [[UILabel alloc]init];
-    _fillLabel.font = [UIFont systemFontOfSize:13];
+    _fillLabel.font = [UIFont systemFontOfSize:14];
     _fillLabel.textColor = WORDSCOLOR;
     _fillLabel.text = @"http://或者https://";
     [_codeTextView addSubview:_fillLabel];
     
     _textlabel = [[UILabel alloc]init];
-    _textlabel.font = [UIFont systemFontOfSize:10];
+    _textlabel.font = [UIFont systemFontOfSize:12];
     _textlabel.numberOfLines = 0;
     _textlabel.text = @"注意：填写网址的时候请输入http://或者https://完整的网址信息;如果你的网址过长，生成的二维码将不易被扫描";
     _textlabel.textColor = WORDSCOLOR;

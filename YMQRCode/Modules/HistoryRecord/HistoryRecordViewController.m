@@ -183,7 +183,7 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
         
         _currentJsonStr = model.jsonString;
         
-        NSLog(@"- 1 --- %@v ",_currentJsonStr);
+        NSLog(@"- 1 --- %@   2-－－－－ %lu ",_currentJsonStr,(unsigned long)_type);
         
         return cell;
     }
@@ -191,11 +191,32 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.type == QRHistoryBookType) {
-        return 100.0f;
+    if (IS_IPHONE_6P) {
+        if (self.type == QRHistoryBookType) {
+            
+            return 115.0f;
+            
+        }else{
+            
+            return 50.f;
+            
+        }
     }else{
-        return 44.f;
+        
+        if (self.type == QRHistoryBookType) {
+            
+            return 100.0f;
+            
+        }else{
+            
+            return 44.f;
+            
+        }
+
     }
+    
+    
+  
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -217,11 +238,13 @@ static NSString * const bookIdentifier = @"HistoryBookTableViewCell";
         
     }else {
     
+        HistoryTextModel *model = self.dataArray[indexPath.row];
+        
         QRCodeProduceViewController *qrcode = [[QRCodeProduceViewController alloc]init];
         
-        qrcode.textString = _currentJsonStr;
+        qrcode.textString = model.jsonString;
         
-        qrcode.type = _currentType;
+        qrcode.type = model.type;
         
         [self.navigationController pushViewController:qrcode animated:NO];
         

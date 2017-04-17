@@ -72,6 +72,7 @@
 		3919BA471E49E9E100909D91 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3919BA341E49E9E100909D91 /* ShareView.m */; };
 		3919BA481E49E9E100909D91 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3919BA351E49E9E100909D91 /* ShareView.xib */; };
 		3919BA4A1E49E9E100909D91 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3919BA381E49E9E100909D91 /* WeiboSDK.bundle */; };
+		391F88BC1E9F4C1C00329214 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391F88BB1E9F4C1C00329214 /* CardViewController.m */; };
 		395A9EDD1E4AF6300011FA82 /* jcore-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EDC1E4AF6300011FA82 /* jcore-ios-1.1.0.a */; };
 		395A9EDF1E4AF6FF0011FA82 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EDE1E4AF6FF0011FA82 /* CFNetwork.framework */; };
 		395A9EE11E4AF7070011FA82 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395A9EE01E4AF7070011FA82 /* CoreFoundation.framework */; };
@@ -83,6 +84,7 @@
 		397274DA1E5D35E300D9A9C3 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397274D91E5D35E300D9A9C3 /* MoreViewController.m */; };
 		3974F4431E4AD74200F80BED /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974F4411E4AD74200F80BED /* jpush-ios-3.0.1.a */; };
 		3979E8991E63B3A0004ED5DA /* HistoryRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */; };
+		39A93B8D1EA0A794006969D6 /* shareImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A93B8C1EA0A794006969D6 /* shareImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +203,8 @@
 		3919BA3B1E49E9E100909D91 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		3919BA3C1E49E9E100909D91 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		3919BA3D1E49E9E100909D91 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		391F88BA1E9F4C1C00329214 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		391F88BB1E9F4C1C00329214 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		395A9EDC1E4AF6300011FA82 /* jcore-ios-1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.0.a"; sourceTree = "<group>"; };
 		395A9EDE1E4AF6FF0011FA82 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		395A9EE01E4AF7070011FA82 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +220,7 @@
 		3974F4441E4AD74E00F80BED /* YMQRCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YMQRCode.entitlements; sourceTree = "<group>"; };
 		3979E8971E63B3A0004ED5DA /* HistoryRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryRecordViewController.h; sourceTree = "<group>"; };
 		3979E8981E63B3A0004ED5DA /* HistoryRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryRecordViewController.m; sourceTree = "<group>"; };
+		39A93B8C1EA0A794006969D6 /* shareImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareImage.png; sourceTree = "<group>"; };
 		478A4EB0A02E4D03A93F0211 /* Pods-YMQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.release.xcconfig"; sourceTree = "<group>"; };
 		6DBFA0E601D70516FE7FC9EC /* libPods-YMQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YMQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA03E0E5273666E1C999009 /* Pods-YMQRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMQRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YMQRCode/Pods-YMQRCode.debug.xcconfig"; sourceTree = "<group>"; };
@@ -481,6 +486,7 @@
 				397274D41E5D327A00D9A9C3 /* MoreContent */,
 				36FB75301E4AFB4E00FEA756 /* CutImage */,
 				360B50311E49BDBC00C2BD9F /* QRCodeImageStyle */,
+				391F88B91E9F4C1C00329214 /* VCardGeneration */,
 				3671F5C21E496F1400A68381 /* QRCode */,
 				3919B9B21E49B2EC00909D91 /* Scanning */,
 				36C85FF61E388C5800AA76C3 /* HomePage */,
@@ -693,6 +699,7 @@
 				3919BA291E49E9E100909D91 /* Close_fx@2x.png */,
 				3919BA2A1E49E9E100909D91 /* more_hy@2x.png */,
 				3919BA2B1E49E9E100909D91 /* more_hy@3x.png */,
+				39A93B8C1EA0A794006969D6 /* shareImage.png */,
 				3919BA2C1E49E9E100909D91 /* more_pyq@2x.png */,
 				3919BA2D1E49E9E100909D91 /* more_pyq@3x.png */,
 				3919BA2E1E49E9E100909D91 /* more_wb@2x.png */,
@@ -733,6 +740,16 @@
 				3919BA3D1E49E9E100909D91 /* WXApiObject.h */,
 			);
 			path = WeChat;
+			sourceTree = "<group>";
+		};
+		391F88B91E9F4C1C00329214 /* VCardGeneration */ = {
+			isa = PBXGroup;
+			children = (
+				391F88BA1E9F4C1C00329214 /* CardViewController.h */,
+				391F88BB1E9F4C1C00329214 /* CardViewController.m */,
+			);
+			name = VCardGeneration;
+			path = General/VCardGeneration;
 			sourceTree = "<group>";
 		};
 		397274D41E5D327A00D9A9C3 /* MoreContent */ = {
@@ -877,6 +894,7 @@
 				3919BA481E49E9E100909D91 /* ShareView.xib in Resources */,
 				3919BA3F1E49E9E100909D91 /* more_hy@2x.png in Resources */,
 				3919BA3E1E49E9E100909D91 /* Close_fx@2x.png in Resources */,
+				39A93B8D1EA0A794006969D6 /* shareImage.png in Resources */,
 				3919BA401E49E9E100909D91 /* more_hy@3x.png in Resources */,
 				3919BA451E49E9E100909D91 /* register_bg@2x.png in Resources */,
 				3919BA421E49E9E100909D91 /* more_pyq@3x.png in Resources */,
@@ -945,6 +963,7 @@
 				36FB75AD1E5166F100FEA756 /* HomePageMessageView.m in Sources */,
 				36FB75A01E51667400FEA756 /* HomePageBodyView.m in Sources */,
 				3608418B1E83B9D4008C65AC /* HistoryScanTextDao.m in Sources */,
+				391F88BC1E9F4C1C00329214 /* CardViewController.m in Sources */,
 				36FB75A11E51667400FEA756 /* HomePageHttpView.m in Sources */,
 				3671F5C51E496F7700A68381 /* QRCodeProduceViewController.m in Sources */,
 				3690445E1E53087F00D6E597 /* QRScanView.m in Sources */,
@@ -1118,8 +1137,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mijinshe.YMQRCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44e9293d-5e94-4309-8417-4e540e3eddbc";
+				PROVISIONING_PROFILE = "d984627f-6067-44f1-a722-49f291d391d2";
 				PROVISIONING_PROFILE_SPECIFIER = QRCodeDele;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1161,8 +1181,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mijinshe.YMQRCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44e9293d-5e94-4309-8417-4e540e3eddbc";
+				PROVISIONING_PROFILE = "d984627f-6067-44f1-a722-49f291d391d2";
 				PROVISIONING_PROFILE_SPECIFIER = QRCodeDele;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -28,20 +28,20 @@
     
     //二维码内容填写区域
     _codeTextView = [[UITextView alloc]init];
-    
+    _codeTextView.font = [UIFont systemFontOfSize:14];
     _codeTextView.layer.cornerRadius = 10;
     _codeTextView.delegate = self;
     _codeTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     [self addSubview:_codeTextView];
     
     _fillLabel = [[UILabel alloc]init];
-    _fillLabel.font = [UIFont systemFontOfSize:13];
+    _fillLabel.font = [UIFont systemFontOfSize:14];
     _fillLabel.text = @"支持输入基本的文本数据和网站";
     _fillLabel.textColor = WORDSCOLOR;
     [_codeTextView addSubview:_fillLabel];
     
     _textlabel = [[UILabel alloc]init];
-    _textlabel.font = [UIFont systemFontOfSize:10];
+    _textlabel.font = [UIFont systemFontOfSize:12];
     _textlabel.numberOfLines = 0;
     _textlabel.text = [NSString stringWithFormat:@"已输入字符：0个"];
     _textlabel.textColor = WORDSCOLOR;

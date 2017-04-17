@@ -63,6 +63,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.type = 5;
+    
     [super viewWillAppear:animated];
     
     [self setQRCodeViewImage];
@@ -136,7 +138,7 @@
         make.height.mas_equalTo(135);
     }];
     
-    
+    //变换颜色Button
     UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [imgButton setBackgroundImage:[UIImage imageNamed:@"selectImg"] forState:UIControlStateNormal];
@@ -148,13 +150,21 @@
         
         make.left.mas_equalTo(31);
         
-        make.size.mas_equalTo(CGSizeMake(154, 50));
+        if (IS_IPHONE_5||IS_IPHONE_4_OR_LESS) {
+            
+            make.size.mas_equalTo(CGSizeMake(120, 40));
+            
+        }else{
+            
+            make.size.mas_equalTo(CGSizeMake(154, 50));
+            
+        }
         
         make.bottom.equalTo(self.view.mas_bottom).offset(-85);
         
         
     }];
-    
+    //变换造型Button
     UIButton *styleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [styleButton setBackgroundImage:[UIImage imageNamed:@"styleImg"] forState:UIControlStateNormal];
@@ -167,17 +177,33 @@
         
         make.right.mas_equalTo(-31);
         
-        make.size.mas_equalTo(CGSizeMake(154, 50));
+        if (IS_IPHONE_5||IS_IPHONE_4_OR_LESS) {
+            
+            make.size.mas_equalTo(CGSizeMake(120, 40));
+            
+        }else{
+            
+            make.size.mas_equalTo(CGSizeMake(154, 50));
         
+        }
+        
+      
         make.bottom.equalTo(self.view.mas_bottom).offset(-85);
         
     }];
     
     UILabel *wordsLabel = [[UILabel alloc]init];
     
-    wordsLabel.font = [UIFont systemFontOfSize:10];
+    if (IS_IPHONE_4_OR_LESS||IS_IPHONE_5) {
+        wordsLabel.font = [UIFont systemFontOfSize:10];
+    }else{
+        wordsLabel.font = [UIFont systemFontOfSize:12];
+    }
     
-    wordsLabel.text = @"温馨提示：选择完二维码样式后，请点击右上角\"完成\"，以完成保存。";
+    
+    wordsLabel.numberOfLines = 0;
+    
+    wordsLabel.text = @"温馨提示：选择完二维码样式后，请点击右上角\"完成\"，\n以完成保存。";
     
     wordsLabel.textColor = WORDSCOLOR
     
@@ -191,10 +217,9 @@
         
         make.top.equalTo(imgButton.mas_bottom).offset(10);
         
-        make.size.height.mas_equalTo(20);
+        make.size.height.mas_equalTo(40);
         
     }];
-    
     
 }
 
@@ -203,8 +228,11 @@
     self.qrCodeImage = [YMQRCodeAppService shareInstance].QRCodeImage;
     
     UIImage *cutImage = [YMQRCodeAppService shareInstance].cutImage;
+    
     if (cutImage) {
+        
         self.smallImageView.image = cutImage;
+        
     }
 }
 
@@ -214,8 +242,16 @@
 
 -(void)saveBack:(id)sender
 {
+    
+    if(self.type == QRImageTypeMario||self.type == QRImageTypeDish||self.type == QRImageTypeBread||self.type == QRImageTypeLeaf||self.type == QRImageTypeBuild){
+        
+        [YMQRCodeAppService shareInstance].cutImage = nil;
+        
+    }
+    
     [YMQRCodeAppService shareInstance].QRCodeImage = _qrCodeImage;
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 #pragma mark - ColorsBtnViewDelegate

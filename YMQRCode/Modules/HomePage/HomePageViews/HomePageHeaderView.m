@@ -109,6 +109,26 @@
     NSInteger wInterval = 55 * self.frame.size.width / 375.0 ;
     NSInteger hInterval = 14;
     
+    if (IS_IPHONE_6P) {
+        
+        size = CGSizeMake(65, 85);
+        left = 42.5 * self.frame.size.width / 375.0 ;
+        top =  20;
+        wInterval = 55 * self.frame.size.width / 375.0 ;
+        hInterval = 15;
+        
+    }else if(IS_IPHONE_5||IS_IPHONE_4_OR_LESS){
+        
+        size = CGSizeMake(55, 70);
+        left = 42.5 * self.frame.size.width / 375.0 ;
+        top =  9;
+        wInterval = 55 * self.frame.size.width / 375.0 ;
+        hInterval = 12;
+
+        
+    }
+    
+    
     [_httpButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(left);
         make.top.mas_equalTo(top);

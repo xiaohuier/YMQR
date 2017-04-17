@@ -105,10 +105,10 @@
     [_vCardScrollView addSubview:_urlTextfiled];
     
     _addressTextView = [[UITextView alloc]init];
+    _addressTextView.font = [UIFont systemFontOfSize:13];
     _addressTextView.layer.cornerRadius = 5;
     _addressTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     _addressTextView.delegate = self;
-    _addressTextView.layer.cornerRadius = 5;
     _addressTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     [_vCardScrollView addSubview:_addressTextView];
     
@@ -120,10 +120,10 @@
     
     
     _remarksTextView = [[UITextView alloc]init];
+    _remarksTextView.font = [UIFont systemFontOfSize:13];
     _remarksTextView.layer.cornerRadius = 5;
     _remarksTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     _remarksTextView.delegate = self;
-    _remarksTextView.layer.cornerRadius = 5;
     _remarksTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     [_vCardScrollView addSubview:_remarksTextView];
     
@@ -224,9 +224,30 @@
     }];
     
     [_vCardScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-        make.bottom.mas_equalTo(lastView.mas_bottom).offset(0);
+        
+        if (IS_IPHONE_5||IS_IPHONE_4_OR_LESS) {
+            
+            make.left.mas_equalTo(0);
+            
+            make.right.mas_equalTo(0);
+            
+            make.top.mas_equalTo(0);
+            
+            make.height.mas_equalTo(160);
+            
+        }else{
+            make.edges.mas_equalTo(0);
+            
+            make.bottom.mas_equalTo(lastView.mas_bottom).offset(0);
+        }
     }];
+    
+    if (IS_IPHONE_5||IS_IPHONE_4_OR_LESS) {
+    
+        _vCardScrollView.contentSize = CGSizeMake(0, 390);
+    
+    }
+    
     
 }
 

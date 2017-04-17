@@ -30,21 +30,21 @@
 {
     //二维码内容填写区域
     _codeTextView = [[UITextView alloc]init];
-    
+    _codeTextView.font = [UIFont systemFontOfSize:14];
     _codeTextView.layer.cornerRadius = 10;
     _codeTextView.delegate = self;
     _codeTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
-    
+    _codeTextView.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     [self addSubview:_codeTextView];
     
     _fillLabel = [[UILabel alloc]init];
-    _fillLabel.font = [UIFont systemFontOfSize:13];
+    _fillLabel.font = [UIFont systemFontOfSize:14];
     _fillLabel.textColor = WORDSCOLOR;
     _fillLabel.text = @"请输入家庭号码或手机号";
     [_codeTextView addSubview:_fillLabel];
     
     _textlabel = [[UILabel alloc]init];
-    _textlabel.font = [UIFont systemFontOfSize:10];
+    _textlabel.font = [UIFont systemFontOfSize:12];
     _textlabel.numberOfLines = 0;
     _textlabel.text = @"☎️生成的电话号码二维码，扫描之后，手机可直接拨打扫描的电话号";
     _textlabel.textColor = WORDSCOLOR;

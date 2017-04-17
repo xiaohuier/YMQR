@@ -40,7 +40,7 @@
 {
     UIButton *backBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setImage:[UIImage imageNamed:@"back-button"] forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn addTarget:self action:@selector(pop) forControlEvents:UIControlEventTouchUpInside];
     [backBtn  sizeToFit];
     return backBtn;
 }

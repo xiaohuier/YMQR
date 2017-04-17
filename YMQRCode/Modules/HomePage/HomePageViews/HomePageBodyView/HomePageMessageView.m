@@ -34,10 +34,11 @@
 {
     
     _textFiled = [[UITextField alloc]init];
-    _textFiled.placeholder = @"  电话号码";
+    _textFiled.placeholder = @" 电话号码";
     _textFiled.layer.cornerRadius = 5;
     _textFiled.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
-    _textFiled.font = [UIFont systemFontOfSize:13];
+    _textFiled.font = [UIFont systemFontOfSize:14];
+    _textFiled.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     [self addSubview:_textFiled];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -47,6 +48,7 @@
 
     //二维码内容填写区域
     _codeTextView = [[UITextView alloc]init];
+    _codeTextView.font = [UIFont systemFontOfSize:14];
     _codeTextView.delegate = self;
     _codeTextView.layer.cornerRadius = 5;
     _codeTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
@@ -55,14 +57,14 @@
     
     _fillLabel = [[UILabel alloc]init];
     _fillLabel.text = @"短信内容";
-    _fillLabel.font = [UIFont systemFontOfSize:13];
+    _fillLabel.font = [UIFont systemFontOfSize:14];
     _fillLabel.textColor = WORDSCOLOR;
     [_codeTextView addSubview:_fillLabel];
     
     _textlabel = [[UILabel alloc]init];
     _textlabel.text = @"💻生成短信二维码，扫描二维码后将自动输入短信内容";
     _textlabel.textColor = WORDSCOLOR;
-    _textlabel.font = [UIFont systemFontOfSize:10];
+    _textlabel.font = [UIFont systemFontOfSize:12];
     _textlabel.numberOfLines = 0;
     [self addSubview:_textlabel];
 
@@ -80,7 +82,7 @@
         make.top.mas_equalTo(2);
         make.left.mas_equalTo((width - 240)/4);
         make.right.mas_equalTo(0-(width -240)/4);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(35);
         
     }];
 
