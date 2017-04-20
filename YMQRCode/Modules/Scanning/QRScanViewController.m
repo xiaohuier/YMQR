@@ -15,7 +15,7 @@
 #import "HistoryScanBookDao.h"
 #import "HistoryScanTextDao.h"
 #import "UIImage+QRCode.h"
-
+#import "CardViewController.h"
 
 @interface QRScanViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -60,12 +60,12 @@
     
     if (type == QRScanViewQRCodeType) {
         [self initScannerViewWithRectSize:CGSizeMake(260.f, 260.f) offseyY:(-43.0f)];
-        self.scanView.tipString = @"将二维码放入框内，即可自动扫描";
+        self.scanView.tipString = @"将二维码放入框内，即可自动扫描\n图书扫描请使用条形码扫描";
         
         
     }else if (type == QRScanViewBarCodeType){
         [self initScannerViewWithRectSize:CGSizeMake(300.f, 180.f) offseyY:(-23.0f)];
-        self.scanView.tipString = @"将条形码放入框内，即可自动扫描";
+        self.scanView.tipString = @"将条形码放入框内，即可自动扫描\n图书扫描请使用条形码扫描";
     }
 }
 
@@ -90,13 +90,13 @@
     self.navigationItem.titleView = segmentedControl;
     //    右边留个帮助按钮
     
-    UIButton *flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [flashButton setImage:[UIImage imageNamed:@"light-off"] forState:UIControlStateNormal];
-    [flashButton setImage:[UIImage imageNamed:@"light-on"] forState:UIControlStateDisabled];
-    [flashButton sizeToFit];
-    
-    [flashButton addTarget:self action:@selector(didTapFlashButton:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:flashButton];
+//    UIButton *flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [flashButton setImage:[UIImage imageNamed:@"light-off"] forState:UIControlStateNormal];
+//    [flashButton setImage:[UIImage imageNamed:@"light-on"] forState:UIControlStateDisabled];
+//    [flashButton sizeToFit];
+//    
+//    [flashButton addTarget:self action:@selector(didTapFlashButton:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:flashButton];
 
     
 }
@@ -148,7 +148,6 @@
     [self.captureSession commitConfiguration];
     
 }
-
 
 -(void)initScannerViewWithRectSize: (CGSize)size offseyY:(NSInteger)offsetY
 {
@@ -221,10 +220,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)didTapFlashButton:(UIButton *)button
-{
-    button.selected = !button.selected;
-}
+//-(void)didTapFlashButton:(UIButton *)button
+//{
+//    button.selected = !button.selected;
+//}
 
 -(void)flashLightClick:(UIButton *)button
 {
@@ -251,10 +250,15 @@
     //将来源设置为相册
     imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     
+    [self.scanView stopAnimation];
+    [self.captureSession stopRunning];
+    
     [self presentViewController:imagePicker animated:YES completion:nil];
+    
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+
     //获取选中的照片
     UIImage *image = info[UIImagePickerControllerEditedImage];
     
@@ -264,21 +268,124 @@
     
     //初始化  将类型设置为二维码
     CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:nil];
+
     
     [picker dismissViewControllerAnimated:YES completion:^{
+        
+        [self.scanView stopAnimation];
+        [self.captureSession stopRunning];
+        
         //设置数组，放置识别完之后的数据
         NSArray *features = [detector featuresInImage:[CIImage imageWithData:UIImagePNGRepresentation(image)]];
+        
         //判断是否有数据（即是否是二维码）
         if (features.count >= 1) {
+            
             //取第一个元素就是二维码所存放的文本信息
             CIQRCodeFeature *feature = features[0];
+            
             NSString *scannedResult = feature.messageString;
-            NSLog(@"scannedResult = %@",scannedResult);
+            
+            //通过对话框的形式呈现
+            [self alertControllerMessage:scannedResult andBool:YES];
             
         }else{
             
+            [self alertControllerMessage:@"未找到图中的二维码" andBool:NO];
+            
         }
+        
     }];
+}
+
+-(void)alertControllerMessage:(NSString *)message andBool:(BOOL)isYes {
+   
+    if (isYes) {
+        
+        UIAlertController *alert;
+        
+        UIAlertAction *continueScanning;
+        
+        UIAlertAction *confirmOperation;
+        
+        if ([message hasPrefix:@"http://"]||[message hasPrefix:@"https://"]||[message hasPrefix:@"sms:"]||[message hasPrefix:@"tel:"]){
+            
+            NSString *buttonTitle;
+            
+            if ([message hasPrefix:@"http://"]||[message hasPrefix:@"https://"]) {
+                buttonTitle = @"跳转网页";
+            }else if([message hasPrefix:@"sms:"]){
+                
+                buttonTitle = @"跳转短信";
+                
+            }else{
+                
+                buttonTitle = @"拨打号码";
+            }
+            
+            alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            continueScanning = [UIAlertAction actionWithTitle:@"继续扫描" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self.scanView startAnimation];
+                [self.captureSession startRunning];
+                
+            }];
+            
+            confirmOperation = [UIAlertAction actionWithTitle:buttonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:message]];
+                
+            }];
+            
+            [alert addAction:continueScanning];
+            [alert addAction:confirmOperation];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else if ([message hasPrefix:@"BEGIN:VCARD"]){
+            
+            CardViewController *card = [[CardViewController alloc]init];
+            
+            card.cardMessage = message;
+            
+            [self.navigationController pushViewController:card animated:NO];
+            
+        }else{
+            
+            UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+            
+            pasteboard.string=message;
+            
+            alert = [UIAlertController alertControllerWithTitle:@"文本内容已剪切到粘贴板" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            confirmOperation = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self.scanView startAnimation];
+                [self.captureSession startRunning];
+                
+            }];
+            
+            [alert addAction:confirmOperation];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+        
+    }else{
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"继续扫描" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self.scanView startAnimation];
+            [self.captureSession startRunning];
+            
+        }];
+        
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
@@ -298,10 +405,10 @@
             
             NSDictionary *dic = [bookmodel modelToDic];
             [[HistoryScanBookDao shareInstance]insertModel:dic];
+
+            [self alertControllerMessage:bookmodel.title andBool:YES];
             
-            [self aleart:bookmodel.title];
         }];
-        
         
     }else if (self.type == QRScanViewQRCodeType)
     {
@@ -309,11 +416,10 @@
         
       //  UIImage *image = [UIImage imageForView:self.view];
      
-        
         NSDictionary *dic = @{@"jsonString":qrCode,@"imagePath":[NSNull null]};
         [[HistoryScanTextDao shareInstance]insertModel:dic];
         
-        [self aleart:qrCode];
+        [self alertControllerMessage:qrCode andBool:YES];
         
     }
     

@@ -27,10 +27,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    [WXApi registerApp:@"wxdb95fdae31b45243" withDescription:@"4f88b993672d01fe36bd9f8808bfcff8"];
-//
-//    
-//    [WeiboSDK registerApp:@""];
+    
+    [WXApi registerApp:@"wxdb95fdae31b45243" withDescription:@"4f88b993672d01fe36bd9f8808bfcff8"];
+    
+    [WeiboSDK registerApp:@"1801286617"];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -48,11 +48,33 @@
     }
     
        [self.window makeKeyAndVisible];
-//
-//    [JPUSHService setupWithOption:launchOptions appKey:appKey
-//                          channel:channel
-//                 apsForProduction:isProduction
-//            advertisingIdentifier:nil];
+
+    [JPUSHService setupWithOption:launchOptions appKey:appKey
+                          channel:channel
+                 apsForProduction:isProduction
+            advertisingIdentifier:nil];
+
+    float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if(sysVer >= 8)
+    {
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];//注册本地推送
+        [application registerForRemoteNotifications];
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched0"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched0"];
+       
+        NSString*string = @"20160620134106";
+        
+        NSDateFormatter *inputFormatter= [[NSDateFormatter alloc] init];
+        
+        [inputFormatter setDateFormat:@"yyyyMMddHHmmss"];
+        
+        NSDate*inputDate = [inputFormatter dateFromString:string];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:inputDate forKey:@"currentDate"];
+        
+    }
 
     
     return YES;
@@ -117,6 +139,16 @@
     
 }
 
+#pragma mark URL
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    
+    
+    return YES;
+    
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation{
+    return YES;
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
@@ -125,12 +157,18 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+//    [self judgeAppVersion];
+    
+    
+    
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 
 @end

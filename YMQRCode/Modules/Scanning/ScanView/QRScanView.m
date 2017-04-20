@@ -165,7 +165,9 @@
 
 -(void)changeType:(QRScanViewType)type
 {
+    
     self.type = type;
+    
     [self setNeedsDisplay];
 }
 

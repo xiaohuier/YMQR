@@ -14,7 +14,17 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        _moreLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH/2, 50)];
+        if (IS_IPHONE_6P) {
+            
+            _moreLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH/2, 60)];
+            
+        }else{
+            
+            _moreLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH/2, 50)];
+            
+        }
+        
+        
         
         _moreLabel.textColor = UIColorFromRGB(666666);
         
@@ -24,7 +34,17 @@
         
         [self addSubview:_moreLabel];
         
-        _moreImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH  - 26, 18, 8, 14)];
+        if (IS_IPHONE_6P) {
+            
+            _moreImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH  - 26, 23, 8, 14)];
+            
+        }else{
+            
+            _moreImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH  - 26, 18, 8, 14)];
+            
+        }
+        
+        
         
         [self addSubview:_moreImageView];
         

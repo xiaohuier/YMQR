@@ -30,8 +30,6 @@
     
     [self initSubview];
     
-    [self creatQRCodeImage];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -54,6 +52,15 @@
     [YMQRCodeAppService shareInstance].QRCodeImage = self.qrCodeImage;
     
     [YMQRCodeAppService shareInstance].cutImage = nil;
+    
+    
+    NSDictionary *dic;
+    
+    NSString *jsonString;
+    
+    dic = @{@"text":_textString};
+    
+    jsonString = [dic yy_modelToJSONString];
     
     [[YMQRCodeAppService shareInstance]insertToDataBaseWithType:_type jsonString:_textString];
     
@@ -180,6 +187,10 @@
         
     }];
     
+    
+    [self creatQRCodeImage];
+    
+    
 }
 
 //二维码样式选择
@@ -211,18 +222,27 @@
                 
             }else{
                 
-                NSString *err = [NSString stringWithFormat:@"%@",error];
-                
-                if([err rangeOfString:@"Code=2047"].location !=NSNotFound){
+                if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched2"]) {
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched2"];
                     
-                    alertController = [UIAlertController alertControllerWithTitle:@"图片保存失败" message:@"请选择允许访问相册权限后再次点击保存" preferredStyle:UIAlertControllerStyleAlert];
+                    alertController = [UIAlertController alertControllerWithTitle:nil message:@"选择确定后，再次点击保存以保存图片" preferredStyle:UIAlertControllerStyleAlert];
                     
                 }else{
                     
-                    alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
+                    NSString *err = [NSString stringWithFormat:@"%@",error];
+                    
+                    if([err rangeOfString:@"Code=2047"].location !=NSNotFound){
+                        
+                        alertController = [UIAlertController alertControllerWithTitle:@"图片保存失败" message:@"请选择允许访问相册权限后再次点击保存" preferredStyle:UIAlertControllerStyleAlert];
+                        
+                    }else{
+                        
+                        alertController = [UIAlertController alertControllerWithTitle:nil message:@"图片保存失败" preferredStyle:UIAlertControllerStyleAlert];
+                        
+                    }
                     
                 }
-                
+
             }
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
             
@@ -250,7 +270,7 @@
     //
     //    [shareView shareViewController:self];
     
-    NSArray *activityItems =@[self.qrCodeImage];
+    NSArray *activityItems =@[self.qrCodeImageView.image];
     
     UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
     [self presentViewController:vc animated:TRUE completion:nil];

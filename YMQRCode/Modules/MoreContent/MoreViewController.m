@@ -114,11 +114,11 @@
         
         shareView.isSelect = @"0";
         
-        shareView.urlString = @"https://itunes.apple.com/cn/app/mi-jin-she/id1111162244?mt=8";
+        shareView.urlString = @"https://itunes.apple.com/cn/app/mi-jin-she/id1226825199?mt=8";
         
-        shareView.titleString = @"二维码的邀请";
+        shareView.titleString = @"二维码的生成与扫描";
         
-        shareView.shareImage = [UIImage imageNamed:@"more_hy"];
+        shareView.shareImage = [UIImage imageNamed:@"shareImage"];
         
         shareView.contentString = @"我正在用二维码生成与扫描！";
         
@@ -128,21 +128,41 @@
         
     }else if (indexPath.row == 2){
         
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1111162244&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1226825199&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
         
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 50;
+    if (IS_IPHONE_6P) {
+        
+        return 60;
+        
+    }else{
+        
+        return 50;
+        
+    }
+    
+    
+    
+    
     
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 200;
+    if (IS_IPHONE_6P) {
+        
+        return 220;
+        
+    }else{
+        
+        return 200;
+    }
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

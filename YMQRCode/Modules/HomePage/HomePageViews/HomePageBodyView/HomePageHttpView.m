@@ -13,11 +13,12 @@
 @end
 
 @implementation HomePageHttpView
-
 {
     UITextView *_codeTextView;
     UILabel *_fillLabel;
     UILabel *_textlabel;
+    
+    BOOL isNull;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -32,21 +33,22 @@
 {
     //二维码内容填写区域
     _codeTextView = [[UITextView alloc]init];
-    
+    _codeTextView.font = [UIFont systemFontOfSize:14];
     _codeTextView.layer.cornerRadius = 10;
     _codeTextView.delegate = self;
     _codeTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
-    
+    _codeTextView.keyboardType = UIKeyboardTypeURL;
+    _codeTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self addSubview:_codeTextView];
     
     _fillLabel = [[UILabel alloc]init];
-    _fillLabel.font = [UIFont systemFontOfSize:13];
+    _fillLabel.font = [UIFont systemFontOfSize:14];
     _fillLabel.textColor = WORDSCOLOR;
     _fillLabel.text = @"http://或者https://";
     [_codeTextView addSubview:_fillLabel];
     
     _textlabel = [[UILabel alloc]init];
-    _textlabel.font = [UIFont systemFontOfSize:10];
+    _textlabel.font = [UIFont systemFontOfSize:12];
     _textlabel.numberOfLines = 0;
     _textlabel.text = @"注意：填写网址的时候请输入http://或者https://完整的网址信息;如果你的网址过长，生成的二维码将不易被扫描";
     _textlabel.textColor = WORDSCOLOR;
@@ -98,38 +100,78 @@
     
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if (range.location == 0) {
+-(void)textViewDidChange:(UITextView *)textView{
+
+    if (textView.text.length == 0) {
         
         [_fillLabel setHidden:NO];
         
     }
     
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
     if (text.length != 0) {
-        
+    
         [_fillLabel setHidden:YES];
         
     }
     return YES;
 }
 
--(BOOL)isNULL
-{
-    if (_codeTextView.text.length==0) {
-        return NO;
-    }else{
+
+-(BOOL)isNullString:(NSString *)string {
+    
+    if (string == nil || string == NULL) {
+        
         return YES;
+        
     }
+    
+    if ([string  isEqualToString:@"null"]) {
+        
+        return YES;
+        
+    }
+    
+    if ([string isKindOfClass:[NSNull class]]) {
+        
+        return YES;
+        
+    }
+    
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
 }
 
 -(NSString *)textString
 {
-    NSDictionary *dic = @{@"text":_codeTextView.text};
     
-    NSString *textString = [dic yy_modelToJSONString];
+//    NSDictionary *dic = @{@"text":_codeTextView.text};
+//    
+//    NSString *textString = [dic yy_modelToJSONString];
+    
+    NSString *textString;
+    
+    if (![self isNullString:_codeTextView.text]) {
+        
+        textString = _codeTextView.text;
+        
+    }else{
+        
+        textString = @"";
+    }
     
     return  textString;
+
+   
 
 }
 @end

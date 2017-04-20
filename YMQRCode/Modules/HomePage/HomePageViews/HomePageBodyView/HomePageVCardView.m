@@ -105,10 +105,10 @@
     [_vCardScrollView addSubview:_urlTextfiled];
     
     _addressTextView = [[UITextView alloc]init];
+    _addressTextView.font = [UIFont systemFontOfSize:13];
     _addressTextView.layer.cornerRadius = 5;
     _addressTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     _addressTextView.delegate = self;
-    _addressTextView.layer.cornerRadius = 5;
     _addressTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     [_vCardScrollView addSubview:_addressTextView];
     
@@ -120,10 +120,10 @@
     
     
     _remarksTextView = [[UITextView alloc]init];
+    _remarksTextView.font = [UIFont systemFontOfSize:13];
     _remarksTextView.layer.cornerRadius = 5;
     _remarksTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     _remarksTextView.delegate = self;
-    _remarksTextView.layer.cornerRadius = 5;
     _remarksTextView.backgroundColor = [UIColor colorWithRed:225.0/255 green:222.0/255 blue:225.0/255 alpha:1];
     [_vCardScrollView addSubview:_remarksTextView];
     
@@ -224,70 +224,134 @@
     }];
     
     [_vCardScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-        make.bottom.mas_equalTo(lastView.mas_bottom).offset(0);
+        
+        if (IS_IPHONE_5||IS_IPHONE_4_OR_LESS) {
+            
+            make.left.mas_equalTo(0);
+            
+            make.right.mas_equalTo(0);
+            
+            make.top.mas_equalTo(0);
+            
+            make.height.mas_equalTo(160);
+            
+        }else{
+            make.edges.mas_equalTo(0);
+            
+            make.bottom.mas_equalTo(lastView.mas_bottom).offset(0);
+        }
     }];
     
+    if (IS_IPHONE_5||IS_IPHONE_4_OR_LESS) {
+    
+        _vCardScrollView.contentSize = CGSizeMake(0, 390);
+    
+    }
+    
+    
 }
+
+-(void)textViewDidChange:(UITextView *)textView{
+    
+    if(textView == _addressTextView&&textView.text.length == 0){
+        
+        [_addressLabel setHidden:NO];
+            
+    }else{
+        
+        if (textView.text.length == 0) {
+            
+            [_remarksLabel setHidden:NO];
+            
+        }
+        
+    }
+
+}
+
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if(textView == _addressTextView){
-        if (range.location == 0) {
-            
-            [_addressLabel setHidden:NO];
-            
-        }
-        
+       
         if (text.length != 0) {
             
             [_addressLabel setHidden:YES];
             
         }
+        
     }else if (textView == _remarksTextView){
-        if (range.location == 0) {
-            
-            [_remarksLabel setHidden:NO];
-            
-        }
         
         if (text.length != 0) {
             
             [_remarksLabel setHidden:YES];
             
         }
+        
     }
     return YES;
 }
 
 
--(BOOL)isNULL
-{
-
-    if (_nameTextfiled.text.length==0) {
-        return NO;
-    }else{
+-(BOOL)isNullString:(NSString *)string {
+    
+    if (string == nil || string == NULL) {
+        
         return YES;
+        
     }
+    
+    if ([string  isEqualToString:@"null"]) {
+        
+        return YES;
+        
+    }
+    
+    if ([string isKindOfClass:[NSNull class]]) {
+        
+        return YES;
+        
+    }
+    
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        
+        return YES;
+        
+    }
+    
+    return NO;
 }
+
 
 -(NSString *)textString
 {
-    NSDictionary *dic = @{@"VCARD":_nameTextfiled.text,
-                          @"FN":_companyTextfiled.text,
-                          @"ORG":_addressLabel.text,
-                          @"ADR":_positionTextfiled.text,
-                          @"TITLE":_positionTextfiled.text,
-                          @"TEL":_telTextfiled.text,
-                          @"URL":_urlTextfiled.text,
-                          @"EMAIL":_mailTextfiled.text,
-                          @"NOTE":_remarksTextView.text,
-                          };
-    NSString *textString = [dic yy_modelToJSONString];
+//    NSDictionary *dic = @{@"VCARD":_nameTextfiled.text,
+//                          @"FN":_companyTextfiled.text,
+//                          @"ORG":_addressLabel.text,
+//                          @"ADR":_positionTextfiled.text,
+//                          @"TITLE":_positionTextfiled.text,
+//                          @"TEL":_telTextfiled.text,
+//                          @"URL":_urlTextfiled.text,
+//                          @"EMAIL":_mailTextfiled.text,
+//                          @"NOTE":_remarksTextView.text,
+//                          };
+//    NSString *textString = [dic yy_modelToJSONString];
     
+    NSString *textString;
+    
+    if ([self isNullString:_nameTextfiled.text]&&[self isNullString:_companyTextfiled.text]&&[self isNullString:_addressTextView.text]&&[self isNullString:_positionTextfiled.text]&&[self isNullString:_telTextfiled.text]&&[self isNullString:_urlTextfiled.text]&&[self isNullString:_mailTextfiled.text]&&[self isNullString:_remarksTextView.text]){
+        
+        textString = @"";
+        
+    }else{
+        
+        textString = [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
+        
+    }
+
     return  textString;
     
-//    return  [NSString stringWithFormat:@"BEGIN:VCARD\nFN:%@\nORG:%@\nADR:%@\nTITLE:%@\nTEL:%@\nURL:%@\nEMAIL:%@\nNOTE:%@\nEND:VCARD",_nameTextfiled.text,_companyTextfiled.text,_addressTextView.text,_positionTextfiled.text,_telTextfiled.text,_urlTextfiled.text,_mailTextfiled.text,_remarksTextView.text];
-
 }
+
+
 @end

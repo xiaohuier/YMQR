@@ -198,7 +198,7 @@
     // OC中要求设置的是一个二进制数据
     NSData *data;
     
-    data = [@"https://itunes.apple.com/cn/app/mi-jin-she-quan-wen-jian-li/id1111162244?mt=8" dataUsingEncoding:NSUTF8StringEncoding];
+    data = [@"https://itunes.apple.com/cn/app/mi-jin-she-quan-wen-jian-li/id1226825199?mt=8" dataUsingEncoding:NSUTF8StringEncoding];
     [filter setValue:data forKeyPath:@"InputMessage"];
     
     // 4.从滤镜从取出生成好的二维码图片
